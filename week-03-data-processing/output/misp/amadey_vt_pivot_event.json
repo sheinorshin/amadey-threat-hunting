@@ -1,0 +1,184 @@
+{
+  "Event": {
+    "uuid": "a00f06d9-acb9-5023-ba78-92f45db2c3a5",
+    "info": "Amadey 5.70 sample d7a366fa (Trellix) - VirusTotal pivot leads (analyst enrichment, extends consolidated event)",
+    "date": "2026-10-02",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "extends_uuid": "a9f16f04-be66-508d-b1dc-07cb24bae078",
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "admiralty-scale:source-reliability=\"b\""
+      },
+      {
+        "name": "admiralty-scale:information-credibility=\"3\""
+      },
+      {
+        "name": "misp-galaxy:mitre-malware=\"Amadey - S1025\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Server - T1584.004\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Upload Malware - T1608.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Ingress Tool Transfer - T1105\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "caadd400-fe1a-5d00-a5c9-6bb590104169",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://gitd3ti.vokasi.uns.ac.id/Aubin/vrms-backend/-/raw/development/werdigo.exe",
+        "to_ids": false,
+        "comment": "VT pivot lead | found via: VT relations of d7a366fa (Amadey 5.70): contacted URL | VT: 0/98 | NEW - second compromised self-hosted GitLab (Indonesian university) used as payload host; not in any vendor report | not IDS: expired 2026-05-19 (TTL 180 d) -> retro-hunt only",
+        "distribution": "5",
+        "first_seen": "2025-11-20T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          },
+          {
+            "name": "amadey-th:lead=\"vt-pivot\""
+          }
+        ]
+      },
+      {
+        "uuid": "5686caef-e45f-57a3-be05-940fab9a5e64",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://gitd3ti.vokasi.uns.ac.id/Aubin/vrms-backend/-/raw/development/exe.werdigo",
+        "to_ids": false,
+        "comment": "VT pivot lead | found via: VT relations of d7a366fa: contacted URL | VT: 0/98 | NEW - same repo; payload already removed | not IDS: expired 2026-05-19 (TTL 180 d); payload removed (HTTP 404) -> retro-hunt only",
+        "distribution": "5",
+        "first_seen": "2025-11-20T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          },
+          {
+            "name": "amadey-th:lead=\"vt-pivot\""
+          }
+        ]
+      },
+      {
+        "uuid": "f7830aed-d260-5c40-a00c-aa27252302bd",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "gitd3ti.vokasi.uns.ac.id",
+        "to_ids": false,
+        "comment": "VT pivot lead | found via: VT relations of d7a366fa: contacted domain | VT: 0/91 | NEW - compromised legitimate GitLab; block the URL path not the university domain | not IDS: expired 2026-05-19 (TTL 180 d); legitimate compromised host - block the URL path, not the host -> retro-hunt only",
+        "distribution": "5",
+        "first_seen": "2025-11-20T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          },
+          {
+            "name": "amadey-th:lead=\"vt-pivot\""
+          }
+        ]
+      },
+      {
+        "uuid": "87718599-33c7-5c76-bdab-e7a80f9f5188",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "203.6.149.147",
+        "to_ids": false,
+        "comment": "VT pivot lead | found via: VT relations of d7a366fa + DNS A record of gitd3ti.vokasi.uns.ac.id | VT: 0/91 | NEW - AS55684 (ID); hosts the compromised GitLab | not IDS: expired 2026-02-18 (TTL 90 d); legitimate compromised host - block the URL path, not the host -> retro-hunt only",
+        "distribution": "5",
+        "first_seen": "2025-11-20T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          },
+          {
+            "name": "amadey-th:lead=\"vt-pivot\""
+          }
+        ]
+      },
+      {
+        "uuid": "7b0dd365-1e74-5aa6-ae39-3931cb44135d",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://91.92.243.129/0gjSy4hf3/Plugins/clip64.dll",
+        "to_ids": false,
+        "comment": "VT pivot lead | found via: VT relations of d7a366fa: contacted URL | VT: 21/94 | NEW - plugin download path pattern /<panel>/Plugins/<plugin>.dll | not IDS: expired 2026-08-09 (TTL 180 d) -> retro-hunt only",
+        "distribution": "5",
+        "first_seen": "2026-02-10T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"plugin\""
+          },
+          {
+            "name": "amadey-th:lead=\"vt-pivot\""
+          }
+        ]
+      },
+      {
+        "uuid": "9ddc1426-09e8-5324-a687-783a3514b5e1",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://91.92.243.129/0gjSy4hf3/index.php?scr=1",
+        "to_ids": false,
+        "comment": "VT pivot lead | found via: VT relations of d7a366fa: contacted URL | VT: 13/98 | NEW - scr=1 parameter (screenshot upload to panel) | not IDS: expired 2026-05-20 (TTL 180 d) -> retro-hunt only",
+        "distribution": "5",
+        "first_seen": "2025-11-21T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          },
+          {
+            "name": "amadey-th:lead=\"vt-pivot\""
+          }
+        ]
+      },
+      {
+        "uuid": "85e3a54e-dc59-50eb-8299-f1ad53df6265",
+        "type": "filename",
+        "category": "Artifacts dropped",
+        "value": "%TEMP%\\10000210101\\exe.exe",
+        "to_ids": false,
+        "comment": "VT pivot lead | found via: VT behavior (sandbox) of d7a366fa | VT: n/a | NEW - next-stage drop folder pattern %TEMP%\\1000xxxxxxx\\ (Trellix saw %TEMP%\\10000340261\\) | not IDS: folder number varies per infection - hunt with a pattern, not the exact path -> retro-hunt only",
+        "distribution": "5",
+        "first_seen": "2025-11-20T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"host-artefact\""
+          },
+          {
+            "name": "amadey-th:lead=\"vt-pivot\""
+          }
+        ]
+      }
+    ]
+  }
+}

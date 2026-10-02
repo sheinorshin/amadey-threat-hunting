@@ -7,13 +7,14 @@
 
 | File | Content |
 |---|---|
-| [`01-misp-deployment.md`](01-misp-deployment.md) | MISP via official `misp-docker`, lab-size config ([`misp/env.example`](misp/env.example)), post-install hardening, feeds, taxonomies, API key |
+| [`01-misp-deployment.md`](01-misp-deployment.md) | MISP 2.5.48 via official `misp-docker` on Docker Desktop: config ([`misp/env.example`](misp/env.example)), setup script ([`misp/setup-misp.ps1`](misp/setup-misp.ps1)), Windows fix ([`misp/docker-compose.override.yml`](misp/docker-compose.override.yml)), post-install config, real deployment log + troubleshooting |
 | [`02-ioc-import.md`](02-ioc-import.md) | 3 import methods (MISP JSON, Freetext, PyMISP) + STIX 2.1 import for correlation |
 | [`03-filtering-normalization.md`](03-filtering-normalization.md) | 10-step pipeline, results, before/after, insights |
 | [`04-exploitation-elastic-sigma.md`](04-exploitation-elastic-sigma.md) | MISP → Elastic, indicator-match rule, 8 Sigma rules + EQL conversion |
-| [`scripts/`](scripts/) | `normalize_iocs.py`, `build_misp_event.py`, `push_to_misp.py`, `to_elastic_ndjson.py`, `gen_sigma_ioc_rules.py`, `convert_sigma.py` |
+| [`scripts/`](scripts/) | `normalize_iocs.py`, `build_misp_event.py`, `build_pivot_event.py`, `push_to_misp.py`, `to_elastic_ndjson.py`, `gen_sigma_ioc_rules.py`, `convert_sigma.py` |
 | [`sigma/`](sigma/) | 6 behavioural rules + 2 generated IOC rules + Elastic Agent field-mapping pipeline |
-| [`output/`](output/) | Normalised IOCs (CSV/JSON), rejected list, blocklists, MISP event, ECS NDJSON, converted queries, pipeline report |
+| [`output/`](output/) | Normalised IOCs (CSV/JSON), rejected list, blocklists, MISP events (consolidated + VT-pivot extension), ECS NDJSON, converted queries, pipeline report |
+| [`evidence/`](evidence/) | **15 screenshots** from my running MISP 2.5.48: Docker stack, events, correlation graph, ATT&CK matrix, feeds, taxonomies, sightings, troubleshooting |
 
 ## Results in numbers
 
@@ -24,6 +25,7 @@
 | Actionable IPs | **0 of 7** (all expired, offline or re-assigned) |
 | Cross-publisher overlap | **0** indicators |
 | MISP event | 81 attributes, 12 event tags/galaxies, validated with PyMISP + MISP `describeTypes` |
+| MISP instance (live) | 3 events: #1 consolidated (81 attr., 54 IDS) · #2 raw Talos STIX (17) · #3 VT pivots extending #1 (7) → **13 correlations** #1↔#2, 2 sightings, 4 abuse.ch feeds cached |
 | Sigma | 8 rules, `sigma check`: 0 errors / 0 issues; converted to EQL/Lucene |
 
 ## How to run (≈ 1 min, no internet needed except for MISP/Sigma install)
@@ -34,6 +36,7 @@ python normalize_iocs.py --as-of 2026-10-02   # pipeline + report
 python build_misp_event.py                    # MISP JSON + freetext list
 python to_elastic_ndjson.py                   # Elastic bulk file
 python gen_sigma_ioc_rules.py                 # IOC → Sigma
+python build_pivot_event.py                   # Week 2 VT pivots → MISP extension event
 pip install sigma-cli pySigma-backend-elasticsearch && python convert_sigma.py
 # with MISP running:
 pip install pymisp && python push_to_misp.py
@@ -46,10 +49,10 @@ pip install pymisp && python push_to_misp.py
 | Time | Point | Show |
 |---|---|---|
 | 0:00–0:45 | Where the project is: collection (W2) → **processing + exploitation** (W3). Problem: 81 messy raw records in 4 formats. | `week-02/data/raw/` |
-| 0:45–2:00 | MISP running in Docker; feeds, taxonomies, API key. | MISP dashboard, `docker compose ps` |
+| 0:45–2:00 | MISP 2.5.48 running in Docker Desktop; the 2 deployment problems I fixed (healthcheck grace period, missing TLS cert); feeds + taxonomies. | `evidence/misp/01`, `02`, `11`, `12` |
 | 2:00–4:00 | Pipeline walk-through: refang → type → validate → dedup → derive → filter → score. Live run of `normalize_iocs.py`. | Terminal + `pipeline_report.md` |
 | 4:00–5:00 | Before/after table: mutex ≠ MD5, truncated Talos hashes, dead `185.215.113.0/24`, re-used StealC IP. | `03-filtering-normalization.md` |
-| 5:00–6:15 | Import into MISP (MISP JSON) → `to_ids` filter → correlation with the Talos STIX event → ATT&CK galaxy. | MISP event view |
+| 5:00–6:15 | Import into MISP (MISP JSON) → `to_ids` + comments → 13 correlations with the raw Talos STIX event (and its invalid `TLP:WHITE`) → ATT&CK matrix → my VT pivots as an extension event. | `evidence/misp/04`–`10` |
 | 6:15–7:30 | Exploitation: indicator-match rule in Kibana + Sigma behavioural rules (why TTPs > IOCs, zero overlap finding). | `04-…md`, EQL query |
 
 **Likely questions**
@@ -61,3 +64,6 @@ pip install pymisp && python push_to_misp.py
 - *What is MISP correlation?* — MISP automatically links attributes with identical values across events/feeds, revealing shared infrastructure.
 - *Why Sigma if you already have IOCs?* — Zero overlap between vendors shows IOCs only cover known builds; Sigma rules on TTPs (1-minute task, Startup redirect, rundll32 plugins) catch new builds too.
 - *How did you choose TTL values?* — Common practice in CTI platforms: IPs change fastest (≈ 30–90 d), domains/URLs slower (≈ 180 d), file hashes are permanent. Values are parameters in the script (`TTL_DAYS`).
+- *Why did you import the Talos STIX file unchanged?* — As a control sample: it shows what raw vendor data looks like inside a TIP (invalid TLP tag, UUID-only ATT&CK tags, every IP IDS) and proves correlation works (13 shared values).
+- *What is an extension event?* — An event with `extends_uuid` pointing to another event: my own analysis (VT pivots, Admiralty B3) is attached to the publishers' event (A2) without changing it.
+- *Why no feed hits?* — The cached abuse.ch feeds only contain the last days/weeks; my indicators are months old and the 2025 infrastructure is offline — consistent with the decay policy.
