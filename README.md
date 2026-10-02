@@ -38,8 +38,11 @@ week-02-data-collection/       collection plan, OSINT, data-source mapping
   data/raw/                    IOC files exactly as published (Talos, Trellix, Microsoft, Splunk)
   data/enrichment/             RIPEstat + Shodan InternetDB snapshot
   scripts/                     vt_lookup.py, shodan_lookup.py, ripestat_enrich.py
+  evidence/                    VirusTotal + Shodan screenshots
 week-03-data-processing/       MISP, normalisation pipeline, Elastic, Sigma
+  misp/                        .env values, setup-misp.ps1, Windows compose override
   scripts/                     normalize → MISP → Elastic → Sigma
+  evidence/                    screenshots from my running MISP 2.5.48
   sigma/                       behavioural + generated rules, Elastic Agent pipeline
   output/                      normalised IOCs, MISP event, NDJSON, converted queries
 ```

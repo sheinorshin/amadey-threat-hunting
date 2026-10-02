@@ -1,0 +1,17 @@
+# Local override (Windows + Docker Desktop) - Amadey threat-hunting project
+# Copy next to misp-docker/docker-compose.yml (setup-misp.ps1 does this automatically).
+# On first start misp-core copies the MISP data files (galaxies, taxonomies, warninglists...)
+# into the bind-mounted ./files folder and fixes permissions. Through Windows file sharing this
+# takes several minutes, longer than the default 60 s healthcheck grace period, so
+# "docker compose up" marked misp-core unhealthy and never started misp-nginx.
+# A 15-minute start_period only adds grace time: the container still turns healthy
+# as soon as php-fpm answers on port 9002.
+services:
+  misp-core:
+    healthcheck:
+      test: bash -c 'echo > /dev/tcp/127.0.0.1/9002' || exit 1
+      interval: 2s
+      timeout: 1s
+      retries: 3
+      start_period: 900s
+      start_interval: 5s
