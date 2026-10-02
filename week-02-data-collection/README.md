@@ -11,10 +11,10 @@
 | [`02-osint-collection.md`](02-osint-collection.md) | VirusTotal / Shodan / Maltego procedures, queries, results, pivot graph |
 | [`03-data-source-mapping.md`](03-data-source-mapping.md) | 14 Amadey behaviours → ATT&CK → log source/event ID → ECS fields → lab coverage |
 | [`data/raw/`](data/raw/) | 6 raw IOC files from Talos (TXT + STIX 2.1), Trellix, Microsoft, Splunk — unmodified, with provenance log |
-| [`data/enrichment/`](data/enrichment/) | RIPEstat + Shodan InternetDB snapshot (2026-10-02) |
+| [`data/enrichment/`](data/enrichment/) | RIPEstat + Shodan snapshot, **VirusTotal results (28 hashes, 5 network IOCs)**, VT pivot leads (2026-10-02) |
 | [`data/maltego_graph_import.csv`](data/maltego_graph_import.csv) | 33-link graph ready for Maltego import |
 | [`scripts/`](scripts/) | `vt_lookup.py`, `shodan_lookup.py`, `ripestat_enrich.py` — stdlib only, read-only/passive |
-| [`evidence/`](evidence/) | Screenshot checklist |
+| [`evidence/`](evidence/) | **10 screenshots** (6 VirusTotal, 4 Shodan) + Maltego graph |
 
 ## Results in numbers
 
@@ -23,6 +23,9 @@
 | Sources collected | 5 publishers, 6 files (2023 → 2026) |
 | Raw indicators | **81** (36 hashes, 24 URLs, 8 IPs, 2 domains, 11 host artefacts) |
 | IPs enriched (ASN/netblock/BGP) | 7 |
+| VirusTotal lookups (GUI) | 26 hashes → **20 found, 6 not in VT** (all Microsoft); 2 IPs + 3 domains |
+| Shodan host lookups | 7 IPs → **2 live** (`91.92.243.129`, `158.94.208.130`), 5 no data |
+| New leads from pivoting | **6** (second compromised GitLab + IP, plugin path, `scr=1`, `.job` task, drop-folder pattern) |
 | Quality problems spotted at collection | 4 (truncated hashes, deprecated ATT&CK ID, mixed defanging, mixed malware families) |
 | Data sources mapped | 14 behaviours → 8 log sources; lab covers 7/14 now, 12/14 with Sysmon |
 
@@ -31,7 +34,9 @@
 1. **Amadey C2 and StealC C2 share a hosting provider** (AS202412 Omegatech) → hosting ASN is a better long-term pivot than single IPs.
 2. **2025 Amadey infrastructure in `185.215.113.0/24` is dead** (prefix withdrawn 2025-05-02) → old IPs must expire.
 3. **A former StealC C2 IP now serves an unrelated website** → IOC decay is real; blind blocking causes false positives.
-4. My SIEM lab can't see registry, DNS or network behaviour without **Sysmon** → top recommendation.
+4. **VirusTotal pivoting found a second compromised GitLab** (`gitd3ti.vokasi.uns.ac.id`, 0 detections) that no vendor reported, and confirmed the mutex + `C:\Windows\Tasks\Yfgfwb.job` persistence in sandbox runs.
+5. **3 of 4 Talos "campaign" hashes are JS downloaders, not Amadey** → labels must be verified before use.
+6. My SIEM lab can't see registry, DNS or network behaviour without **Sysmon** → top recommendation.
 
 ---
 
