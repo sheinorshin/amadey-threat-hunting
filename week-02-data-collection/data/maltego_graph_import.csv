@@ -1,0 +1,34 @@
+source_type,source_value,link_label,target_type,target_value
+maltego.Phrase,Amadey (S1025),sample v5.87,maltego.Hash,b7d1f172ff3feafe65d47fd1cbe0cc249316371ae0e1cbe3a7c741c738b3353d
+maltego.Phrase,Amadey (S1025),sample v5.70,maltego.Hash,d7a366fa4d31c901ce3bcb6760d7bb5aa7cab49bb54d8c6551b3df14c8cf64e7
+maltego.Phrase,Amadey (S1025),sample v5.60,maltego.Hash,43455f1ff4a623b783da670d052eb77eaaacb0c66a9f1e8508f802bf22e8129e
+maltego.Phrase,Amadey (S1025),plugin clip64.dll,maltego.Hash,bae0f38f58ad93728261f09840721ebedb9669a445f40083396fdd0da38a22a7
+maltego.Phrase,Amadey (S1025),plugin cred64.dll,maltego.Hash,3d5d48ea2b6f76af583e541602950d89b8d96a13654469df3bc58dcddf879e9d
+maltego.Phrase,Amadey (S1025),C2,maltego.URL,http://91.92.243.129/0gjSy4hf3/index.php
+maltego.Phrase,Amadey (S1025),C2,maltego.URL,http://185.215.113.43/Zu7JuNko/index.php
+maltego.Phrase,Amadey (S1025),C2,maltego.URL,http://goodpanelforgoodjob.com/hg8jjfSr5hy/index.php
+maltego.Phrase,Amadey (S1025),C2,maltego.URL,http://microsoft-telemetry.at/cvdfnaFJBmC0/index.php
+maltego.Phrase,Amadey (S1025),payload host,maltego.URL,http://185.215.113.16/test/amnew.exe
+maltego.Phrase,Amadey (S1025),mutex,maltego.Phrase,f936986d553273aef6eeaeef713ad28f
+maltego.Hash,d7a366fa4d31c901ce3bcb6760d7bb5aa7cab49bb54d8c6551b3df14c8cf64e7,downloads,maltego.URL,https://gitlab.bzctoons.net/suau/fds/-/raw/main/protected.zip
+maltego.URL,https://gitlab.bzctoons.net/suau/fds/-/raw/main/protected.zip,hosted on,maltego.Domain,gitlab.bzctoons.net
+maltego.Domain,gitlab.bzctoons.net,subdomain of,maltego.Domain,bzctoons.net
+maltego.URL,https://gitlab.bzctoons.net/suau/fds/-/raw/main/protected.zip,contains,maltego.Hash,b5d4cc84845cb101f8bda324729ebedd8acd36cc8ec32f80969c4fb6d3c2b8a7
+maltego.Hash,b5d4cc84845cb101f8bda324729ebedd8acd36cc8ec32f80969c4fb6d3c2b8a7,is,maltego.Phrase,StealC
+maltego.URL,http://91.92.243.129/0gjSy4hf3/index.php,resolves to,maltego.IPv4Address,91.92.243.129
+maltego.IPv4Address,91.92.243.129,in netblock,maltego.Netblock,91.92.243.0/24
+maltego.Netblock,91.92.243.0/24,announced by,maltego.AS,202412
+maltego.AS,202412,also announces,maltego.Netblock,158.94.208.0/24
+maltego.Netblock,158.94.208.0/24,contains,maltego.IPv4Address,158.94.208.130
+maltego.IPv4Address,158.94.208.130,StealC C2,maltego.Phrase,StealC
+maltego.IPv4Address,158.94.208.130,hostname (2026-10),maltego.Domain,natureofarizona.com
+maltego.URL,http://185.215.113.43/Zu7JuNko/index.php,resolves to,maltego.IPv4Address,185.215.113.43
+maltego.URL,http://185.215.113.16/test/amnew.exe,resolves to,maltego.IPv4Address,185.215.113.16
+maltego.IPv4Address,185.215.113.43,in netblock,maltego.Netblock,185.215.113.0/24
+maltego.IPv4Address,185.215.113.16,in netblock,maltego.Netblock,185.215.113.0/24
+maltego.IPv4Address,185.215.113.209,in netblock,maltego.Netblock,185.215.113.0/24
+maltego.IPv4Address,185.215.113.75,in netblock,maltego.Netblock,185.215.113.0/24
+maltego.Netblock,185.215.113.0/24,announced by (until 2025-05),maltego.AS,56873
+maltego.Phrase,Amadey (S1025),payload repo (Talos),maltego.Alias,Legendary99999 (GitHub)
+maltego.URL,http://goodpanelforgoodjob.com/hg8jjfSr5hy/index.php,hosted on,maltego.Domain,goodpanelforgoodjob.com
+maltego.URL,http://microsoft-telemetry.at/cvdfnaFJBmC0/index.php,hosted on,maltego.Domain,microsoft-telemetry.at
