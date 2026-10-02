@@ -1,0 +1,1 @@
+event.dataset:zeek.http AND (http.request.method:POST AND url.original:/.*\/[A-Za-z0-9]{2,16}\/index\.php/)

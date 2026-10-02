@@ -1,0 +1,3 @@
+raw,type,source,source_file,reason
+4e3951e668464efe8195d45fea7967857070a7d20d2c0e22f3c0f10bb2a8f8b,invalid_hash,Cisco Talos,talos_2025-07_emmenhtal-amadey.txt,malformed hash: 63 hex chars (expected 32/40/64) - truncated in source
+c62e7aca9bf6c20f7394d6d59b202af56150defbb6fae06e8443b7c6d71244d,invalid_hash,Cisco Talos,talos_2025-07_emmenhtal-amadey.txt,malformed hash: 63 hex chars (expected 32/40/64) - truncated in source

@@ -1,0 +1,1 @@
+any where registry.path:"*\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders\\Startup" and (not registry.data.strings:"*\\Start Menu\\Programs\\Startup*")

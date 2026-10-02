@@ -1,0 +1,31 @@
+title: RDP Enabled by Process Running From User-Writable Path (Amadey v5)
+id: 93544696-8050-5f0d-84f3-2bdce528c3aa
+status: experimental
+description: |
+    Amadey v5 command 0x18 enables Remote Desktop by setting fDenyTSConnections to 0 and opening
+    firewall rules. Legitimate changes come from SystemPropertiesRemote.exe, svchost.exe or
+    management tools - not from executables in %TEMP% / %APPDATA%.
+references:
+    - https://www.microsoft.com/en-us/security/blog/2026/06/24/stealc-and-amadey-breaking-down-infostealers-and-the-cybercrime-services-that-deliver-them/
+author: Sayat Abdiraiym (AITU, Intro to Threat Hunting)
+date: 2026-10-02
+tags:
+    - attack.lateral-movement
+    - attack.t1021.001
+    - attack.defense-impairment
+    - attack.t1112
+logsource:
+    category: registry_set
+    product: windows
+detection:
+    selection:
+        TargetObject|endswith: '\Control\Terminal Server\fDenyTSConnections'
+        Details: 'DWORD (0x00000000)'
+        Image|contains:
+            - '\AppData\'
+            - '\Temp\'
+            - '\Users\Public\'
+    condition: selection
+falsepositives:
+    - Portable admin tools run from user folders
+level: high
