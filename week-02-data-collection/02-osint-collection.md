@@ -36,6 +36,39 @@ Read-only (no uploads), respects the free quota (4 req/min) — 12 targets ≈ 3
 | Behavior → *Mutexes* | Host-based IOC that can be hunted with EDR |
 | Relations → *Contacted URLs* matching `/<8–12 chars>/index.php` | New Amadey C2s not in any report → **new intelligence** |
 
+### Results (2026-10-02, VirusTotal web GUI, no API key)
+
+Full table: [`data/enrichment/vt_results_2026-10-02.csv`](data/enrichment/vt_results_2026-10-02.csv) · screenshots: [`evidence/virustotal/`](evidence/virustotal/)
+
+| Group | Checked | Found in VT | Not in VT | AV family labels (top) |
+|---|---|---|---|---|
+| Trellix (Amadey 5.70 + clip64 + StealC) | 3 | 3 | 0 | amadey · clipbanker · stealc |
+| Microsoft Amadey 5.60–5.87 | 11 | 6 | **5** | amadey (+ zusy, mikey, lumma) |
+| Microsoft StealC | 4 | 3 | **1** | stealc · marte |
+| Splunk (v3.83 era + plugins) | 4 | 4 | 0 | amadey · clipper · stealer |
+| Talos campaign (unlabelled) | 4 of 6 | 4 | 0 | **3 × JS downloader** (adbr/dwnldr) + 1 × amadey |
+| **Total** | **26** | **20** | **6** | 2 Talos hashes not checked — VT rate limit (captcha) |
+
+Detection ratios of the Amadey binaries: **43/53 – 63/70**. Main sample `d7a366fa…` (Trellix, v5.70): **54/70**, label `trojan.amadey/mikey`, names `0bxbzsqjw.exe` / `Yfgfwb.exe`, PE64 (MSVC 2019), compiled 2025-11-11, first submitted 2025-11-20.
+
+**What VT added (pivoting from `d7a366fa…`)** → [`data/enrichment/vt_pivot_new_leads_2026-10-02.csv`](data/enrichment/vt_pivot_new_leads_2026-10-02.csv)
+
+| Lead | Evidence | Why it matters |
+|---|---|---|
+| `hxxp://gitd3ti.vokasi.uns[.]ac[.]id/Aubin/vrms-backend/-/raw/development/werdigo.exe` (0/98, HTTP 200) | Relations → contacted URLs | **New:** a *second* compromised self-hosted GitLab (Indonesian university, `203.6.149.147`, AS55684) used as payload host — not in any vendor report |
+| `hxxp://91.92.243[.]129/0gjSy4hf3/Plugins/clip64.dll` (21/94) | Relations → contacted URLs | Plugin download path pattern `/<panel>/Plugins/<plugin>.dll` |
+| `…/0gjSy4hf3/index.php?scr=1` (13/98) | Relations → contacted URLs | `scr=1` = screenshot upload to the panel (v5 screenshot command) |
+| Mutex `f936986d553273aef6eeaeef713ad28f` | Behavior → mutexes created | **Confirms** the Trellix mutex in independent sandbox runs |
+| `C:\Windows\Tasks\Yfgfwb.job` + `C:\Windows\System32\Tasks\Yfgfwb` | Behavior → files written / registry (TaskCache) | **Confirms** persistence; a legacy Task Scheduler 1.0 `.job` file is rare on Windows 10/11 → strong hunting signal |
+| `%TEMP%\10000210101\exe.exe` | Behavior → processes created | Next-stage drop folder `%TEMP%\1000xxxxxxx\` (Trellix saw `%TEMP%\10000340261\`) → hunt the pattern, not the name |
+
+**VT findings**
+
+1. **VT coverage is incomplete:** 6 of 15 Microsoft hashes are **not in VirusTotal** → vendors publish hashes from private telemetry; "not on VT" ≠ "not malicious".
+2. **Attribution check works:** 3 of 4 Talos "campaign" hashes are **JavaScript downloaders**, not Amadey — exactly why Week 3 tags them `Amadey-campaign` with lower confidence instead of `Amadey`.
+3. **Labels disagree sometimes:** Splunk's "Amadey" `617f4082…` is an IExpress/WEXTRACT dropper that AV engines call stealer/ursnif; Microsoft's StealC `2a0f0538…` was seen in the wild as `amadey_x64.exe`. A second source is needed before trusting a label.
+4. **Pivoting found new infrastructure** (second compromised GitLab) with **0 detections** — something IOC lists alone would never show.
+
 ---
 
 ## 2.2 Shodan
@@ -59,23 +92,26 @@ python scripts/shodan_lookup.py data/ip_targets.txt --internetdb -o data/enrichm
 python scripts/shodan_lookup.py data/ip_targets.txt -o data/enrichment/shodan_hosts.csv   # needs SHODAN_API_KEY
 ```
 
-### Results already collected (2026-10-02)
+### Results (2026-10-02)
 
-Combined with RIPEstat registry data → [`data/enrichment/infrastructure_enrichment_2026-10-02.csv`](data/enrichment/infrastructure_enrichment_2026-10-02.csv)
+Shodan host pages (web, no login) → [`data/enrichment/shodan_hosts_2026-10-02.csv`](data/enrichment/shodan_hosts_2026-10-02.csv) · screenshots: [`evidence/shodan/`](evidence/shodan/)
+Registry data (RIPEstat) → [`data/enrichment/infrastructure_enrichment_2026-10-02.csv`](data/enrichment/infrastructure_enrichment_2026-10-02.csv)
 
-| IP | Role (source) | ASN / holder | Country | Still announced? | Shodan InternetDB |
+| IP | Role (source) | RIPE: ASN / holder | Prefix announced? | Shodan host page (last seen) | VT |
 |---|---|---|---|---|---|
-| `185.215.113.43` | Amadey C2 (Talos) | AS56873 ELITETEAM / 1337TEAM | SC | ❌ last seen **2025-05-02** | no data |
-| `185.215.113.16` | Payload host `amnew.exe` (Talos) | AS56873 | SC | ❌ | — |
-| `185.156.73.73` | Network IOC (Talos) | AS39238 OKB PROGRESS | RU | ✅ | — |
-| `91.92.243.129` | Amadey C2 (Trellix) | **AS202412 Omegatech LTD** | US | ✅ | no data |
-| `158.94.208.130` | StealC C2 (Trellix) | **AS202412 Omegatech LTD** | DE | ✅ | ports 22, 80, 135, 443, 9090 · hostname `natureofarizona.com` · Apache + OpenSSH 9.2p1 (Debian) |
+| `185.215.113.43` | Amadey C2 (Talos) | AS56873 ELITETEAM / 1337TEAM, SC | ❌ since **2025-05-02** | no information | 15/91 |
+| `185.215.113.16` | Payload host `amnew.exe` (Talos) | AS56873 | ❌ | no information | — |
+| `185.215.113.209` / `.75` | Network IOC (Talos) | AS56873 | ❌ | no information | — |
+| `185.156.73.73` | Network IOC (Talos) | AS39238 OKB PROGRESS, RU | ✅ | no information | — |
+| `91.92.243.129` | Amadey C2 (Trellix) | **AS202412 Omegatech LTD**, US | ✅ | **live** (2026-09-28): port 80, Microsoft IIS 10.0 answering 404; Shodan shows NL / Neterra–NTT AS2914 | 10/91 |
+| `158.94.208.130` | StealC C2 (Trellix) | **AS202412 Omegatech LTD**, DE | ✅ | **live** (2026-10-02): ports 22, 80, 135, 443, 445, 3389, 9090; hostname `natureofarizona.com`; self-signed cert; Windows 11 + Debian/Apache banners | — |
 
 ### Findings
 
 1. **Shared hosting provider:** the Amadey C2 and the StealC C2 of the same campaign sit in the **same ASN and org (AS202412, ORG-OL329-RIPE)** even though they are registered in different countries (US/DE). Hosting choice is a *procedure* — more stable than a single IP.
-2. **Dead infrastructure:** the whole `185.215.113.0/24` range (AS56873) **stopped being announced in BGP on 2025-05-02** — right after the Talos campaign window (Feb–Apr 2025). Blocking those IPs today has near-zero value.
-3. **IOC decay / re-use:** `158.94.208.130` now answers with an unrelated-looking hostname and a normal web stack — the IP was probably **re-assigned**. Blocking it blindly could hit an innocent site → in Week 3 such IOCs get `to_ids = false` and an expiry date.
+2. **Dead infrastructure:** the whole `185.215.113.0/24` range (AS56873) **stopped being announced in BGP on 2025-05-02** — right after the Talos campaign window (Feb–Apr 2025) — and Shodan has no data for any of its IPs. Blocking those IPs today has near-zero value.
+3. **IOC decay / re-use:** `158.94.208.130` now serves an unrelated-looking hostname with SMB/RDP open — the IP was probably **re-assigned**. Blocking it blindly could hit an innocent host → in Week 3 such IOCs get `to_ids = false` and an expiry date.
+4. **Sources disagree:** for `91.92.243.129` RIPE/VT say AS202412 (US) while Shodan's scan says AS2914 (NL). Registry data (RIPE) is authoritative for *allocation*; Shodan reflects what it saw when scanning. Recording both — with dates — is part of good collection.
 
 ---
 

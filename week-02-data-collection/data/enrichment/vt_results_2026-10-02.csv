@@ -1,0 +1,34 @@
+indicator,type,reported_by,reported_as,vt_status,vt_detections,vt_threat_label,vt_family_labels,vt_names_seen,notes
+d7a366fa4d31c901ce3bcb6760d7bb5aa7cab49bb54d8c6551b3df14c8cf64e7,sha256,Trellix,Amadey 5.70 loader,found,54/70,trojan.amadey/mikey,amadey;mikey;lumma,0bxbzsqjw.exe;Yfgfwb.exe,PE64 MSVC 2019; compiled 2025-11-11; first submission 2025-11-20; sandbox confirms task + mutex (see pivot file)
+bae0f38f58ad93728261f09840721ebedb9669a445f40083396fdd0da38a22a7,sha256,Trellix,Amadey clip64.dll plugin,found,56/71,,amadey;clipbanker;zusy,clip64.dll,114.5 KB
+b5d4cc84845cb101f8bda324729ebedd8acd36cc8ec32f80969c4fb6d3c2b8a7,sha256,Trellix,StealC payload,found,50/70,trojan.lumma/stealc,lumma;stealc;abtrojan,x64_protect.exe,
+1246c5b89ab668c1137f377507bc3e266a98e93248382aa026610ae1e764a497,sha256,Microsoft,Amadey 5.65,found,55/70,trojan.amadey/zusy,amadey;zusy;lumma,localfile~,
+30cef3d3d956e83e2c50579cfbe57a49159cccbcc8b0b0422f27d55e1c401ad9,sha256,Microsoft,Amadey 5.77,not_found,,,,,not in VirusTotal
+43455f1ff4a623b783da670d052eb77eaaacb0c66a9f1e8508f802bf22e8129e,sha256,Microsoft,Amadey 5.60,not_found,,,,,not in VirusTotal
+5f5b25b2e35d404034d0d60975cf1ffbc6f141761ec3f4f15d6f7c6213a056f6,sha256,Microsoft,Amadey 5.80,found,52/69,trojan.amadey/fugrafa,amadey;fugrafa;misc,mkjaegfc.exe,
+8cef760d11d24fc2e9bbd9f770dca5105854f7ece3b0e6948d7c8b7fdd1765ea,sha256,Microsoft,Amadey 5.73,found,59/71,trojan.amadey/steal,amadey;steal;convagent,,
+9383572a30ae5b76fadd0700fbd7a1aa7b05d0b6c8f9cdaef9b30a3e1f65d57d,sha256,Microsoft,Amadey 5.86,not_found,,,,,not in VirusTotal
+98e504cc7125b79eda5491f40b998605a05f4cd968b961aab4cce7beb074fefe,sha256,Microsoft,Amadey 5.78,found,53/68,trojan.amadey/zusy,amadey;zusy;nymaim,,
+99507f18c4e61fdb109805404bf6a79ea8ce2fddc590ce48d717e97516ab7e8d,sha256,Microsoft,Amadey 5.70,found,43/53,trojan.amadey/mikey,amadey;mikey;lumma,uxivvs9.exe,
+b7d1f172ff3feafe65d47fd1cbe0cc249316371ae0e1cbe3a7c741c738b3353d,sha256,Microsoft,Amadey 5.87,not_found,,,,,not in VirusTotal
+ca4d4c4fc3e5d5cfa922b898f2d7411f03a446dddb139ba45dfd4f8f0018b64f,sha256,Microsoft,Amadey 5.63,not_found,,,,,not in VirusTotal
+d43c988d6f9cb355497696b580621fb1bdb7b6ed6d90f97520ecf6da5a1a41ff,sha256,Microsoft,Amadey 5.64,found,56/71,trojan.amadey/lumma,amadey;lumma;stealer,,
+0215f734867bd71c57ff5c524d8cc670be5b4f1861b2c390cf46d18784a53624,sha256,Microsoft,StealC,found,58/69,trojan.stealc/marte,stealc;marte;loader,,
+2a0f053855da59b3b56812e580d7baeba59fc9493694722aa9e3f121ee3363f1,sha256,Microsoft,StealC,found,56/69,trojan.stealc/loader,stealc;loader;marte,amadey_x64.exe,file name says amadey but AV labels say StealC
+8f32456359f209a63adfd24b94235e1727382ac7f7bb7f2bcaf754e721925b64,sha256,Microsoft,StealC,found,60/71,trojan.stealc/marte,stealc;marte;loader,b6rzu5tgc.exe,
+977b33a9b481cf714946b7d386865cd5d284312aa5ecfa0546c197b1003e1bde,sha256,Microsoft,StealC,not_found,,,,,not in VirusTotal
+617f4082c320c24f27f69d146aae6973a3cb818860ab196cf2800ff16518c2bc,sha256,Splunk,Amadey,found,60/70,,stealer;crifi;ursnif,WEXTRACT.EXE .MUI,IExpress/WEXTRACT dropper - AV labels do not say amadey
+89d30f7ba7b2af7f519d2fe066700fae723643e25b1859f32c60618956651710,sha256,Splunk,Amadey,found,60/66,trojan.amadey/deyma,amadey;deyma;lazy,oneetx.exe,
+3d5d48ea2b6f76af583e541602950d89b8d96a13654469df3bc58dcddf879e9d,sha256,Splunk,cred64.dll plugin,found,62/70,,amadey;stealer;steal,cred64.dll,
+015d60486e75035f83ea454e87afb38d11ec39643c33b07f61a40343078ee4f5,sha256,Splunk,clip64.dll plugin,found,63/70,trojan.amadey/clipper,amadey;clipper;vsnw1da24,,
+87618787e1032bbf6a6ca8b3388ea3803be20a49e4afaba1df38a6116085062f,sha256,Cisco Talos,campaign (unlabelled),found,60/70,,amadey;deyma;chgt,futors.exe,Amadey binary
+0334cd1b8ab17203179da1ae77c1fad97ddf794cc63a6048aca664956d10b2ca,sha256,Cisco Talos,campaign (unlabelled),found,30/51,trojan.adbr/dwnldr,adbr;dwnldr;abtrojan,07022025_0204___i__UA073052990000026003033313656.js,JS downloader (Emmenhtal stage) - not Amadey itself
+21cf7da02e01b3c2317178395eff873e50ab9b8f27a23ffed37b2efff8fd6b90,sha256,Cisco Talos,campaign (unlabelled),found,32/59,trojan.obfuse/adbr,obfuse;adbr;dwnldr,,JS downloader (Emmenhtal stage)
+35c1eb5ff8913c4ca4feb712e05354772146247bdb4b337868c687730f201023,sha256,Cisco Talos,campaign (unlabelled),found,36/58,trojan.adbr/dwnldr,adbr;dwnldr;leonem,__i_2025__30343667.js,JS downloader (Emmenhtal stage)
+718be762e8bd513283cd5e21634dc65bd160e47121716fd058daf5f3be42728a,sha256,Cisco Talos,campaign (unlabelled),not_checked,,,,,VirusTotal rate limit (captcha) - not checked
+9bcfc98998b9e42b86204e66605b65462eeb8cfd8a0661b3ceebc99d4277e83c,sha256,Cisco Talos,campaign (unlabelled),not_checked,,,,,VirusTotal rate limit (captcha) - not checked
+91.92.243.129,ip,Trellix,Amadey C2,found,10/91,,,,91.92.240.0/22; AS202412 Omegatech LTD; US
+185.215.113.43,ip,Cisco Talos,Amadey C2,found,15/91,,,,
+goodpanelforgoodjob.com,domain,Microsoft,Amadey C2,found,18/91,,,,domain created ~7 months before lookup
+microsoft-telemetry.at,domain,Microsoft,Amadey C2,found,17/91,,,,brand-impersonating name
+gitlab.bzctoons.net,domain,Trellix,compromised GitLab (StealC host),found,8/91,,,,parent domain registered 2003 (legitimate org)
