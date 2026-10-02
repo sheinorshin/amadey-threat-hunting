@@ -1,0 +1,39 @@
+title: Amadey-Style Scheduled Task Running Every Minute From User Folder
+id: 2cf033e3-65e3-5334-955e-2001e6079448
+status: experimental
+description: |
+    Detects schtasks.exe creating a task that repeats every minute and points to an executable
+    in a user-writable folder. Amadey (S1025) v3/v4 persists with
+    "schtasks /Create /SC MINUTE /MO 1 /TN <name>.exe /TR <%TEMP%\<10-hex>\name.exe> /F".
+references:
+    - https://asec.ahnlab.com/en/36634/
+    - https://www.splunk.com/en_us/blog/security/amadey-threat-analysis-and-detections.html
+    - https://attack.mitre.org/software/S1025/
+author: Sayat Abdiraiym (AITU, Intro to Threat Hunting)
+date: 2026-10-02
+tags:
+    - attack.persistence
+    - attack.execution
+    - attack.t1053.005
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_img:
+        - Image|endswith: '\schtasks.exe'
+        - OriginalFileName: 'schtasks.exe'
+    selection_cli:
+        CommandLine|contains|all:
+            - '/Create'
+            - '/SC MINUTE'
+            - '/MO 1'
+            - '/TR'
+    selection_path:
+        CommandLine|contains:
+            - '\AppData\Local\Temp\'
+            - '\AppData\Roaming\'
+            - '\Users\Public\'
+    condition: all of selection_*
+falsepositives:
+    - Rare; some updaters use minute-based tasks but normally from Program Files
+level: high

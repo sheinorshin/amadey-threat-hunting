@@ -1,0 +1,34 @@
+name: Elastic Agent (Windows/System integrations) field mapping - Amadey project
+priority: 20
+# Maps Sigma/Sysmon field names to the ECS fields produced by the Elastic Agent
+# "Windows" (Sysmon Operational) and "System" (Security 4688) integrations.
+# Verify on your own data in Kibana Discover before relying on it.
+transformations:
+  - id: ecs_field_mapping
+    type: field_name_mapping
+    mapping:
+      Image: process.executable
+      CommandLine: process.command_line
+      OriginalFileName: process.pe.original_file_name
+      ParentImage: process.parent.executable
+      Hashes: process.hash.sha256
+      TargetObject: registry.path
+      Details: registry.data.strings
+      QueryName: dns.question.name
+      User: user.name
+  - id: sysmon_hashes_prefix
+    type: replace_string
+    regex: 'SHA256='
+    replacement: ''
+    field_name_conditions:
+      - type: include_fields
+        fields:
+          - process.hash.sha256
+  - id: sysmon_dword_zero
+    type: replace_string
+    regex: '^DWORD \(0x00000000\)$'
+    replacement: '0'
+    field_name_conditions:
+      - type: include_fields
+        fields:
+          - registry.data.strings
