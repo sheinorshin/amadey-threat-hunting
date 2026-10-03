@@ -14,7 +14,7 @@
 | 2 | Data Collection Process | OSINT with VirusTotal / Shodan / Maltego · data source mapping | ✅ [week-02](week-02-data-collection/) |
 | 3 | Data Processing & Exploitation **(Assignment 1)** | MISP deployment + IOC import · filtering & normalisation · Elastic + Sigma | ✅ [week-03](week-03-data-processing/) |
 | 4 | The Cyber Kill Chain **(Assignment 2)** | Real-world Amadey → StealC intrusion on the 7 phases · each phase → ATT&CK v19 TTPs · Courses of Action | ✅ [week-04](week-04-kill-chain/) |
-| 5 | Threat Hunting Concept **(Assignment 3)** | Hypothesis-driven hunt (H1–H3 from Week 4) + queries in ELK | ⏳ |
+| 5 | Threat Hunting Concept **(Assignment 3)** | 3 hypothesis-driven hunts (from Week 4 gaps) · ES\|QL/EQL/KQL · proven on a planted intrusion | ✅ [week-05](week-05-threat-hunting/) |
 | 6 | ATT&CK Framework | One technique deep-dive (T1053.005 / T1059) + simulation mapped to ATT&CK | ⏳ |
 | 7 | MITRE CAR | CAR analytic → SIEM | ⏳ |
 | 8 | Adversary Emulation Plan **(Assignment 4)** | Amadey-style plan: initial access → persistence → exfiltration | ⏳ |
@@ -46,6 +46,10 @@ week-03-data-processing/       MISP, normalisation pipeline, Elastic, Sigma
 week-04-kill-chain/            Lockheed Martin Kill Chain analysis + ATT&CK v19 mapping
   figures/ navigator/          kill-chain diagram, ATT&CK matrix, Navigator layers
   scripts/                     build_kill_chain.py (validates IDs against ATT&CK v19.2)
+week-05-threat-hunting/        Hypothesis-driven hunts for Amadey (Elastic)
+  queries/                     ES|QL / EQL / KQL per hypothesis
+  data/                        synthetic ECS dataset + hunt results
+  scripts/                     gen_dataset.py, run_hunt.py, make_figures.py
   sigma/                       behavioural + generated rules, Elastic Agent pipeline
   output/                      normalised IOCs, MISP event, NDJSON, converted queries
 ```
@@ -62,4 +66,4 @@ AI tools used (permitted by the course instructor): **Claude Opus 5.5** and **Fa
 
 ## Main sources
 
-MITRE ATT&CK S1025 / v19.2 · Lockheed Martin Intelligence-Driven Defense (2011) · Cisco Talos (Jul 2025) · Trellix (Dec 2025) · Microsoft Threat Intelligence (Jun 2026) · Splunk Threat Research (Jul 2023) · AhnLab ASEC (2022) · binaryanalys.is *Unmasking Amadey 5* · ENISA Threat Landscape 2025 · Europol / Help Net Security on Operation Endgame (Jun 2026). Full links inside each week's files.
+MITRE ATT&CK S1025 / v19.2 · Lockheed Martin Intelligence-Driven Defense (2011) · Bianco Pyramid of Pain / HMM · Splunk PEAK · Cisco Talos (Jul 2025) · Trellix (Dec 2025) · Microsoft Threat Intelligence (Jun 2026) · Splunk Threat Research (Jul 2023) · AhnLab ASEC (2022) · binaryanalys.is *Unmasking Amadey 5* · ENISA Threat Landscape 2025 · Europol / Help Net Security on Operation Endgame (Jun 2026). Full links inside each week's files.

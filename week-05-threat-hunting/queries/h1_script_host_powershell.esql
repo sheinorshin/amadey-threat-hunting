@@ -1,0 +1,20 @@
+// H1 - A script host (wscript/cscript/mshta/wmic/regsvr32) spawned PowerShell that pulled or
+//      executed remote content.  Amadey -> StealC Exploitation phase (Kill Chain 4).
+// ATT&CK v19: T1059.001 PowerShell, T1059.007 JavaScript, T1218.005 Mshta, T1105 Ingress Tool Transfer.
+// Run in Kibana -> Discover (ES|QL mode) on the lab. Data source: System integration (Security 4688).
+
+// (1) Candidates: PowerShell whose PARENT is a script host  --> the specific, low-noise signal
+FROM logs-system.security-*
+| WHERE event.code == "4688"
+    AND process.name == "powershell.exe"
+    AND process.parent.name IN ("wscript.exe", "cscript.exe", "mshta.exe", "wmic.exe", "regsvr32.exe")
+| KEEP @timestamp, host.name, user.name, process.parent.name, process.command_line, process.pid
+| SORT @timestamp ASC
+
+// (2) Supporting: PowerShell 4104 script blocks that contain a download cradle or encoded exec
+//     (triage layer - noisy on its own, so used to CONFIRM candidates from query 1, not alone)
+// FROM logs-windows.powershell_operational-*
+// | WHERE event.code == "4104"
+//     AND powershell.file.script_block_text RLIKE """(?i).*(downloadstring|downloadfile|downloaddata|invoke-webrequest|iwr |net\.webclient|frombase64string|iex |reflection\.assembly\]::load).*"""
+// | KEEP @timestamp, host.name, user.name, process.pid, powershell.file.script_block_text
+// | SORT @timestamp ASC
