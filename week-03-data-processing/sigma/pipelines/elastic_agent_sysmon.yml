@@ -1,8 +1,6 @@
 name: Elastic Agent (Windows/System integrations) field mapping - Amadey project
 priority: 20
-# Maps Sigma/Sysmon field names to the ECS fields produced by the Elastic Agent
-# "Windows" (Sysmon Operational) and "System" (Security 4688) integrations.
-# Verify on your own data in Kibana Discover before relying on it.
+
 transformations:
   - id: ecs_field_mapping
     type: field_name_mapping
