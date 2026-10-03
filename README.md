@@ -19,7 +19,7 @@
 | 7 | MITRE CAR | 102 CAR analytics × Amadey coverage · CAR-2021-12-001 reviewed, tuned, implemented in Elastic (Sigma → EQL → Kibana rule) · mapped to ATT&CK | 🧪 [week-07](week-07-mitre-car/) — lab run pending |
 | 8 | Adversary Emulation Plan **(Assignment 4)** | Amadey-style plan: initial access → persistence → exfiltration | 🚧 [week-08](week-08-adversary-emulation/) |
 | 9 | Atomic Red Team **(Assignment 5)** | 14-test plan for Amadey's techniques + syllabus T1059/T1003, predictions P1–P9 · ES\|QL exports · scorer: ATT&CK mapping + my Week 3/5/7 detections graded None → Technique | 🧪 [week-09](week-09-atomic-red-team/) — lab run pending |
-| 10 | APT Techniques **(Assignment 6)** | APT29 / APT41 TTPs → ATT&CK (+ Amadey users TA505, Kimsuky) | 🚧 [week-10](week-10-apt-techniques/) |
+| 10 | APT Techniques **(Assignment 6)** | APT29 (119) + APT41 (105) techniques mapped from ATT&CK v19.2 incl. campaigns · compared with Amadey, TA505, Kimsuky, APT1 · lab coverage + detection priorities | ✅ [week-10](week-10-apt-techniques/) |
 
 ✅ done · 🧪 written, waiting for one run in my lab · 🚧 in progress (folder created, content coming)
 
@@ -64,7 +64,9 @@ week-08-adversary-emulation/   (in progress)
 week-09-atomic-red-team/       Atomic Red Team: test plan + predictions, SIEM-side analysis of the run
   queries/ templates/          ES|QL exports (events, alerts), manual run sheet
   scripts/ data/ navigator/    build_test_plan.py, score_atomic_run.py (--selftest), plan, predicted layer
-week-10-apt-techniques/        (in progress)
+week-10-apt-techniques/        APT29 + APT41 mapped to ATT&CK v19.2, compared with Amadey / TA505 / Kimsuky / APT1
+  scripts/ data/               build_apt_profiles.py, profiles, comparison, full technique tables
+  navigator/ figures/          4 Navigator layers, tactic profile / overlap / lab coverage charts
 ```
 
 ## Safety & sharing
@@ -79,4 +81,4 @@ AI tools used: **Claude Opus 5.5** and **Fable 5.1**.
 
 ## Main sources
 
-MITRE ATT&CK S1025 / v19.2 · Lockheed Martin Intelligence-Driven Defense (2011) · Bianco Pyramid of Pain / HMM · Splunk PEAK · Cisco Talos (Jul 2025) · Trellix (Dec 2025) · Microsoft Threat Intelligence (Jun 2026) · Splunk Threat Research (Jul 2023) · AhnLab ASEC (2022) · binaryanalys.is *Unmasking Amadey 5* · ENISA Threat Landscape 2025 · Europol / Help Net Security on Operation Endgame (Jun 2026) · Red Canary Atomic Red Team. Full links inside each week's files.
+MITRE ATT&CK S1025 / v19.2 · Lockheed Martin Intelligence-Driven Defense (2011) · Bianco Pyramid of Pain / HMM · Splunk PEAK · Cisco Talos (Jul 2025) · Trellix (Dec 2025) · Microsoft Threat Intelligence (Jun 2026) · Splunk Threat Research (Jul 2023) · AhnLab ASEC (2022) · binaryanalys.is *Unmasking Amadey 5* · ENISA Threat Landscape 2025 · Europol / Help Net Security on Operation Endgame (Jun 2026) · Mandiant *APT1* (Feb 2013) · CrowdStrike *2026 Global Threat Report* (Feb 2026) · Red Canary Atomic Red Team. Full links inside each week's files.
