@@ -1,0 +1,466 @@
+{
+  "attack_version": "19.2",
+  "focus": {
+    "id": "T1053.005",
+    "name": "Scheduled Task",
+    "version": "1.8",
+    "created": "2019-11-27",
+    "modified": "2026-05-12",
+    "is_subtechnique": true,
+    "tactics": [
+      "Execution (execution)",
+      "Persistence (persistence)",
+      "Privilege Escalation (privilege-escalation)"
+    ],
+    "platforms": [
+      "Windows"
+    ],
+    "description": "Adversaries may abuse the Windows Task Scheduler to perform task scheduling for initial or recurring execution of malicious code. There are multiple ways to access the Task Scheduler in Windows. The schtasks utility can be run directly on the command line, or the Task Scheduler can be opened through the GUI within the Administrator Tools section of the Control Panel. In some cases, adversaries have used a .NET wrapper for the Windows Task Scheduler, and alternatively, adversaries have used the Windows netapi32 library and Windows Management Instrumentation (WMI) to create a scheduled task. Adversaries may also utilize the Powershell Cmdlet `Invoke-CimMethod`, which leverages WMI class `PS_ScheduledTask` to create a scheduled task via an XML path. An adversary may use Windows Task Scheduler to execute programs at system startup or on a scheduled basis for persistence. The Windows Task Scheduler can also be abused to conduct remote Execution as part of Lateral Movement and/or to run a process under the context of a specified account (such as SYSTEM). Similar to System Binary Proxy Execution, adversaries have also abused the Windows Task Scheduler to potentially mask one-time execution under signed/trusted system processes. Adversaries may also create \"hidden\" scheduled tasks (i.e. Hide Artifacts) that may not be visible to defender tools and manual queries used to enumerate tasks. Specifically, an adversary may hide a task from `schtasks /query` and the Task Scheduler by deleting the associated Security Descriptor (SD) registry value (where deletion of this value must be completed using SYSTEM permissions). Adversaries may also employ alternate methods to hide tasks, such as altering the metadata (e.g., `Index` value) within associated registry keys.",
+    "procedure_examples": {
+      "total": 190,
+      "malware": 115,
+      "tool": 9,
+      "groups": 54,
+      "campaigns": 12
+    },
+    "groups": [
+      "APT-C-36",
+      "APT29",
+      "APT3",
+      "APT32",
+      "APT33",
+      "APT37",
+      "APT38",
+      "APT39",
+      "APT41",
+      "APT42",
+      "BITTER",
+      "BRONZE BUTLER",
+      "BlackByte",
+      "Blue Mockingbird",
+      "Chimera",
+      "Cobalt Group",
+      "Confucius",
+      "Daggerfly",
+      "Dragonfly",
+      "Earth Lusca",
+      "Ember Bear",
+      "FIN10",
+      "FIN13",
+      "FIN6",
+      "FIN7",
+      "FIN8",
+      "Fox Kitten",
+      "GALLIUM",
+      "Gamaredon Group",
+      "HEXANE",
+      "Higaisa",
+      "Kimsuky",
+      "Lazarus Group",
+      "LuminousMoth",
+      "Machete",
+      "Magic Hound",
+      "Molerats",
+      "Moonstone Sleet",
+      "MuddyWater",
+      "Mustang Panda",
+      "Naikon",
+      "OilRig",
+      "Patchwork",
+      "Rancor",
+      "RedCurl",
+      "Sandworm Team",
+      "Silence",
+      "Stealth Falcon",
+      "Storm-0501",
+      "TA2541",
+      "ToddyCat",
+      "Winter Vivern",
+      "Wizard Spider",
+      "menuPass"
+    ],
+    "amadey_listed": false,
+    "mitigations": [
+      {
+        "id": "M1018",
+        "name": "User Account Management",
+        "how": "Limit privileges of user accounts and remediate Privilege Escalation vectors so only authorized administrators can create scheduled tasks on remote systems."
+      },
+      {
+        "id": "M1026",
+        "name": "Privileged Account Management",
+        "how": "Configure the Increase Scheduling Priority option to only allow the Administrators group the rights to schedule a priority process. This can be configured through GPO: Computer Configuration > [Policies] > Windows Settings > Security Settings > Local Policies > User Rights Assignment: Increase scheduling priority."
+      },
+      {
+        "id": "M1028",
+        "name": "Operating System Configuration",
+        "how": "Configure settings for scheduled tasks to force tasks to run under the context of the authenticated account instead of allowing them to run as SYSTEM. The associated Registry key is located at HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\SubmitControl. The setting can be configured through GPO: Computer Configuration > [Policies] > Windows Settings > Security Settings > Local Policies > Security Options: Domain Controller: Allow server operators to schedule tasks, set to disabled."
+      },
+      {
+        "id": "M1047",
+        "name": "Audit",
+        "how": "Toolkits like the PowerSploit framework contain PowerUp modules that can be used to explore systems for permission weaknesses in scheduled tasks that could be used to escalate privileges."
+      }
+    ],
+    "detection_strategies": [
+      {
+        "id": "DET0441",
+        "name": "Detection of Suspicious Scheduled Task Creation and Execution on Windows",
+        "analytics": [
+          {
+            "id": "AN1221",
+            "platforms": [
+              "Windows"
+            ],
+            "description": "Detects the creation, modification, or deletion of scheduled tasks through Task Scheduler, WMI, PowerShell, or API-based methods followed by execution from svchost.exe or taskeng.exe. Includes detection of hidden or anomalous scheduled tasks, especially those created under SYSTEM or suspicious user contexts.",
+            "log_sources": [
+              {
+                "data_component": "DC0001 Scheduled Job Creation",
+                "log_source": "WinEventLog:Security",
+                "channel": "EventCode=4698"
+              },
+              {
+                "data_component": "DC0012 Scheduled Job Modification",
+                "log_source": "WinEventLog:Security",
+                "channel": "EventCode=4702"
+              },
+              {
+                "data_component": "DC0032 Process Creation",
+                "log_source": "WinEventLog:Sysmon",
+                "channel": "EventCode=1"
+              },
+              {
+                "data_component": "DC0039 File Creation",
+                "log_source": "WinEventLog:Sysmon",
+                "channel": "EventCode=11"
+              },
+              {
+                "data_component": "DC0063 Windows Registry Key Modification",
+                "log_source": "WinEventLog:Sysmon",
+                "channel": "EventCode=13, 14"
+              }
+            ],
+            "tunable": [
+              "TimeWindow",
+              "UserContext",
+              "TaskNamePattern",
+              "CommandLineEntropyThreshold"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "parent": {
+    "id": "T1053",
+    "name": "Scheduled Task/Job",
+    "tactics": [
+      "Execution (execution)",
+      "Persistence (persistence)",
+      "Privilege Escalation (privilege-escalation)"
+    ],
+    "platforms": [
+      "Containers",
+      "ESXi",
+      "Linux",
+      "macOS",
+      "Network Devices",
+      "Windows"
+    ],
+    "procedure_examples": {
+      "total": 2,
+      "malware": 1,
+      "tool": 0,
+      "groups": 0,
+      "campaigns": 1
+    },
+    "subtechniques": [
+      {
+        "id": "T1053",
+        "name": "Scheduled Task/Job",
+        "state": "active",
+        "platforms": [
+          "Containers",
+          "ESXi",
+          "Linux",
+          "macOS",
+          "Network Devices",
+          "Windows"
+        ]
+      },
+      {
+        "id": "T1053.001",
+        "name": "At (Linux)",
+        "state": "revoked",
+        "platforms": [
+          "Linux"
+        ]
+      },
+      {
+        "id": "T1053.002",
+        "name": "At",
+        "state": "active",
+        "platforms": [
+          "Windows",
+          "Linux",
+          "macOS"
+        ]
+      },
+      {
+        "id": "T1053.003",
+        "name": "Cron",
+        "state": "active",
+        "platforms": [
+          "Linux",
+          "macOS",
+          "ESXi"
+        ]
+      },
+      {
+        "id": "T1053.004",
+        "name": "Launchd",
+        "state": "deprecated",
+        "platforms": [
+          "macOS"
+        ]
+      },
+      {
+        "id": "T1053.005",
+        "name": "Scheduled Task",
+        "state": "active",
+        "platforms": [
+          "Windows"
+        ]
+      },
+      {
+        "id": "T1053.006",
+        "name": "Systemd Timers",
+        "state": "active",
+        "platforms": [
+          "Linux"
+        ]
+      },
+      {
+        "id": "T1053.007",
+        "name": "Container Orchestration Job",
+        "state": "active",
+        "platforms": [
+          "Containers"
+        ]
+      }
+    ],
+    "revoked_into": [
+      {
+        "old": "T1053.001",
+        "old_name": "At (Linux)",
+        "new": "T1053.002",
+        "new_name": "At"
+      },
+      {
+        "old": "T1168",
+        "old_name": "Local Job Scheduling",
+        "new": "T1053",
+        "new_name": "Scheduled Task/Job"
+      }
+    ]
+  },
+  "reference": {
+    "id": "T1059",
+    "name": "Command and Scripting Interpreter",
+    "tactics": [
+      "Execution (execution)"
+    ],
+    "platforms": [
+      "Containers",
+      "ESXi",
+      "IaaS",
+      "Identity Provider",
+      "Linux",
+      "macOS",
+      "Network Devices",
+      "Office Suite",
+      "SaaS",
+      "Windows"
+    ],
+    "procedure_examples": {
+      "total": 44,
+      "malware": 20,
+      "tool": 3,
+      "groups": 17,
+      "campaigns": 4
+    },
+    "subtechniques": [
+      {
+        "id": "T1059",
+        "name": "Command and Scripting Interpreter",
+        "state": "active",
+        "platforms": [
+          "Containers",
+          "ESXi",
+          "IaaS",
+          "Identity Provider",
+          "Linux",
+          "macOS",
+          "Network Devices",
+          "Office Suite",
+          "SaaS",
+          "Windows"
+        ]
+      },
+      {
+        "id": "T1059.001",
+        "name": "PowerShell",
+        "state": "active",
+        "platforms": [
+          "Windows"
+        ]
+      },
+      {
+        "id": "T1059.002",
+        "name": "AppleScript",
+        "state": "active",
+        "platforms": [
+          "macOS"
+        ]
+      },
+      {
+        "id": "T1059.003",
+        "name": "Windows Command Shell",
+        "state": "active",
+        "platforms": [
+          "Windows"
+        ]
+      },
+      {
+        "id": "T1059.004",
+        "name": "Unix Shell",
+        "state": "active",
+        "platforms": [
+          "ESXi",
+          "Linux",
+          "macOS",
+          "Network Devices"
+        ]
+      },
+      {
+        "id": "T1059.005",
+        "name": "Visual Basic",
+        "state": "active",
+        "platforms": [
+          "Linux",
+          "macOS",
+          "Windows"
+        ]
+      },
+      {
+        "id": "T1059.006",
+        "name": "Python",
+        "state": "active",
+        "platforms": [
+          "ESXi",
+          "Linux",
+          "macOS",
+          "Windows"
+        ]
+      },
+      {
+        "id": "T1059.007",
+        "name": "JavaScript",
+        "state": "active",
+        "platforms": [
+          "Linux",
+          "macOS",
+          "Windows"
+        ]
+      },
+      {
+        "id": "T1059.008",
+        "name": "Network Device CLI",
+        "state": "active",
+        "platforms": [
+          "Network Devices"
+        ]
+      },
+      {
+        "id": "T1059.009",
+        "name": "Cloud API",
+        "state": "active",
+        "platforms": [
+          "IaaS",
+          "Identity Provider",
+          "Office Suite",
+          "SaaS"
+        ]
+      },
+      {
+        "id": "T1059.010",
+        "name": "AutoHotKey & AutoIT",
+        "state": "active",
+        "platforms": [
+          "Windows"
+        ]
+      },
+      {
+        "id": "T1059.011",
+        "name": "Lua",
+        "state": "active",
+        "platforms": [
+          "Linux",
+          "Network Devices",
+          "Windows",
+          "macOS"
+        ]
+      },
+      {
+        "id": "T1059.012",
+        "name": "Hypervisor CLI",
+        "state": "active",
+        "platforms": [
+          "ESXi"
+        ]
+      },
+      {
+        "id": "T1059.013",
+        "name": "Container CLI/API",
+        "state": "active",
+        "platforms": [
+          "Containers"
+        ]
+      }
+    ],
+    "revoked_into": [
+      {
+        "old": "T1086",
+        "old_name": "PowerShell",
+        "new": "T1059.001",
+        "new_name": "PowerShell"
+      },
+      {
+        "old": "T1155",
+        "old_name": "AppleScript",
+        "new": "T1059.002",
+        "new_name": "AppleScript"
+      }
+    ]
+  },
+  "lab_exercise": [
+    {
+      "id": "T1053.005",
+      "score": 2,
+      "how": "Method A: schtasks.exe /Create /SC MINUTE /MO 1; Method B: Register-ScheduledTask. Task runs a harmless logging .cmd from C:\\Users\\Public, then is deleted.",
+      "expected": "4688 schtasks.exe / powershell.exe; 4698 task created; 4699 task deleted; TaskScheduler/Operational 106, 200, 201, 141; 4688 cmd.exe with parent svchost.exe"
+    },
+    {
+      "id": "T1059.001",
+      "score": 2,
+      "how": "Method B creates the task with PowerShell cmdlets (no schtasks.exe process).",
+      "expected": "4688 powershell.exe; PowerShell/Operational 4104 script block with Register-ScheduledTask"
+    },
+    {
+      "id": "T1059.003",
+      "score": 2,
+      "how": "The task's action runs cmd.exe /c <logging .cmd> every minute.",
+      "expected": "4688 cmd.exe, parent svchost.exe (Schedule service), command line with the .cmd path"
+    }
+  ]
+}
