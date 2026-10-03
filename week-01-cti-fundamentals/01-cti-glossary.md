@@ -14,7 +14,7 @@
 | 3 | **Risk** | Likelihood × impact of a threat exploiting a vulnerability. | High: one Amadey infection can lead to StealC credential theft or ransomware (LockBit 3.0 was delivered via Amadey in 2022). |
 | 4 | **Threat actor** | The person/group behind malicious activity. | The Amadey *developer* (sells the kit) vs. many *operators/affiliates* (run campaigns). ATT&CK also links Amadey to **TA505** and **Kimsuky**. |
 | 5 | **Cyber Threat Intelligence (CTI)** | Evidence-based knowledge about threats (context, mechanisms, indicators, implications) that supports decisions. | This repo: turning raw Amadey reports into IOCs, TTPs and detections a SOC can use. |
-| 6 | **Information vs. intelligence** | Information = raw data; intelligence = processed, analysed and *relevant* to a decision. | A list of 8 hashes from Talos = information. “Block these 6 valid hashes; 2 are malformed; C2s on AS202412” = intelligence. |
+| 6 | **Information vs. intelligence** | Information = raw data; intelligence = processed, analysed and *relevant* to a decision. | A list of 8 hashes from Talos = information. “Block these 6 valid hashes; 2 are malformed; the C2 range on AS56873 has been offline since May 2025” = intelligence. |
 | 7 | **Intelligence lifecycle** | Planning/Direction → Collection → Processing → Analysis → Dissemination → Feedback. | Week 1 = direction, Week 2 = collection, Week 3 = processing. The project's weekly structure follows the lifecycle. |
 | 8 | **Intelligence requirement (IR / PIR)** | The question the intelligence must answer (Priority IR = most critical). | *PIR-1: “How does Amadey get into an environment and how can it be detected before the second-stage payload runs?”* |
 
@@ -23,7 +23,7 @@
 | # | Term | Definition | Amadey example |
 |---|------|-----------|----------------|
 | 9 | **Strategic intelligence** | High-level, non-technical; for executives (trends, risk, business impact). | “MaaS loaders like Amadey were the target of Operation Endgame (June 2026); infostealer-to-ransomware chains remain a top risk.” |
-| 10 | **Operational intelligence** | About specific campaigns/attacks: who, when, how. | Talos (Jul 2025): a MaaS operation used GitHub repos to host Amadey payloads targeting Ukrainian entities. |
+| 10 | **Operational intelligence** | About specific campaigns/attacks: who, when, how. | Talos (Jul 2025): a MaaS operation used GitHub repos to stage payloads that Amadey downloaded; its Emmenhtal loaders match a SmokeLoader phishing campaign against Ukrainian entities. |
 | 11 | **Tactical intelligence** | TTPs — how the adversary operates; for defenders/hunters. | Amadey copies itself to `%TEMP%\<10-hex>\<name>.exe` and creates a scheduled task that runs every minute. |
 | 12 | **Technical intelligence** | Atomic, machine-readable indicators; short lifespan. | C2 URL `hxxp://91.92.243[.]129/0gjSy4hf3/index.php`, mutex `f936986d553273aef6eeaeef713ad28f`. |
 

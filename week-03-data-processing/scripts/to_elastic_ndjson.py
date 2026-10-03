@@ -23,7 +23,7 @@ OUT = HERE.parent / "output" / "elastic"
 INDEX = "ti-amadey"
 
 ECS_TYPE = {"sha256": "file", "url": "url", "domain": "domain-name", "ip": "ipv4-addr",
-            "mutex": "mutex", "scheduled_task": "windows-scheduled-task"}
+            "mutex": "mutex", "scheduled_task": "file"}   # ECS has no task type: the .job task is a file
 
 MAPPING = {
     "mappings": {
@@ -37,7 +37,8 @@ MAPPING = {
                 "indicator": {"properties": {
                     "type": {"type": "keyword"},
                     "ip": {"type": "ip"},
-                    "file": {"properties": {"hash": {"properties": {"sha256": {"type": "keyword"}}}}},
+                    "file": {"properties": {"hash": {"properties": {"sha256": {"type": "keyword"}}},
+                                            "path": {"type": "keyword"}, "name": {"type": "keyword"}}},
                     "url": {"properties": {"full": {"type": "keyword"}, "domain": {"type": "keyword"},
                                            "path": {"type": "keyword"}}},
                     "description": {"type": "text"},
@@ -67,6 +68,9 @@ def doc(ioc, as_of):
         ind["ip"] = v
     elif t == "domain":
         ind["url"] = {"domain": v}
+    elif t == "scheduled_task":
+        ind["file"] = {"path": v, "name": v.rsplit("\\", 1)[-1]}
+        ind["description"] += f" | {t}: {v}"
     elif t == "url":
         host_path = v.split("://", 1)[1]
         host, _, path = host_path.partition("/")

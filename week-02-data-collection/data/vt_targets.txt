@@ -4,7 +4,7 @@ bae0f38f58ad93728261f09840721ebedb9669a445f40083396fdd0da38a22a7   # clip64.dll 
 b7d1f172ff3feafe65d47fd1cbe0cc249316371ae0e1cbe3a7c741c738b3353d   # Amadey 5.87 (Microsoft)
 43455f1ff4a623b783da670d052eb77eaaacb0c66a9f1e8508f802bf22e8129e   # Amadey 5.60 (Microsoft)
 87618787e1032bbf6a6ca8b3388ea3803be20a49e4afaba1df38a6116085062f   # Talos MaaS sample
-617f4082c320c24f27f69d146aae6973a3cb818860ab196cf2800ff16518c2bc   # Amadey 3.83 (Splunk)
+617f4082c320c24f27f69d146aae6973a3cb818860ab196cf2800ff16518c2bc   # "Amadey" per Splunk (VT: IExpress/WEXTRACT dropper)
 3d5d48ea2b6f76af583e541602950d89b8d96a13654469df3bc58dcddf879e9d   # cred64.dll (Splunk)
 91[.]92[.]243[.]129                                                # Amadey C2 (Trellix)
 185[.]215[.]113[.]43                                               # Amadey C2 (Talos)

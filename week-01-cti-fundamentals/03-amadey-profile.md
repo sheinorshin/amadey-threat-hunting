@@ -27,7 +27,7 @@
 | 2023 | v3.8x–v4 widely tracked; Splunk publishes detections | Splunk Threat Research |
 | Feb–Apr 2025 | **MaaS operation**: Emmenhtal JS loader → Amadey → payloads hosted on **GitHub** repos (account `Legendary99999`, 160+ repos) | Cisco Talos (Jul 2025) |
 | Dec 2025 | Amadey **5.70** pulls StealC from a **compromised self-hosted GitLab** | Trellix |
-| 2025–2026 | v5.x (5.60 → 5.87): full RAT — 29 commands, VNC, SOCKS, RDP, hidden admin | Microsoft, binaryanalys.is |
+| 2025–2026 | v5.x (5.60 → 5.87): full RAT — 19 commands (IDs 10–29), VNC, SOCKS, RDP, hidden admin | Microsoft, binaryanalys.is |
 | 24 Jun 2026 | **Operation Endgame** + Microsoft DCU disrupt Amadey & StealC | Microsoft, Europol, Help Net Security |
 
 ## 3.2 Infection chain (2025–2026 campaigns)
@@ -120,7 +120,7 @@ flowchart LR
 | T1090 | Proxy | v5 SOCKS proxy |
 | T1021.001 / T1136.001 | RDP / Create Local Account | v5 commands 0x18 / 0x19 |
 | T1686 | Disable or Modify System Firewall (was T1562.004 before v19) | v5 command 0x18 opens firewall rules for RDP |
-| T1566.001 | Spearphishing Attachment | Talos 2025 (delivery stage) |
+| T1566.001 | Spearphishing Attachment | Talos 2025 — seen with the linked SmokeLoader campaign; *likely* for the Amadey Emmenhtal scripts (Talos' assessment) |
 
 ## 3.5 Why Amadey is a good hunting target
 

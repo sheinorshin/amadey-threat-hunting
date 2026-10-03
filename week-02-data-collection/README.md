@@ -27,7 +27,7 @@
 | Shodan host lookups | 7 IPs → **2 live** (`91.92.243.129`, `158.94.208.130`), 5 no data |
 | Maltego | 36 entities / 40 links imported → 3 passive transforms (NS, location, reverse DNS) → **53 entities / 60 links**, 0 credits |
 | New leads from pivoting | **6** (second compromised GitLab + IP, plugin path, `scr=1`, `.job` task, drop-folder pattern) |
-| Quality problems spotted at collection | 4 (truncated hashes, deprecated ATT&CK ID, mixed defanging, mixed malware families) |
+| Quality problems spotted at collection | 4 (truncated hashes, revoked ATT&CK ID, mixed defanging, mixed malware families) |
 | Data sources mapped | 14 behaviours → 8 log sources; lab covers 7/14 now, 12/14 with Sysmon |
 
 ## Key findings

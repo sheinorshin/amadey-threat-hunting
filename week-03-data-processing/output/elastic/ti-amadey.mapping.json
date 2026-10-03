@@ -55,6 +55,12 @@
                         "type": "keyword"
                       }
                     }
+                  },
+                  "path": {
+                    "type": "keyword"
+                  },
+                  "name": {
+                    "type": "keyword"
                   }
                 }
               },
