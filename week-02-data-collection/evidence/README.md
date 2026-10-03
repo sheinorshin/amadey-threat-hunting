@@ -1,6 +1,6 @@
 # Evidence (screenshots for the defense)
 
-Captured on **2026-10-02** from the web GUIs (VirusTotal and Shodan, no API keys, no logins).
+VirusTotal and Shodan captured on **2026-10-02** from the web GUIs (no API keys, no logins); Maltego on **2026-10-03** (free Community Edition).
 
 ## VirusTotal — [`virustotal/`](virustotal/)
 
@@ -22,8 +22,14 @@ Captured on **2026-10-02** from the web GUIs (VirusTotal and Shodan, no API keys
 | `shodan_185.215.113.43_amadey-c2_no-data.jpg` | Talos Amadey C2 — *no information* (range withdrawn from BGP) |
 | `shodan_185.156.73.73_no-data.jpg` | Talos network IOC — *no information* |
 
-## Maltego
+## Maltego — [`maltego/`](maltego/) (2026-10-03, Maltego Graph (Desktop) 4.13.0 CE)
 
-Graph built from [`../data/maltego_graph_import.csv`](../data/maltego_graph_import.csv) → see `maltego/` (added after the Maltego session).
+| File | Shows |
+|---|---|
+| `maltego_01_amadey-graph_53-entities_60-links.png` | Full graph exported from Maltego (Organic layout): reports + VT pivots + transform results — sinkholed C2 domain (`microsoftinternetsafety.net` NS), compromised GitLab → university mail server, AS202412 pivot to the StealC C2 |
+| `maltego_02_ui_graph-legend_transform-log.jpg` | Maltego UI: entity-type legend, selected IPs, transform log (*To Location … 7 entities returned*, 0 credits used) |
+| `maltego_03_run-transform_reverse-dns_7-ips.jpg` | Running *To DNS Name [Reverse DNS]* on the 7 selected IPv4 entities |
+
+Graph source: [`../data/amadey_graph.mtgx`](../data/amadey_graph.mtgx) (built by `scripts/build_maltego_graph.py`); enriched graph: [`../data/amadey_graph_enriched.mtgl`](../data/amadey_graph_enriched.mtgl).
 
 Rules: no API keys or account names in screenshots.
