@@ -1,0 +1,574 @@
+{
+ "attack_version": "19.2",
+ "categories": {
+  "None": 0,
+  "Telemetry": 1,
+  "General": 2,
+  "Tactic": 2,
+  "Technique": 3
+ },
+ "tactics": {
+  "T1003.001": [
+   "credential-access"
+  ],
+  "T1003.002": [
+   "credential-access"
+  ],
+  "T1016": [
+   "discovery"
+  ],
+  "T1021.001": [
+   "lateral-movement"
+  ],
+  "T1033": [
+   "discovery"
+  ],
+  "T1053.005": [
+   "execution",
+   "persistence",
+   "privilege-escalation"
+  ],
+  "T1057": [
+   "discovery"
+  ],
+  "T1059.001": [
+   "execution"
+  ],
+  "T1059.003": [
+   "execution"
+  ],
+  "T1059.005": [
+   "execution"
+  ],
+  "T1059.007": [
+   "execution"
+  ],
+  "T1069.001": [
+   "discovery"
+  ],
+  "T1069.002": [
+   "discovery"
+  ],
+  "T1082": [
+   "discovery"
+  ],
+  "T1087.001": [
+   "discovery"
+  ],
+  "T1087.002": [
+   "discovery"
+  ],
+  "T1098": [
+   "persistence",
+   "privilege-escalation"
+  ],
+  "T1098.007": [
+   "persistence",
+   "privilege-escalation"
+  ],
+  "T1105": [
+   "command-and-control"
+  ],
+  "T1112": [
+   "defense-impairment",
+   "persistence"
+  ],
+  "T1115": [
+   "collection"
+  ],
+  "T1136.001": [
+   "persistence"
+  ],
+  "T1197": [
+   "stealth",
+   "persistence",
+   "execution"
+  ],
+  "T1204.002": [
+   "execution"
+  ],
+  "T1218.005": [
+   "stealth"
+  ],
+  "T1218.010": [
+   "stealth"
+  ],
+  "T1218.011": [
+   "stealth"
+  ],
+  "T1543.003": [
+   "persistence",
+   "privilege-escalation"
+  ],
+  "T1547.001": [
+   "persistence",
+   "privilege-escalation"
+  ],
+  "T1555.003": [
+   "credential-access"
+  ],
+  "T1685.001": [
+   "defense-impairment"
+  ],
+  "T1685.005": [
+   "defense-impairment"
+  ],
+  "T1686": [
+   "defense-impairment"
+  ]
+ },
+ "tests": [
+  {
+   "id": "W9-A1",
+   "tier": "A",
+   "technique": "T1059.001",
+   "why": "Amadey KC4 (Emmenhtal PowerShell) and KC7 (Expand-Archive); used by all five actors in Week 10",
+   "behaviour": "PowerShell running a script block; one variant with an encoded command; nothing fetched from the internet",
+   "telemetry": [
+    "4688 powershell.exe (+ -EncodedCommand)",
+    "4104 script block"
+   ],
+   "detections": [
+    "W5-H1b only if the block contains a download keyword",
+    "W5-H1a only if the parent is a script host"
+   ],
+   "predicted": "Telemetry",
+   "note": "Atomic tests start PowerShell from PowerShell, not from wscript/mshta, so H1's parent check should stay quiet.",
+   "name": "PowerShell",
+   "tactics": [
+    "execution"
+   ],
+   "tactic_names": [
+    "Execution"
+   ],
+   "amadey_week4": {
+    "phase": "KC4 Exploitation",
+    "status": "DATA"
+   },
+   "used_by": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ]
+  },
+  {
+   "id": "W9-A2",
+   "tier": "A",
+   "technique": "T1059.003",
+   "why": "syllabus example T1059; Windows Command Shell used by APT29, APT41, TA505, Kimsuky",
+   "behaviour": "a batch file or cmd.exe /c one-liner",
+   "telemetry": [
+    "4688 cmd.exe with command line"
+   ],
+   "detections": [],
+   "predicted": "Telemetry",
+   "note": "No rule of mine looks at plain cmd.exe - the expected result is visibility only.",
+   "name": "Windows Command Shell",
+   "tactics": [
+    "execution"
+   ],
+   "tactic_names": [
+    "Execution"
+   ],
+   "amadey_week4": null,
+   "used_by": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ]
+  },
+  {
+   "id": "W9-A3",
+   "tier": "A",
+   "technique": "T1053.005",
+   "why": "Amadey KC5 (every-minute task) - the technique of Weeks 3, 5, 6 and 7; also APT29, APT41, Kimsuky",
+   "behaviour": "two tests: a task created with schtasks.exe, and a task created with PowerShell cmdlets (no schtasks.exe)",
+   "telemetry": [
+    "4688 schtasks.exe /create",
+    "4698 task created",
+    "TaskScheduler 106 / 200 / 201",
+    "4104 Register-ScheduledTask"
+   ],
+   "detections": [
+    "W7-CAR-PROC / W7-CAR-TASK if the action is in a user-writable path or an every-minute interpreter",
+    "W3-SCHTASKS + W5-H2b only for /SC MINUTE /MO 1",
+    "W5-H2c only for PT1M"
+   ],
+   "predicted": "Technique",
+   "note": "If the atomic's task runs a System32 program at logon, my tuned rule should NOT fire - that is a finding, not a failure of the test.",
+   "name": "Scheduled Task",
+   "tactics": [
+    "execution",
+    "persistence",
+    "privilege-escalation"
+   ],
+   "tactic_names": [
+    "Execution",
+    "Persistence",
+    "Privilege Escalation"
+   ],
+   "amadey_week4": {
+    "phase": "KC5 Installation",
+    "status": "RULE"
+   },
+   "used_by": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ]
+  },
+  {
+   "id": "W9-A4",
+   "tier": "A",
+   "technique": "T1105",
+   "why": "Amadey KC3 / KC7 (loader and StealC downloads); all five actors",
+   "behaviour": "download with a built-in Windows tool (certutil, bitsadmin or PowerShell) from a web server inside the lab",
+   "telemetry": [
+    "4688 certutil.exe / bitsadmin.exe / powershell.exe with a URL",
+    "4104 for the PowerShell variant"
+   ],
+   "detections": [
+    "W5-H1b for the PowerShell variant (download keyword in 4104)"
+   ],
+   "predicted": "Telemetry",
+   "note": "The VM is isolated - pick or adapt atomics so the URL points at a lab-local HTTP server, otherwise the test only fails.",
+   "name": "Ingress Tool Transfer",
+   "tactics": [
+    "command-and-control"
+   ],
+   "tactic_names": [
+    "Command and Control"
+   ],
+   "amadey_week4": {
+    "phase": "KC3 Delivery",
+    "status": "SYSMON"
+   },
+   "used_by": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ]
+  },
+  {
+   "id": "W9-A5",
+   "tier": "A",
+   "technique": "T1136.001",
+   "why": "Amadey v5 hidden local admin (KC7); APT41, Kimsuky",
+   "behaviour": "create a local user and add it to the local Administrators group",
+   "telemetry": [
+    "4720 user created",
+    "4732 member added to Administrators",
+    "4688 net.exe / 4104 New-LocalUser"
+   ],
+   "detections": [
+    "W5-H3 (account part)"
+   ],
+   "predicted": "Technique",
+   "note": "Run W9-A6 within 30 minutes on the same host so the H3 correlation can confirm.",
+   "name": "Local Account",
+   "tactics": [
+    "persistence"
+   ],
+   "tactic_names": [
+    "Persistence"
+   ],
+   "amadey_week4": {
+    "phase": "KC7 Actions on Objectives",
+    "status": "DATA"
+   },
+   "used_by": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ]
+  },
+  {
+   "id": "W9-A6",
+   "tier": "A",
+   "technique": "T1686",
+   "why": "Amadey v5 firewall rule for RDP (KC7; was T1562.004 before ATT&CK v19); APT29, Kimsuky",
+   "behaviour": "add an inbound Windows Firewall rule",
+   "telemetry": [
+    "4946 firewall rule added",
+    "4688 netsh.exe / 4104 New-NetFirewallRule"
+   ],
+   "detections": [
+    "W5-H3 confirmation (new admin + firewall rule within 30 min)"
+   ],
+   "predicted": "Technique",
+   "note": "Needs the MPSSVC Rule-Level Policy Change audit (4946) - already used by Week 5 H3.",
+   "name": "Disable or Modify System Firewall",
+   "tactics": [
+    "defense-impairment"
+   ],
+   "tactic_names": [
+    "Defense Impairment"
+   ],
+   "amadey_week4": {
+    "phase": "KC7 Actions on Objectives",
+    "status": "DATA"
+   },
+   "used_by": [
+    "APT29",
+    "Kimsuky",
+    "Amadey"
+   ]
+  },
+  {
+   "id": "W9-A7",
+   "tier": "A",
+   "technique": "T1218.011",
+   "why": "Amadey KC7 plugins (rundll32 ..., Main); all five actors - tests Week 10's 'nominal coverage' finding",
+   "behaviour": "rundll32.exe running an export of a harmless DLL from a user-writable folder (not an Amadey plugin name)",
+   "telemetry": [
+    "4688 rundll32.exe with the DLL path"
+   ],
+   "detections": [
+    "W3-RUNDLL32 should NOT fire - it only matches cred64.dll / clip64.dll"
+   ],
+   "predicted": "Telemetry",
+   "note": "If it is Telemetry, the Week 3 rule's T1218.011 tag is confirmed as nominal coverage.",
+   "name": "Rundll32",
+   "tactics": [
+    "stealth"
+   ],
+   "tactic_names": [
+    "Stealth"
+   ],
+   "amadey_week4": {
+    "phase": "KC7 Actions on Objectives",
+    "status": "RULE"
+   },
+   "used_by": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ]
+  },
+  {
+   "id": "W9-A8",
+   "tier": "A",
+   "technique": "T1082",
+   "why": "Amadey KC6 check-in data; APT41, Kimsuky - tests Week 10's 'procedure, not technique' finding",
+   "behaviour": "command-line system discovery (systeminfo, hostname, ver)",
+   "telemetry": [
+    "4688 systeminfo.exe / hostname.exe / cmd.exe"
+   ],
+   "detections": [],
+   "predicted": "Telemetry",
+   "note": "Amadey collects the same data through API calls (no process) - visible here does NOT mean visible for Amadey.",
+   "name": "System Information Discovery",
+   "tactics": [
+    "discovery"
+   ],
+   "tactic_names": [
+    "Discovery"
+   ],
+   "amadey_week4": {
+    "phase": "KC6 Command & Control",
+    "status": "BLIND"
+   },
+   "used_by": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ]
+  },
+  {
+   "id": "W9-B1",
+   "tier": "B",
+   "technique": "T1059.007",
+   "why": "Amadey KC4: Emmenhtal JavaScript run by Windows Script Host",
+   "behaviour": "a local .js file run by wscript.exe or cscript.exe that starts PowerShell",
+   "telemetry": [
+    "4688 wscript.exe / cscript.exe",
+    "4688 powershell.exe with parent wscript.exe / cscript.exe"
+   ],
+   "detections": [
+    "W5-H1a (script host -> PowerShell)"
+   ],
+   "predicted": "Technique",
+   "note": "If the chosen atomic does not start PowerShell, H1 stays quiet and the result is Telemetry.",
+   "name": "JavaScript",
+   "tactics": [
+    "execution"
+   ],
+   "tactic_names": [
+    "Execution"
+   ],
+   "amadey_week4": {
+    "phase": "KC4 Exploitation",
+    "status": "DATA"
+   },
+   "used_by": [
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ]
+  },
+  {
+   "id": "W9-B2",
+   "tier": "B",
+   "technique": "T1218.005",
+   "why": "Amadey KC4: mshta.exe runs Emmenhtal",
+   "behaviour": "mshta.exe running a local .hta or inline script that starts PowerShell",
+   "telemetry": [
+    "4688 mshta.exe",
+    "4688 powershell.exe with parent mshta.exe"
+   ],
+   "detections": [
+    "W5-H1a (script host -> PowerShell)"
+   ],
+   "predicted": "Technique",
+   "note": "Same condition as W9-B1.",
+   "name": "Mshta",
+   "tactics": [
+    "stealth"
+   ],
+   "tactic_names": [
+    "Stealth"
+   ],
+   "amadey_week4": {
+    "phase": "KC4 Exploitation",
+    "status": "DATA"
+   },
+   "used_by": [
+    "APT29",
+    "Kimsuky",
+    "Amadey"
+   ]
+  },
+  {
+   "id": "W9-B3",
+   "tier": "B",
+   "technique": "T1547.001",
+   "why": "Amadey KC5: Startup folder redirected / Run key",
+   "behaviour": "add a value under a Run key (reg.exe or PowerShell)",
+   "telemetry": [
+    "4688 reg.exe add ...\\Run",
+    "4104 Set-ItemProperty / New-ItemProperty"
+   ],
+   "detections": [
+    "W3-STARTUP-REG needs Sysmon 13 - not installed"
+   ],
+   "predicted": "Telemetry",
+   "note": "Without Sysmon the registry change itself is not logged; only the process that made it.",
+   "name": "Registry Run Keys / Startup Folder",
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ],
+   "tactic_names": [
+    "Persistence",
+    "Privilege Escalation"
+   ],
+   "amadey_week4": {
+    "phase": "KC5 Installation",
+    "status": "SYSMON"
+   },
+   "used_by": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ]
+  },
+  {
+   "id": "W9-B4",
+   "tier": "B",
+   "technique": "T1112",
+   "why": "Amadey v5 enables RDP (fDenyTSConnections = 0) before adding the admin and the firewall rule",
+   "behaviour": "set fDenyTSConnections to 0 with reg.exe or PowerShell, then restore it",
+   "telemetry": [
+    "4688 reg.exe with Terminal Server\\fDenyTSConnections",
+    "4104 Set-ItemProperty"
+   ],
+   "detections": [
+    "W3-RDP-REG needs Sysmon 13 - not installed"
+   ],
+   "predicted": "Telemetry",
+   "note": "Enables RDP on the VM for the duration of the test - restore it in the cleanup step.",
+   "name": "Modify Registry",
+   "tactics": [
+    "defense-impairment",
+    "persistence"
+   ],
+   "tactic_names": [
+    "Defense Impairment",
+    "Persistence"
+   ],
+   "amadey_week4": {
+    "phase": "KC5 Installation",
+    "status": "SYSMON"
+   },
+   "used_by": [
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ]
+  },
+  {
+   "id": "W9-C1",
+   "tier": "C",
+   "technique": "T1003.002",
+   "why": "syllabus example T1003; APT29 and APT41 both save the SAM hive with reg save (Week 10); not an Amadey technique",
+   "behaviour": "registry hive export of SAM / SYSTEM to a file, then delete the files",
+   "telemetry": [
+    "4688 reg.exe save HKLM\\SAM / HKLM\\SYSTEM"
+   ],
+   "detections": [],
+   "predicted": "Telemetry",
+   "note": "Optional, snapshot first. Gap expected - a reg.exe save rule is cheap with data I already collect.",
+   "name": "Security Account Manager",
+   "tactics": [
+    "credential-access"
+   ],
+   "tactic_names": [
+    "Credential Access"
+   ],
+   "amadey_week4": null,
+   "used_by": [
+    "APT29",
+    "APT41"
+   ]
+  },
+  {
+   "id": "W9-C2",
+   "tier": "C",
+   "technique": "T1003.001",
+   "why": "syllabus example T1003; APT41, Kimsuky, APT1 (LSASS memory)",
+   "behaviour": "an LSASS memory access test that uses only built-in Windows components",
+   "telemetry": [
+    "4688 of the process that accesses LSASS",
+    "Defender 1116/1117 if it blocks"
+   ],
+   "detections": [
+    "needs Sysmon 10 (process access) - not installed"
+   ],
+   "predicted": "Telemetry",
+   "note": "Optional, snapshot first, Defender stays ON: a Defender block is a valid result (Prevented).",
+   "name": "LSASS Memory",
+   "tactics": [
+    "credential-access"
+   ],
+   "tactic_names": [
+    "Credential Access"
+   ],
+   "amadey_week4": null,
+   "used_by": [
+    "APT41",
+    "Kimsuky"
+   ]
+  }
+ ]
+}
