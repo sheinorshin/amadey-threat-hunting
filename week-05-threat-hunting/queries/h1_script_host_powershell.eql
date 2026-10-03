@@ -1,0 +1,7 @@
+// H1 (EQL) - the full exploitation chain as an ordered sequence on one host, within 10 minutes:
+//   JavaScript host  ->  mshta fetching a URL  ->  PowerShell child of mshta
+// Run in Kibana -> Security -> Timelines (Correlation / EQL), index logs-system.security-*.
+sequence by host.name with maxspan=10m
+  [ process where event.code == "4688" and process.name in ("wscript.exe", "cscript.exe") ]
+  [ process where event.code == "4688" and process.name == "mshta.exe" and process.command_line like "*http*" ]
+  [ process where event.code == "4688" and process.name == "powershell.exe" and process.parent.name == "mshta.exe" ]

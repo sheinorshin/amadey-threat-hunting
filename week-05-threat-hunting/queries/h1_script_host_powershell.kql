@@ -1,0 +1,2 @@
+# H1 (KQL) - quick Discover filter-bar pivot (index logs-system.security-*)
+event.code:"4688" and process.name:"powershell.exe" and process.parent.name:("wscript.exe" or "cscript.exe" or "mshta.exe" or "wmic.exe" or "regsvr32.exe")

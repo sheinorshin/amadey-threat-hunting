@@ -1,0 +1,21 @@
+// H2 - An executable launched from a random 10-hex-character folder under a user-writable path,
+//      and a scheduled task that re-runs it EVERY MINUTE.  Amadey Installation phase (Kill Chain 5).
+// ATT&CK v19: T1053.005 Scheduled Task, T1204.002 Malicious File.  Source: System integration (4688, 4698).
+
+// (1) EXE from a 10-hex folder (Amadey install path, e.g. %TEMP%\067640a009\Yfgfwb.exe)
+FROM logs-system.security-*
+| WHERE event.code == "4688"
+    AND process.executable RLIKE """(?i).*\\[a-f0-9]{10}\\[^\\]+\.exe"""
+| KEEP @timestamp, host.name, user.name, process.executable, process.parent.name
+| SORT @timestamp ASC
+
+// (2) schtasks.exe creating an every-minute task
+// FROM logs-system.security-*
+// | WHERE event.code == "4688" AND process.name == "schtasks.exe"
+//     AND process.command_line RLIKE """(?i).*/sc\s+minute.*""" AND process.command_line RLIKE """(?i).*/mo\s+1\b.*"""
+// | KEEP @timestamp, host.name, user.name, process.command_line
+
+// (3) The task-created event itself (4698) with a 1-minute repetition interval (PT1M)
+// FROM logs-system.security-*
+// | WHERE event.code == "4698" AND winlog.event_data.TaskContent RLIKE """(?i).*PT1M.*"""
+// | KEEP @timestamp, host.name, winlog.event_data.TaskName, winlog.event_data.TaskContent

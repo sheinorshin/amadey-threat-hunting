@@ -1,0 +1,16 @@
+// H3 - A new local admin (or hidden account ending in '$') created close in time to a Windows
+//      Firewall rule being added.  Amadey v5 "Actions on Objectives" (RDP + hidden admin).
+// ATT&CK v19: T1136.001 Local Account, T1021.001 RDP, T1686 Disable/Modify System Firewall.
+// Source: System integration (Security 4720, 4732, 4946).
+
+// New accounts and additions to the local Administrators group (review every row - should be rare)
+FROM logs-system.security-*
+| WHERE event.code == "4720"
+     OR (event.code == "4732" AND winlog.event_data.TargetUserName == "Administrators")
+| KEEP @timestamp, host.name, event.code, winlog.event_data.TargetUserName, winlog.event_data.MemberName, winlog.event_data.SubjectUserName
+| SORT @timestamp ASC
+
+// Firewall rules added (4946) - correlate by host.name + time with the account events above
+// FROM logs-system.security-*
+// | WHERE event.code == "4946"
+// | KEEP @timestamp, host.name, winlog.event_data.RuleName, winlog.event_data.SubjectUserName
