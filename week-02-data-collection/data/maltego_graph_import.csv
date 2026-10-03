@@ -32,3 +32,10 @@ maltego.Netblock,185.215.113.0/24,announced by (until 2025-05),maltego.AS,56873
 maltego.Phrase,Amadey (S1025),payload repo (Talos),maltego.Alias,Legendary99999 (GitHub)
 maltego.URL,http://goodpanelforgoodjob.com/hg8jjfSr5hy/index.php,hosted on,maltego.Domain,goodpanelforgoodjob.com
 maltego.URL,http://microsoft-telemetry.at/cvdfnaFJBmC0/index.php,hosted on,maltego.Domain,microsoft-telemetry.at
+maltego.Hash,d7a366fa4d31c901ce3bcb6760d7bb5aa7cab49bb54d8c6551b3df14c8cf64e7,contacted (VT),maltego.URL,http://91.92.243.129/0gjSy4hf3/index.php
+maltego.Hash,d7a366fa4d31c901ce3bcb6760d7bb5aa7cab49bb54d8c6551b3df14c8cf64e7,contacted (VT),maltego.URL,http://91.92.243.129/0gjSy4hf3/Plugins/clip64.dll
+maltego.URL,http://91.92.243.129/0gjSy4hf3/Plugins/clip64.dll,resolves to,maltego.IPv4Address,91.92.243.129
+maltego.Hash,d7a366fa4d31c901ce3bcb6760d7bb5aa7cab49bb54d8c6551b3df14c8cf64e7,contacted (VT),maltego.URL,http://gitd3ti.vokasi.uns.ac.id/Aubin/vrms-backend/-/raw/development/werdigo.exe
+maltego.URL,http://gitd3ti.vokasi.uns.ac.id/Aubin/vrms-backend/-/raw/development/werdigo.exe,hosted on,maltego.Domain,gitd3ti.vokasi.uns.ac.id
+maltego.Domain,gitd3ti.vokasi.uns.ac.id,resolves to (VT),maltego.IPv4Address,203.6.149.147
+maltego.Hash,d7a366fa4d31c901ce3bcb6760d7bb5aa7cab49bb54d8c6551b3df14c8cf64e7,mutex (VT sandbox),maltego.Phrase,f936986d553273aef6eeaeef713ad28f

@@ -119,18 +119,44 @@ Registry data (RIPEstat) → [`data/enrichment/infrastructure_enrichment_2026-10
 
 **Goal:** visual link analysis — show how samples, C2s, IPs, netblocks and ASNs connect, and find pivots.
 
-### Procedure
+### Procedure (done 2026-10-03, Maltego Graph (Desktop) 4.13.0, free Community Edition)
 
-1. Install **Maltego** (free Community licence) → *New Graph*.
-2. *Import → Import Graph from Table* → select [`data/maltego_graph_import.csv`](data/maltego_graph_import.csv) → map columns: `source_type/source_value` → source entity, `target_type/target_value` → target entity, `link_label` → link label. (33 links, 32 entities.)
-3. Run transforms (free standard set + *VirusTotal Public API* hub item with your VT key):
-   - URL → *To Domain* / *To IP Address [DNS]*
-   - IPv4 → *To Netblock* → *To AS number*
-   - Domain → *To DNS Name – passive* / *To WHOIS*
-   - Hash → *VirusTotal: To Files / To Contacted IPs*
-4. Use *Organic* layout, colour Amadey vs StealC entities, export PNG to [`evidence/`](evidence/) and save `amadey.mtgz`.
+1. **Build the graph file.** Maltego's *Import Graph from Table* maps one column to *one* entity type, but my link list mixes types per row (Hash → URL, URL → IPv4, Netblock → AS …). So [`scripts/build_maltego_graph.py`](scripts/build_maltego_graph.py) writes the Maltego graph format (`.mtgx` = zip with GraphML) directly from [`data/maltego_graph_import.csv`](data/maltego_graph_import.csv): **36 entities, 40 links** (33 links from the reports + 7 from my VirusTotal pivots). Value properties follow Maltego's Standard Entities Catalog (`maltego.Hash` → `properties.hash`, `maltego.AS` → `as.number`, …).
+2. *Open* [`data/amadey_graph.mtgx`](data/amadey_graph.mtgx) → all entities typed and labelled → *Organic* layout.
+3. Transforms (free *Standard Transforms*, run on Maltego's servers, so my PC never touched attacker infrastructure; **0 credits used**):
 
-### Expected pivot graph
+| Input (selected by type) | Transform | Result |
+|---|---|---|
+| 6 Domains | `To DNS Name - NS (name server)` | 12 NS records (4 domains answered, the 2 sub-domains had no NS) |
+| 7 IPv4 Addresses | `To Location [city, country]` | 4 locations |
+| 7 IPv4 Addresses | `To DNS Name [Reverse DNS]` | 1 PTR record (6 timed out — typical for malicious hosting) |
+
+4. Export: graph image → [`evidence/maltego/`](evidence/maltego/), link table → [`data/enrichment/maltego_export_links_2026-10-03.csv`](data/enrichment/maltego_export_links_2026-10-03.csv), enriched graph → [`data/amadey_graph_enriched.mtgl`](data/amadey_graph_enriched.mtgl). Final graph: **53 entities, 60 links**.
+
+Transforms I deliberately did **not** run: *Attempt zone transfer*, *Find common DNS names* and *Name Schema dictionary* — they request zone transfers from, or brute-force names against, the target's own DNS (active reconnaissance, outside my passive-only OPSEC rule).
+
+### Results (2026-10-03)
+
+| Pivot | Maltego result | Meaning |
+|---|---|---|
+| `goodpanelforgoodjob.com` (Amadey C2, Microsoft 24 Jun 2026) | NS `nsb22a/nsb22b.microsoftinternetsafety.net` | `microsoftinternetsafety.net` is **Microsoft's sinkhole name-server domain** (Alowaisheq et al., NDSS 2019, Table I) → the C2 domain was **taken over/sinkholed** |
+| `microsoft-telemetry.at` (Amadey C2, same report) | NS `ns1–ns4.csof.net` | `csof.net` serves ~21,000 domains, mostly random-looking names — looks like a sinkhole or parking operator, **operator not confirmed** (open question) |
+| `203.6.149.147` (IP of the compromised GitLab `gitd3ti.vokasi.uns.ac.id`) | PTR `smtp.mipa.uns.ac.id`, location Indonesia | The IP belongs to the **university's own mail/web infrastructure** → confirms a *legitimate compromised host*: block the URL path, not the IP |
+| `bzctoons.net` (compromised GitLab, Trellix) | NS `ns1–ns4.bzctoons.net` | Self-hosted DNS of the legitimate site — nothing to block |
+| `natureofarizona.com` (current hostname of ex-StealC IP) | NS on Cloudflare | Ordinary site → supports "IP was re-assigned" |
+| `185.215.113.16/.43/.75/.209` | Location Seychelles | Same offshore /24 (AS56873), offline since 2025-05 |
+| `158.94.208.130` / `91.92.243.129` | Frankfurt (DE) / New York (US) | **Shodan said London (UK) / Amsterdam (NL)** → geolocation differs per database |
+
+### Findings
+
+1. **A C2 domain from the June 2026 Microsoft report is sinkholed.** Its name servers now belong to Microsoft. For a hunter this flips the indicator's use: blocking it is pointless, but **any internal host that still resolves `goodpanelforgoodjob.com` is very likely infected** → perfect *hunting* indicator for DNS logs (Sysmon EID 22 / DNS server logs).
+2. **Pivoting on the new VirusTotal lead worked:** the second compromised GitLab resolves to a university mail server (`smtp.mipa.uns.ac.id`), so the attackers abused a legitimate institution's server rather than renting their own.
+3. **Geolocation is a low-confidence attribute.** Two tools gave different countries for the same two IPs on the same day. Registry data (RIPE) answers *who owns the block*; GeoIP answers *where a database thinks it is*. Record the source and date for every value.
+4. **Infrastructure pivot still holds:** Amadey C2 `91.92.243.129` → `91.92.243.0/24` → **AS202412** → `158.94.208.0/24` → StealC C2 `158.94.208.130`.
+
+Sources for the name-server attribution: [Alowaisheq et al., *Cracking the Wall of Confinement: Understanding and Analyzing Malicious Domain Take-downs*, NDSS 2019](https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_02B-1_Alowaisheq_paper.pdf) (Table I lists `*.microsoftinternetsafety.net` as Microsoft's sinkhole NS) · [who.is — ns1.csof.net](https://who.is/nameserver/ns1.csof.net) (domain count).
+
+### Pivot graph (simplified — full Maltego export: [`evidence/maltego/maltego_01_amadey-graph_53-entities_60-links.png`](evidence/maltego/maltego_01_amadey-graph_53-entities_60-links.png))
 
 ```mermaid
 flowchart LR
