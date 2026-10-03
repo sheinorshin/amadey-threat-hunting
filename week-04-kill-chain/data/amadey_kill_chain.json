@@ -24,9 +24,9 @@
       "phase": 1,
       "name": "Reconnaissance",
       "lm_definition": "Research, identification and selection of targets.",
-      "summary": "Opportunistic MaaS targeting; the 2025 Talos campaign chose Ukrainian organisations.",
+      "summary": "Opportunistic MaaS targeting; Talos linked the operation to a phishing campaign against Ukrainian entities.",
       "actions": [
-        "Affiliate picks a target set (Ukrainian entities in the Talos campaign) and lure theme",
+        "Affiliate picks a target set and lure theme (the linked Talos phishing campaign targeted Ukrainian entities)",
         "No victim-specific research documented - commodity loader, volume over precision"
       ],
       "sources": [
@@ -36,7 +36,7 @@
       "techniques": [
         {
           "id": "T1591",
-          "how": "Choice of Ukrainian organisations as targets (inferred, low confidence)",
+          "how": "Target choice; the linked phishing campaign hit Ukrainian entities (inferred, low confidence)",
           "status": "CTI",
           "confidence": "low",
           "name": "Gather Victim Org Information",
@@ -152,9 +152,9 @@
       "phase": 3,
       "name": "Delivery",
       "lm_definition": "Transmission of the weapon to the targeted environment.",
-      "summary": "Phishing archive with JavaScript -> Emmenhtal stage fetched as fake .mp4 -> Amadey EXE downloaded.",
+      "summary": "Likely a phishing archive with JavaScript -> Emmenhtal stage fetched as fake .mp4 -> Amadey EXE downloaded.",
       "actions": [
-        "Phishing e-mail with an archive containing a JavaScript file",
+        "Phishing e-mail with an archive containing a JavaScript file (seen in the linked SmokeLoader campaign; Talos assesses the Amadey Emmenhtal scripts were likely meant for the same delivery)",
         "Next stage pulled from pivqmane[.]com/doc/fb.mp4 (Emmenhtal disguised as video)",
         "Amadey binary downloaded from 185.215.113.16/test/amnew.exe"
       ],
@@ -166,9 +166,9 @@
       "techniques": [
         {
           "id": "T1566.001",
-          "how": "Archive attachment with JavaScript in phishing mail",
+          "how": "Archive attachment with JavaScript in phishing mail (Talos: seen with SmokeLoader, likely for Amadey)",
           "status": "BLIND",
-          "confidence": "high",
+          "confidence": "medium",
           "name": "Spearphishing Attachment",
           "tactics": [
             "initial-access"
@@ -199,7 +199,8 @@
       "summary": "No software exploit: the user runs the script; Windows script hosts and LOLBins do the rest.",
       "actions": [
         "Victim opens the JavaScript from the archive (user execution - the 'exploited' component is the human)",
-        "JS -> mshta.exe runs the remote Emmenhtal stage -> PowerShell loads and starts Amadey"
+        "JS -> WScript.Shell runs encoded PowerShell -> AES-decrypted PowerShell downloads and starts Amadey",
+        "Emmenhtal variants disguised as .mp4 (pivqmane[.]com) are typically run by mshta.exe - not shown in Talos' JS samples"
       ],
       "sources": [
         "talos2025"
@@ -221,7 +222,7 @@
         },
         {
           "id": "T1059.007",
-          "how": "JavaScript executed by Windows Script Host",
+          "how": "JavaScript executed by Windows Script Host (WScript.Shell launches PowerShell)",
           "status": "DATA",
           "confidence": "high",
           "name": "JavaScript",
@@ -234,9 +235,9 @@
         },
         {
           "id": "T1218.005",
-          "how": "mshta.exe executes the remote Emmenhtal stage",
+          "how": "mshta.exe runs Emmenhtal disguised as .mp4 (Orange Cyberdefense pattern; not in Talos' JS samples)",
           "status": "DATA",
-          "confidence": "high",
+          "confidence": "low",
           "name": "Mshta",
           "tactics": [
             "stealth"
@@ -367,7 +368,7 @@
         },
         {
           "id": "T1564.001",
-          "how": "Hidden files/directories (Talos STIX listed deprecated T1158)",
+          "how": "Hidden files/directories (Talos STIX listed revoked T1158)",
           "status": "BLIND",
           "confidence": "medium",
           "name": "Hidden Files and Directories",

@@ -12,7 +12,7 @@
 | Unique techniques | **40** — all **17** official ATT&CK S1025 techniques (★) + **23** from the 2022–2026 reports and my own analysis |
 | Tactics touched | **15 / 15** (v19: Stealth TA0005 and Defense Impairment TA0112 replace Defense Evasion) |
 | Techniques in two phases | T1059.001 PowerShell (phase 4 exploitation and phase 7 `Expand-Archive`), T1105 Ingress Tool Transfer (phase 3 delivery and phase 7 plugins/StealC) |
-| Corrected IDs | T1158 → **T1564.001** (deprecated in Talos' STIX), T1562.004 → **T1686** (revoked in v19) |
+| Corrected IDs | T1158 → **T1564.001** (revoked ID in Talos' STIX), T1562.004 → **T1686** (revoked in v19) |
 
 ### Unique techniques per tactic
 
@@ -41,18 +41,18 @@
 
 | KC phase | ATT&CK v19 tactic(s) | ID | Technique | Amadey procedure in this intrusion | Conf. | My lab |
 |---|---|---|---|---|---|---|
-| 1 Reconnaissance | Reconnaissance | T1591 | Gather Victim Org Information | Choice of Ukrainian organisations as targets (inferred, low confidence) | low | CTI only |
+| 1 Reconnaissance | Reconnaissance | T1591 | Gather Victim Org Information | Target choice; the linked phishing campaign hit Ukrainian entities (inferred, low confidence) | low | CTI only |
 | 2 Weaponization | Resource Development | T1587.001 | Malware | Amadey developed and sold as MaaS since 2018 (operator side) | high | CTI only |
 | 2 Weaponization | Resource Development | T1588.001 | Malware | Affiliates buy Amadey builds (customer side) | high | CTI only |
 | 2 Weaponization | Stealth | T1027 ★ | Obfuscated Files or Information | Encrypted strings in the build, obfuscated Emmenhtal JavaScript | high | ❌ blind |
 | 2 Weaponization | Resource Development | T1608.001 | Upload Malware | Payloads staged in GitHub repos and in gitlab.bzctoons.net/suau/fds | high | CTI only |
 | 2 Weaponization | Resource Development | T1584.004 | Server | Self-hosted GitLab servers hijacked (bzctoons.net; gitd3ti.vokasi.uns.ac.id from my VT pivot) | high | CTI only |
 | 2 Weaponization | Resource Development | T1583.001 | Domains | C2 domains such as microsoft-telemetry.at, goodpanelforgoodjob.com | medium | CTI only |
-| 3 Delivery | Initial Access | T1566.001 | Spearphishing Attachment | Archive attachment with JavaScript in phishing mail | high | ❌ blind |
+| 3 Delivery | Initial Access | T1566.001 | Spearphishing Attachment | Archive attachment with JavaScript in phishing mail (Talos: seen with SmokeLoader, likely for Amadey) | medium | ❌ blind |
 | 3 Delivery | Command and Control | T1105 ★ | Ingress Tool Transfer | Emmenhtal stage and Amadey EXE downloaded over HTTP | high | ⚠️ needs Sysmon |
 | 4 Exploitation | Execution | T1204.002 | Malicious File | User double-clicks the JS file from the archive | high | data, no rule (huntable) |
-| 4 Exploitation | Execution | T1059.007 | JavaScript | JavaScript executed by Windows Script Host | high | data, no rule (huntable) |
-| 4 Exploitation | Stealth | T1218.005 | Mshta | mshta.exe executes the remote Emmenhtal stage | high | data, no rule (huntable) |
+| 4 Exploitation | Execution | T1059.007 | JavaScript | JavaScript executed by Windows Script Host (WScript.Shell launches PowerShell) | high | data, no rule (huntable) |
+| 4 Exploitation | Stealth | T1218.005 | Mshta | mshta.exe runs Emmenhtal disguised as .mp4 (Orange Cyberdefense pattern; not in Talos' JS samples) | low | data, no rule (huntable) |
 | 4 Exploitation | Execution | T1059.001 | PowerShell | Emmenhtal PowerShell layer downloads/starts the loader | high | data, no rule (huntable) |
 | 5 Installation | Execution | T1106 ★ | Native API | CreateProcessA starts the copied loader | high | ❌ blind |
 | 5 Installation | Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | Task named after the EXE, trigger every 1 minute (confirmed in VT sandbox) | high | ✅ rule + data |
@@ -60,7 +60,7 @@
 | 5 Installation | Defense Impairment, Persistence | T1112 ★ | Modify Registry | Registry values overwritten for persistence | high | ⚠️ needs Sysmon |
 | 5 Installation | Defense Impairment | T1553.005 ★ | Mark-of-the-Web Bypass | Zone.Identifier ADS zeroed so SmartScreen/MotW checks do not fire | high | ⚠️ needs Sysmon |
 | 5 Installation | Stealth | T1140 ★ | Deobfuscate/Decode Files or Information | Encrypted strings (AV names, C2, file names) decoded at runtime | high | ❌ blind |
-| 5 Installation | Stealth | T1564.001 | Hidden Files and Directories | Hidden files/directories (Talos STIX listed deprecated T1158) | medium | ❌ blind |
+| 5 Installation | Stealth | T1564.001 | Hidden Files and Directories | Hidden files/directories (Talos STIX listed revoked T1158) | medium | ❌ blind |
 | 6 Command & Control | Command and Control | T1071.001 ★ | Web Protocols | HTTP POST to /<random>/index.php (Sigma rule ready, needs proxy logs) | high | ❌ blind |
 | 6 Command & Control | Command and Control | T1573.001 | Symmetric Cryptography | v5 encrypts the host profile with RC4 before sending | medium | ❌ blind |
 | 6 Command & Control | Command and Control | T1568.001 ★ | Fast Flux DNS | Fast-flux DNS hides C2 hosts (S1025) | medium | ⚠️ needs Sysmon |
@@ -103,5 +103,5 @@ Manual: [ATT&CK Navigator](https://mitre-attack.github.io/attack-navigator/) →
 2. **One phase per action.** A technique appears in two phases only when it is really used twice for different purposes (PowerShell: run the loader vs unpack StealC).
 3. **Discovery sits in phase 6.** Amadey's host profiling travels inside its first C2 message, so it belongs to the C2 phase in this intrusion.
 4. **Attacker-side work is phase 2** (Resource Development + obfuscation). It's invisible to my SIEM and marked *CTI only*.
-5. **Confidence is explicit.** *High* = documented by a vendor or my sandbox review; *medium* = documented for the family/version but not for this exact sample; *low* = inferred (T1591).
+5. **Confidence is explicit.** *High* = documented by a vendor or my sandbox review; *medium* = documented for the family/version but not for this exact sample; *low* = inferred (T1591; T1218.005 mshta, a known Emmenhtal pattern that Talos did not show for these samples).
 6. **Versions matter.** ATT&CK v19 renamed and moved techniques. My Week 1 profile and Week 3 MISP tags already use v19, and this script re-validates against the official data, so the mapping won't silently go stale.

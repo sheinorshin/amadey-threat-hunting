@@ -417,7 +417,7 @@ def write_outputs(merged, rejected, steps, attack_raw, attack_norm, as_of, out_d
     L += ["", "## Why indicators were NOT marked actionable", "", "| Reason | Count |", "|---|---|"]
     L += [f"| {k} | {v} |" for k, v in reasons.most_common()]
     L += ["", "## ATT&CK IDs found in STIX", "",
-          f"Raw: {', '.join(attack_raw)}  ", f"Normalised: {', '.join(attack_norm)} (deprecated T1158 -> T1564.001)", ""]
+          f"Raw: {', '.join(attack_raw)}  ", f"Normalised: {', '.join(attack_norm)} (revoked T1158 -> T1564.001)", ""]
     (out_dir / "pipeline_report.md").write_text("\n".join(L), encoding="utf-8")
 
 

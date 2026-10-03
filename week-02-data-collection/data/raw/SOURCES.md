@@ -14,6 +14,6 @@ Collection method: manual download from the publisher (Talos files via `git clon
 
 **Quality issues noticed already at collection time** (fixed in Week 3):
 - Talos TXT has **2 SHA-256 values with 63 characters** (truncated) — Talos's own STIX bundle contains only the 6 valid ones.
-- Talos STIX references **T1158** (Hidden Files and Directories) — a *deprecated* ATT&CK ID, now **T1564.001**.
+- Talos STIX references **T1158** (Hidden Files and Directories) — a *revoked* ATT&CK ID, replaced by **T1564.001**.
 - Mixed defanging styles: `hxxp://`, `[.]`, partially defanged (`185.215.113[.]16`).
 - Microsoft and Trellix lists also contain **StealC** indicators — must be tagged separately, not as Amadey.

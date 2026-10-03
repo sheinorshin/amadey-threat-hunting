@@ -68,7 +68,7 @@
       "techniqueID": "T1591",
       "score": 0,
       "color": "#a3a29c",
-      "comment": "Outside network: CTI only | KC1 Reconnaissance: Choice of Ukrainian organisations as targets (inferred, low confidence)",
+      "comment": "Outside network: CTI only | KC1 Reconnaissance: Target choice; the linked phishing campaign hit Ukrainian entities (inferred, low confidence)",
       "enabled": true,
       "showSubtechniques": false
     },
@@ -124,7 +124,7 @@
       "techniqueID": "T1566.001",
       "score": 0,
       "color": "#d03b3b",
-      "comment": "Blind (proxy/mail/EDR) | KC3 Delivery: Archive attachment with JavaScript in phishing mail",
+      "comment": "Blind (proxy/mail/EDR) | KC3 Delivery: Archive attachment with JavaScript in phishing mail (Talos: seen with SmokeLoader, likely for Amadey)",
       "enabled": true,
       "showSubtechniques": false
     },
@@ -148,7 +148,7 @@
       "techniqueID": "T1059.007",
       "score": 2,
       "color": "#fab219",
-      "comment": "Data now, no rule | KC4 Exploitation: JavaScript executed by Windows Script Host",
+      "comment": "Data now, no rule | KC4 Exploitation: JavaScript executed by Windows Script Host (WScript.Shell launches PowerShell)",
       "enabled": true,
       "showSubtechniques": false
     },
@@ -156,7 +156,7 @@
       "techniqueID": "T1218.005",
       "score": 2,
       "color": "#fab219",
-      "comment": "Data now, no rule | KC4 Exploitation: mshta.exe executes the remote Emmenhtal stage",
+      "comment": "Data now, no rule | KC4 Exploitation: mshta.exe runs Emmenhtal disguised as .mp4 (Orange Cyberdefense pattern; not in Talos' JS samples)",
       "enabled": true,
       "showSubtechniques": false
     },
@@ -220,7 +220,7 @@
       "techniqueID": "T1564.001",
       "score": 0,
       "color": "#d03b3b",
-      "comment": "Blind (proxy/mail/EDR) | KC5 Installation: Hidden files/directories (Talos STIX listed deprecated T1158)",
+      "comment": "Blind (proxy/mail/EDR) | KC5 Installation: Hidden files/directories (Talos STIX listed revoked T1158)",
       "enabled": true,
       "showSubtechniques": false
     },

@@ -59,15 +59,15 @@ KILL_CHAIN = [
     {
         "phase": 1, "name": "Reconnaissance",
         "lm_definition": "Research, identification and selection of targets.",
-        "summary": "Opportunistic MaaS targeting; the 2025 Talos campaign chose Ukrainian organisations.",
-        "fig_actions": ["Target set: Ukrainian organisations (Talos)", "No victim-specific research documented"],
+        "summary": "Opportunistic MaaS targeting; Talos linked the operation to a phishing campaign against Ukrainian entities.",
+        "fig_actions": ["Linked campaign targeted Ukrainian entities (Talos)", "No victim-specific research documented"],
         "actions": [
-            "Affiliate picks a target set (Ukrainian entities in the Talos campaign) and lure theme",
+            "Affiliate picks a target set and lure theme (the linked Talos phishing campaign targeted Ukrainian entities)",
             "No victim-specific research documented - commodity loader, volume over precision",
         ],
         "sources": ["talos2025"],
         "techniques": [
-            {"id": "T1591", "how": "Choice of Ukrainian organisations as targets (inferred, low confidence)", "status": "CTI", "confidence": "low"},
+            {"id": "T1591", "how": "Target choice; the linked phishing campaign hit Ukrainian entities (inferred, low confidence)", "status": "CTI", "confidence": "low"},
         ],
     },
     {
@@ -94,16 +94,16 @@ KILL_CHAIN = [
     {
         "phase": 3, "name": "Delivery",
         "lm_definition": "Transmission of the weapon to the targeted environment.",
-        "summary": "Phishing archive with JavaScript -> Emmenhtal stage fetched as fake .mp4 -> Amadey EXE downloaded.",
-        "fig_actions": ["Phishing mail, archive with JavaScript", "Emmenhtal stage fetched as fake fb.mp4", "Amadey EXE from 185.215.113.16/test/amnew.exe"],
+        "summary": "Likely a phishing archive with JavaScript -> Emmenhtal stage fetched as fake .mp4 -> Amadey EXE downloaded.",
+        "fig_actions": ["Phishing mail, archive with JavaScript (likely, Talos)", "Emmenhtal stage fetched as fake fb.mp4", "Amadey EXE from 185.215.113.16/test/amnew.exe"],
         "actions": [
-            "Phishing e-mail with an archive containing a JavaScript file",
+            "Phishing e-mail with an archive containing a JavaScript file (seen in the linked SmokeLoader campaign; Talos assesses the Amadey Emmenhtal scripts were likely meant for the same delivery)",
             "Next stage pulled from pivqmane[.]com/doc/fb.mp4 (Emmenhtal disguised as video)",
             "Amadey binary downloaded from 185.215.113.16/test/amnew.exe",
         ],
         "sources": ["talos2025", "misp"],
         "techniques": [
-            {"id": "T1566.001", "how": "Archive attachment with JavaScript in phishing mail", "status": "BLIND", "confidence": "high"},
+            {"id": "T1566.001", "how": "Archive attachment with JavaScript in phishing mail (Talos: seen with SmokeLoader, likely for Amadey)", "status": "BLIND", "confidence": "medium"},
             {"id": "T1105", "how": "Emmenhtal stage and Amadey EXE downloaded over HTTP", "status": "SYSMON", "confidence": "high"},
         ],
     },
@@ -111,16 +111,17 @@ KILL_CHAIN = [
         "phase": 4, "name": "Exploitation",
         "lm_definition": "Triggering the intruder's code - a vulnerability, or the user/OS auto-executing it.",
         "summary": "No software exploit: the user runs the script; Windows script hosts and LOLBins do the rest.",
-        "fig_actions": ["User opens the JS (human = the exploit)", "JS -> mshta -> PowerShell -> Amadey"],
+        "fig_actions": ["User opens the JS (human = the exploit)", "JS -> WScript.Shell -> PowerShell -> Amadey", "fake .mp4 variants: mshta (low confidence)"],
         "actions": [
             "Victim opens the JavaScript from the archive (user execution - the 'exploited' component is the human)",
-            "JS -> mshta.exe runs the remote Emmenhtal stage -> PowerShell loads and starts Amadey",
+            "JS -> WScript.Shell runs encoded PowerShell -> AES-decrypted PowerShell downloads and starts Amadey",
+            "Emmenhtal variants disguised as .mp4 (pivqmane[.]com) are typically run by mshta.exe - not shown in Talos' JS samples",
         ],
         "sources": ["talos2025"],
         "techniques": [
             {"id": "T1204.002", "how": "User double-clicks the JS file from the archive", "status": "DATA", "confidence": "high"},
-            {"id": "T1059.007", "how": "JavaScript executed by Windows Script Host", "status": "DATA", "confidence": "high"},
-            {"id": "T1218.005", "how": "mshta.exe executes the remote Emmenhtal stage", "status": "DATA", "confidence": "high"},
+            {"id": "T1059.007", "how": "JavaScript executed by Windows Script Host (WScript.Shell launches PowerShell)", "status": "DATA", "confidence": "high"},
+            {"id": "T1218.005", "how": "mshta.exe runs Emmenhtal disguised as .mp4 (Orange Cyberdefense pattern; not in Talos' JS samples)", "status": "DATA", "confidence": "low"},
             {"id": "T1059.001", "how": "Emmenhtal PowerShell layer downloads/starts the loader", "status": "DATA", "confidence": "high"},
         ],
     },
@@ -143,7 +144,7 @@ KILL_CHAIN = [
             {"id": "T1112", "how": "Registry values overwritten for persistence", "status": "SYSMON", "confidence": "high"},
             {"id": "T1553.005", "how": "Zone.Identifier ADS zeroed so SmartScreen/MotW checks do not fire", "status": "SYSMON", "confidence": "high"},
             {"id": "T1140", "how": "Encrypted strings (AV names, C2, file names) decoded at runtime", "status": "BLIND", "confidence": "high"},
-            {"id": "T1564.001", "how": "Hidden files/directories (Talos STIX listed deprecated T1158)", "status": "BLIND", "confidence": "medium"},
+            {"id": "T1564.001", "how": "Hidden files/directories (Talos STIX listed revoked T1158)", "status": "BLIND", "confidence": "medium"},
         ],
     },
     {

@@ -26,12 +26,14 @@
 
 **Intelligence gap (stated, not hidden):** Trellix analysed the sample but did not observe *how* it reached victims. For phases 1–4 I use the Talos campaign of the **same malware family in the same year** — an explicit assumption, marked in the confidence column of [`03-attack-mapping.md`](03-attack-mapping.md).
 
+**What Talos actually observed:** phishing e-mails against Ukrainian entities delivered Emmenhtal → **SmokeLoader**. The Emmenhtal samples that delivered **Amadey** were found in public GitHub repositories, not in e-mails; Talos links the two clusters by near-identical code and *assesses* that the Amadey scripts were likely meant for phishing too. So the phishing step (T1566.001) is medium confidence, not high.
+
 ## 2.2 Timeline
 
 | Date | Event | Source |
 |---|---|---|
 | Oct 2018 | Amadey sold as MaaS on Russian-speaking forums | Malpedia / ATT&CK S1025 |
-| Feb–Apr 2025 | MaaS operation against Ukrainian entities: Emmenhtal loader → Amadey → payloads hosted on GitHub | Talos |
+| Feb–Apr 2025 | MaaS operation: Emmenhtal loader → Amadey → payloads hosted on GitHub; linked by code overlap to a SmokeLoader phishing campaign against Ukrainian entities | Talos |
 | 11 Nov 2025 | Compile time of Amadey 5.70 sample `d7a366fa…` | VirusTotal (mine) |
 | 20 Nov 2025 | First submission of `d7a366fa…` to VirusTotal | VirusTotal (mine) |
 | 18 Dec 2025 | Trellix: Amadey 5.70 pulls StealC from a hijacked self-hosted GitLab | Trellix |
@@ -44,9 +46,9 @@
 
 ```mermaid
 flowchart LR
-    R["1 Recon<br/>targets: Ukrainian orgs"] --> W["2 Weaponization<br/>MaaS build 0702f<br/>payloads on GitHub / hijacked GitLab"]
-    W --> D["3 Delivery<br/>phishing archive (JS)<br/>fake fb.mp4, amnew.exe"]
-    D --> E["4 Exploitation<br/>user runs JS<br/>mshta → PowerShell"]
+    R["1 Recon<br/>linked campaign: Ukrainian orgs"] --> W["2 Weaponization<br/>MaaS build 0702f<br/>payloads on GitHub / hijacked GitLab"]
+    W --> D["3 Delivery<br/>phishing archive (JS), likely<br/>fake fb.mp4, amnew.exe"]
+    D --> E["4 Exploitation<br/>user runs JS<br/>WScript.Shell → PowerShell"]
     E --> I["5 Installation<br/>%TEMP%\067640a009\Yfgfwb.exe<br/>task every 1 min"]
     I --> C["6 C2<br/>POST /0gjSy4hf3/index.php<br/>91.92.243.129"]
     C --> A["7 Actions on Objectives<br/>clip64/cred64 plugins<br/>StealC download"]
@@ -59,10 +61,10 @@ Each phase lists **what happened**, the **evidence**, the **indicators** from my
 
 ### Phase 1 — Reconnaissance
 
-- **What happened:** the affiliate chose a target set (Ukrainian organisations) and a lure theme. Amadey is a commodity loader: no victim-specific research is documented — volume over precision.
+- **What happened:** the affiliate chose a target set and a lure theme. Talos links the operation to a phishing campaign against Ukrainian organisations (which delivered SmokeLoader). Amadey is a commodity loader: no victim-specific research is documented — volume over precision.
 - **ATT&CK:** T1591 *Gather Victim Org Information* — **inferred, low confidence**.
 - **Indicators:** none (0 of 81 IOCs).
-- **Defender view:** invisible from inside the network; only CTI says "Ukrainian organisations were targeted".
+- **Defender view:** invisible from inside the network; only CTI says "Ukrainian organisations were targeted" (by the linked campaign).
 
 ### Phase 2 — Weaponization
 
@@ -79,18 +81,18 @@ Each phase lists **what happened**, the **evidence**, the **indicators** from my
 ### Phase 3 — Delivery
 
 - **What happened:**
-  - Phishing e-mails carried an **archive with a JavaScript file** (T1566.001).
-  - The Talos IOC list contains two `.mp4` URLs on `pivqmane[.]com` (`/doc/fb.mp4`, `/testonload.mp4`). Hiding the next stage behind fake media files fetched by `mshta` is a known Emmenhtal pattern.
+  - Phishing e-mails carried an **archive with a JavaScript file** (T1566.001). Talos saw this with the linked SmokeLoader campaign and assesses the Amadey-delivering Emmenhtal scripts were likely meant for the same delivery → **medium** confidence.
+  - The Talos IOC list contains two `.mp4` URLs on `pivqmane[.]com` (`/doc/fb.mp4`, `/testonload.mp4`). Talos only says these Emmenhtal samples masquerade as MP4; running such fake media files with `mshta` is a known Emmenhtal pattern (Orange Cyberdefense).
   - The Amadey binary itself came from `http://185.215.113.16/test/amnew.exe` (T1105).
 - **Indicators:** 5 (staging URLs, the domain and the IP).
 - **Defender view:** mail gateway and proxy — **neither exists in my lab** → `T1566.001` blind. Downloads become visible with Sysmon 11/3.
 
 ### Phase 4 — Exploitation
 
-- **What happened:** **no software vulnerability is exploited.** The victim opens the JavaScript (T1204.002), Windows Script Host runs it (T1059.007), `mshta.exe` executes the remote Emmenhtal stage (T1218.005), and a PowerShell layer starts the loader (T1059.001). The "exploited component" is the human plus built-in Windows binaries (LOLBins).
+- **What happened:** **no software vulnerability is exploited.** The victim opens the JavaScript (T1204.002), Windows Script Host runs it (T1059.007), `WScript.Shell` launches an encoded PowerShell command, and an AES-decrypted PowerShell layer downloads and starts the loader (T1059.001) — this is the chain Talos shows. For the fake-`.mp4` variants, `mshta.exe` is the likely runner (T1218.005, **low** confidence: not shown in Talos' samples). The "exploited component" is the human plus built-in Windows binaries (LOLBins).
 - **Indicators:** 6 Talos campaign hashes. In Week 2, VirusTotal showed that 3 of the 4 I checked are JavaScript downloaders and 1 is Amadey itself; 2 are still unchecked.
-- **Defender view:** **this is the earliest phase my lab can see today.** Security 4688 records `wscript.exe` / `mshta.exe http…` / `powershell.exe`, and PowerShell 4104 records the script blocks. The data is there but **no rule exists yet** → the first hunting target for Week 5.
-- **Lesson:** patching alone does not break this chain; controlling **script hosts and mshta** does.
+- **Defender view:** **this is the earliest phase my lab can see today.** Security 4688 records `wscript.exe` → `powershell.exe` (and `mshta.exe http…` for the `.mp4` variants), and PowerShell 4104 records the script blocks. The data is there but **no rule exists yet** → the first hunting target for Week 5.
+- **Lesson:** patching alone does not break this chain; controlling **script hosts (wscript, mshta) and PowerShell** does.
 
 ### Phase 5 — Installation
 
@@ -98,7 +100,7 @@ Each phase lists **what happened**, the **evidence**, the **indicators** from my
   - Amadey copies itself to `%TEMP%\067640a009\Yfgfwb.exe` and starts the copy (T1106). Mutex `f936986d553273aef6eeaeef713ad28f` blocks double infection.
   - **Scheduled task** `Yfgfwb` (`C:\Windows\Tasks\Yfgfwb.job`) runs it **every minute** (T1053.005).
   - The Startup folder is redirected in the registry (T1547.001, T1112), Mark-of-the-Web is zeroed (T1553.005), and strings are decoded at runtime (T1140).
-  - Talos' STIX also lists hidden files/directories, under the deprecated ID T1158 → now **T1564.001**.
+  - Talos' STIX also lists hidden files/directories, under the revoked ID T1158 → now **T1564.001**.
 - **Indicators:** 20 (14 Amadey sample hashes + mutex, task, folders, file names).
 - **Defender view:**
   - ✅ The scheduled-task rule (4688/4698) and the hex-folder EXE rule work **today**.

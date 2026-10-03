@@ -23,7 +23,7 @@ I classify along **four axes**, then place Amadey on each one.
 |---|---|---|
 | **Ransomware** | Encrypt/steal data for extortion | **Indirect** — Amadey delivered LockBit 3.0 (ASEC, 2022). |
 | **Malware** (incl. infostealers, loaders) | Malicious code in general | **Direct** — Amadey *is* a loader/botnet; v5 is a modular RAT. |
-| **Social engineering** (phishing) | Manipulating people | **Delivery vector** — phishing archives with JS (Talos 2025), ClickFix, fake software. |
+| **Social engineering** (phishing) | Manipulating people | **Delivery vector** — phishing archives with JS (Emmenhtal; Talos 2025 links it to Amadey), ClickFix, fake software. |
 | **Threats against data** | Breach/leak of data | **Via payloads** — StealC/`cred.dll` steal credentials. |
 | **Threats against availability (DDoS)** | Service disruption | Low — Amadey can run any payload, but not its purpose. |
 | **Information manipulation** | Disinformation | ❌ |
@@ -37,7 +37,7 @@ I classify along **four axes**, then place Amadey on each one.
 | **Trojan** | Disguised as legitimate software | ✅ Delivered as fake/cracked software |
 | **Loader / downloader** | Fetch + run next stage | ✅ **Core function** |
 | **Bot / botnet client** | Polls C2 for tasks | ✅ |
-| **RAT / backdoor** | Interactive remote control | ✅ **v5**: 29 commands incl. cmd/PowerShell, VNC, SOCKS proxy, RDP enable, hidden admin |
+| **RAT / backdoor** | Interactive remote control | ✅ **v5**: 19 commands (IDs 10–29) incl. cmd/PowerShell, VNC, SOCKS proxy, RDP enable, hidden admin |
 | **Infostealer** | Credentials, cookies, clipboard | ✅ via plugins `cred.dll`, `clip.dll` |
 | Ransomware | Encrypt for ransom | ❌ itself — ✅ as payload |
 | Rootkit / wiper | Stealth / destruction | ❌ |

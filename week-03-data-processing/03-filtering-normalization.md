@@ -35,7 +35,7 @@ flowchart LR
 | 7 | **De-duplication** | Key = (type, value); merge sources, keep earliest `first_seen` / latest `last_seen` | 13 Talos values were in both TXT and STIX |
 | 8 | **Derivation** | Extract host from each URL as its own IP/domain indicator (`derived = true`) | `http://svclsc.com/ms/index.php` → `svclsc.com` |
 | 9 | **Filtering** | (a) allowlist of legit services, (b) compromised-but-legit parent domains, (c) **TTL**: IP 90 d, domain/URL 180 d, hashes never, (d) Week-2 infra status (BGP withdrawn / re-assigned IP), (e) context-only artefacts | `185.215.113.43` → expired **and** prefix withdrawn |
-| 10 | **Scoring + tags** | Confidence = 70 (Admiralty A2) +10 per extra publisher −20 unlabelled −10 derived −20 expired → High/Medium/Low; deprecated ATT&CK IDs mapped (T1158 → T1564.001; T1562.004 → T1686 in v19) | Talos hash = *Medium (50)*; Microsoft C2 URL = *High (70)* |
+| 10 | **Scoring + tags** | Confidence = 70 (Admiralty A2) +10 per extra publisher −20 unlabelled −10 derived −20 expired → High/Medium/Low; revoked ATT&CK IDs mapped (T1158 → T1564.001; T1562.004 → T1686 in v19) | Talos hash = *Medium (50)*; Microsoft C2 URL = *High (70)* |
 
 ## 3.3 Results (as of 2026-10-02)
 
@@ -88,7 +88,7 @@ flowchart LR
 2. **All 7 IPs are dead or re-used**; none are safe to block today. Hashes and recent domains are what remain actionable — consistent with the Pyramid of Pain (IPs are the most volatile network IOC).
 3. **Declared type beats regex.** Two 32-hex values (mutex, decryption key) would be mis-typed as MD5 by naïve tools, including MISP's freetext parser.
 4. **Families must be separated.** 20 of 79 valid records are StealC — tagging them “Amadey” would mislead any analyst pivoting from an alert.
-5. **Data quality issues exist even in top-tier sources** (truncated hashes in Talos TXT, deprecated ATT&CK ID in Talos STIX) — validation is not optional.
+5. **Data quality issues exist even in top-tier sources** (truncated hashes in Talos TXT, revoked ATT&CK ID in Talos STIX) — validation is not optional.
 
 ## 3.5 Output files
 

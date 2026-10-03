@@ -75,7 +75,7 @@
       "techniqueID": "T1591",
       "color": "#2a78d6",
       "score": 1,
-      "comment": "KC1 Reconnaissance: Choice of Ukrainian organisations as targets (inferred, low confidence)",
+      "comment": "KC1 Reconnaissance: Target choice; the linked phishing campaign hit Ukrainian entities (inferred, low confidence)",
       "enabled": true,
       "showSubtechniques": false
     },
@@ -131,7 +131,7 @@
       "techniqueID": "T1566.001",
       "color": "#1baf7a",
       "score": 3,
-      "comment": "KC3 Delivery: Archive attachment with JavaScript in phishing mail",
+      "comment": "KC3 Delivery: Archive attachment with JavaScript in phishing mail (Talos: seen with SmokeLoader, likely for Amadey)",
       "enabled": true,
       "showSubtechniques": false
     },
@@ -155,7 +155,7 @@
       "techniqueID": "T1059.007",
       "color": "#eda100",
       "score": 4,
-      "comment": "KC4 Exploitation: JavaScript executed by Windows Script Host",
+      "comment": "KC4 Exploitation: JavaScript executed by Windows Script Host (WScript.Shell launches PowerShell)",
       "enabled": true,
       "showSubtechniques": false
     },
@@ -163,7 +163,7 @@
       "techniqueID": "T1218.005",
       "color": "#eda100",
       "score": 4,
-      "comment": "KC4 Exploitation: mshta.exe executes the remote Emmenhtal stage",
+      "comment": "KC4 Exploitation: mshta.exe runs Emmenhtal disguised as .mp4 (Orange Cyberdefense pattern; not in Talos' JS samples)",
       "enabled": true,
       "showSubtechniques": false
     },
@@ -227,7 +227,7 @@
       "techniqueID": "T1564.001",
       "color": "#e87ba4",
       "score": 5,
-      "comment": "KC5 Installation: Hidden files/directories (Talos STIX listed deprecated T1158)",
+      "comment": "KC5 Installation: Hidden files/directories (Talos STIX listed revoked T1158)",
       "enabled": true,
       "showSubtechniques": false
     },
