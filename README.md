@@ -15,13 +15,13 @@
 | 3 | Data Processing & Exploitation **(Assignment 1)** | MISP deployment + IOC import · filtering & normalisation · Elastic + Sigma | ✅ [week-03](week-03-data-processing/) |
 | 4 | The Cyber Kill Chain **(Assignment 2)** | Real-world Amadey → StealC intrusion on the 7 phases · each phase → ATT&CK v19 TTPs · Courses of Action | ✅ [week-04](week-04-kill-chain/) |
 | 5 | Threat Hunting Concept **(Assignment 3)** | 3 hypothesis-driven hunts (from Week 4 gaps) · ES\|QL/EQL/KQL · proven on a planted intrusion | ✅ [week-05](week-05-threat-hunting/) |
-| 6 | ATT&CK Framework | One technique deep-dive (T1053.005 / T1059) + simulation mapped to ATT&CK | 🚧 [week-06](week-06-attack-framework/) |
+| 6 | ATT&CK Framework | T1053.005 deep-dive from ATT&CK v19.2 (+ T1059 reference) · benign lab exercise → telemetry mapped to ATT&CK, detections tested | 🧪 [week-06](week-06-attack-framework/) — lab run pending |
 | 7 | MITRE CAR | CAR analytic → SIEM | 🚧 [week-07](week-07-mitre-car/) |
 | 8 | Adversary Emulation Plan **(Assignment 4)** | Amadey-style plan: initial access → persistence → exfiltration | 🚧 [week-08](week-08-adversary-emulation/) |
 | 9 | Atomic Red Team **(Assignment 5)** | Atomic tests for Amadey TTPs → SIEM | 🚧 [week-09](week-09-atomic-red-team/) |
 | 10 | APT Techniques **(Assignment 6)** | APT29 / APT41 TTPs → ATT&CK (+ Amadey users TA505, Kimsuky) | 🚧 [week-10](week-10-apt-techniques/) |
 
-✅ done · 🚧 in progress (folder created, content coming)
+✅ done · 🧪 written, waiting for one run in my lab · 🚧 in progress (folder created, content coming)
 
 ## Intelligence requirements driving the project
 
@@ -54,7 +54,9 @@ week-05-threat-hunting/        Hypothesis-driven hunts for Amadey (Elastic)
   queries/                     ES|QL / EQL / KQL per hypothesis
   data/                        synthetic ECS dataset + hunt results
   scripts/ figures/            gen_dataset.py, run_hunt.py, make_figures.py + charts
-week-06-attack-framework/      (in progress)
+week-06-attack-framework/      ATT&CK + Navigator, T1053.005 deep-dive, benign lab exercise
+  lab/ queries/                ith-w6-task-exercise.ps1, ES|QL export of its telemetry
+  scripts/ data/ navigator/    build_attack_profile.py, map_results.py, ATT&CK profile, layers
 week-07-mitre-car/             (in progress)
 week-08-adversary-emulation/   (in progress)
 week-09-atomic-red-team/       (in progress)

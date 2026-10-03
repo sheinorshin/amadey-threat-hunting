@@ -1,0 +1,19 @@
+// Week 6 - export every event the lab exercise produced (Kibana -> Discover -> ES|QL mode).
+// 1. Set the time picker to cover the run (utc_start of the first row .. utc_end of the last row
+//    in the w6_run_log_<host>_<time>.csv written by lab/ith-w6-task-exercise.ps1).
+// 2. Run, then "Download" -> CSV  (or: POST /_query?format=csv with this query in the body).
+// 3. python scripts/map_results.py --events <downloaded.csv> --runlog <w6_run_log.csv>
+//
+// Everything the exercise creates is named "ITH-W6", so one case-insensitive filter finds it in
+// Security (4688/4698/4699/4702), PowerShell Operational (4104) and TaskScheduler Operational (100/102/106/129/140/141/200/201).
+// If a column is unknown in your cluster (e.g. no PowerShell data stream yet), delete it from COALESCE/KEEP.
+FROM logs-*
+| EVAL cl = TO_LOWER(COALESCE(process.command_line, "")),
+       tn = TO_LOWER(COALESCE(winlog.event_data.TaskName, "")),
+       sb = TO_LOWER(COALESCE(powershell.file.script_block_text, ""))
+| WHERE cl LIKE "*ith-w6*" OR tn LIKE "*ith-w6*" OR sb LIKE "*ith-w6*"
+| KEEP @timestamp, host.name, event.code, data_stream.dataset, process.name, process.parent.name,
+       process.command_line, winlog.event_data.TaskName, winlog.event_data.TaskContent,
+       powershell.file.script_block_text
+| SORT @timestamp ASC
+| LIMIT 1000
