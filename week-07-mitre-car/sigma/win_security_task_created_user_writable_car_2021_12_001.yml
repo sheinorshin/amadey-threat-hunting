@@ -1,0 +1,76 @@
+title: Scheduled Task Created or Changed With a User-Writable or Every-Minute Interpreter Action (CAR-2021-12-001, tuned)
+id: 6f7b0e41-2c1d-5a8e-9b3f-8d2e4c6a1b07
+status: experimental
+description: |
+    Tuned implementation of MITRE CAR-2021-12-001 on the Task Scheduler side (Security 4698 created / 4702 changed).
+    Fires when the task's action runs from a user-writable location (AppData, Temp, Users\Public, ProgramData,
+    Windows\Tasks, ...) or directly from a folder in the user profile (Amadey v5 on Windows 10/11:
+    C:\Users\<user>\<10 hex>\<name>.exe), or when a script interpreter / LOLBin is scheduled to repeat every minute.
+    Works whatever created the task (schtasks.exe, PowerShell cmdlets, the COM API), so it also sees Amadey v5,
+    which registers its task through COM without starting schtasks.exe.
+    Compared with the published analytic, the generic terms ".exe" and "cmd" alone are not enough (they match
+    almost every legitimate task); see week-07-mitre-car/04-evaluation-and-mapping.md.
+references:
+    - https://car.mitre.org/analytics/CAR-2021-12-001/
+    - https://attack.mitre.org/techniques/T1053/005/
+    - https://www.microsoft.com/en-us/security/blog/2026/06/24/stealc-and-amadey-breaking-down-infostealers-and-the-cybercrime-services-that-deliver-them/
+author: Sayat Abdiraiym (AITU, Intro to Threat Hunting)
+date: 2026-10-03
+tags:
+    - attack.execution
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1053.005
+    - car.2021-12-001
+logsource:
+    product: windows
+    service: security
+    definition: 'Requires "Audit Other Object Access Events" (success) for 4698/4702'
+detection:
+    selection_event:
+        EventID:
+            - 4698
+            - 4702
+    selection_writable:
+        TaskContent|contains:
+            - '\AppData\'
+            - '\Users\Public\'
+            - '\ProgramData\'
+            - '\Temp\'
+            - '%APPDATA%'
+            - '%LOCALAPPDATA%'
+            - '%TEMP%'
+            - '%PUBLIC%'
+            - '%ProgramData%'
+            - '\Windows\Tasks\'
+            - '\Windows\PLA\System'
+            - '\Registration\CRMLog'
+            - '\FxsTmp'
+            - '\spool\drivers\color'
+            - '\tracing\'
+    filter_defender:
+        TaskContent|contains: '\ProgramData\Microsoft\Windows Defender\'
+    selection_profile_root:
+        TaskContent|re|i: '.*c:\\users\\[^\\]+\\[^\\]+\\[^\\]+\.exe.*'
+    selection_every_minute:
+        TaskContent|contains: 'PT1M'
+    selection_interpreter:
+        TaskContent|contains:
+            - 'javascript'
+            - 'powershell'
+            - 'wmic'
+            - 'rundll32'
+            - 'cmd'
+            - 'cscript'
+            - 'wscript'
+            - 'regsvr32'
+            - 'mshta'
+            - 'bitsadmin'
+            - 'certutil'
+            - 'msiexec'
+            - 'javaw'
+    condition: selection_event and ((selection_writable and not filter_defender) or selection_profile_root or (selection_every_minute and selection_interpreter))
+falsepositives:
+    - Per-user software updaters installed under AppData (e.g. some browser or chat clients) - allow-list by task name and signer
+    - Admin scripts deliberately run from C:\ProgramData - allow-list by path
+level: medium

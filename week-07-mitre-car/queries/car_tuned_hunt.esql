@@ -1,0 +1,19 @@
+// Week 7 - hunt version of the tuned CAR-2021-12-001 analytic: list every hit with the fields needed for triage.
+// Same logic as sigma/*car_2021_12_001.yml and queries/car_noise_last_30_days.esql (column "tuned").
+FROM logs-system.security-*
+| WHERE event.code IN ("4688", "4698", "4702")
+| EVAL cl = REPLACE(TO_LOWER(COALESCE(process.command_line, "")), """\\""", "/"),
+       tc = REPLACE(TO_LOWER(COALESCE(winlog.event_data.TaskContent, "")), """\\""", "/")
+| EVAL is_task_event = event.code IN ("4698", "4702"),
+       is_schtasks = event.code == "4688" AND cl LIKE "*schtasks*" AND (cl LIKE "*/create*" OR cl LIKE "*/change*"),
+       text = CASE(event.code == "4688", cl, tc)
+| EVAL writable = text RLIKE """.*(/appdata/|/users/public/|/programdata/|/temp/|%appdata%|%localappdata%|%temp%|%public%|%programdata%|/windows/tasks/|/windows/pla/system|/registration/crmlog|/fxstmp|/spool/drivers/color|/tracing/).*"""
+                  AND NOT text LIKE "*/programdata/microsoft/windows defender/*",
+       profile_root = text RLIKE """.*c:/users/[^/]+/[^/]+/[^/]+\.exe.*""",
+       every_minute = text LIKE "*pt1m*" OR text RLIKE """.*/sc +minute.*/mo +1([^0-9].*)?""",
+       interpreter = text RLIKE """.*(javascript|powershell|wmic|rundll32|cmd|cscript|wscript|regsvr32|mshta|bitsadmin|certutil|msiexec|javaw).*"""
+| WHERE (is_schtasks OR is_task_event) AND (writable OR profile_root OR (every_minute AND interpreter))
+| EVAL severity = CASE(every_minute, "high", "medium")
+| KEEP @timestamp, host.name, user.name, event.code, severity, winlog.event_data.TaskName,
+       process.command_line, winlog.event_data.TaskContent
+| SORT @timestamp DESC

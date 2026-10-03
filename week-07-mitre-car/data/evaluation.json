@@ -1,0 +1,160 @@
+{
+ "week5_dataset": {
+  "events": 976,
+  "task_related_events": 16,
+  "amadey_task_events": 2,
+  "by_variant": {
+   "CAR-2013-08-001": {
+    "alerts": 1,
+    "true_positive": 1,
+    "false_positive": 0,
+    "incident_detected": true
+   },
+   "CAR-2021-12-001": {
+    "alerts": 16,
+    "true_positive": 2,
+    "false_positive": 14,
+    "incident_detected": true
+   },
+   "CAR-2021-12-001-elastic": {
+    "alerts": 15,
+    "true_positive": 1,
+    "false_positive": 14,
+    "incident_detected": true
+   },
+   "TUNED": {
+    "alerts": 2,
+    "true_positive": 2,
+    "false_positive": 0,
+    "incident_detected": true
+   }
+  }
+ },
+ "test_cases": [
+  {
+   "case": "CAR unit test 1 (calc.exe from System32, every minute)",
+   "malicious": null,
+   "severity": "",
+   "CAR-2013-08-001": true,
+   "CAR-2021-12-001": true,
+   "CAR-2021-12-001-elastic": true,
+   "TUNED": false
+  },
+  {
+   "case": "CAR unit test 2 (cmd ping every minute)",
+   "malicious": true,
+   "severity": "high",
+   "CAR-2013-08-001": true,
+   "CAR-2021-12-001": true,
+   "CAR-2021-12-001-elastic": true,
+   "TUNED": true
+  },
+  {
+   "case": "Amadey v3/v4 - schtasks, %TEMP%\\<hex>",
+   "malicious": true,
+   "severity": "high",
+   "CAR-2013-08-001": true,
+   "CAR-2021-12-001": true,
+   "CAR-2021-12-001-elastic": false,
+   "TUNED": true
+  },
+  {
+   "case": "Amadey v3/v4 - its 4698 event",
+   "malicious": true,
+   "severity": "high",
+   "CAR-2013-08-001": false,
+   "CAR-2021-12-001": true,
+   "CAR-2021-12-001-elastic": true,
+   "TUNED": true
+  },
+  {
+   "case": "Amadey v5 - COM API, 4698 only (Win10/11 path)",
+   "malicious": true,
+   "severity": "high",
+   "CAR-2013-08-001": false,
+   "CAR-2021-12-001": true,
+   "CAR-2021-12-001-elastic": true,
+   "TUNED": true
+  },
+  {
+   "case": "Week 6 Method A - schtasks.exe",
+   "malicious": true,
+   "severity": "high",
+   "CAR-2013-08-001": true,
+   "CAR-2021-12-001": true,
+   "CAR-2021-12-001-elastic": false,
+   "TUNED": true
+  },
+  {
+   "case": "Week 6 Method B - cmdlet, 4698 only",
+   "malicious": true,
+   "severity": "high",
+   "CAR-2013-08-001": false,
+   "CAR-2021-12-001": true,
+   "CAR-2021-12-001-elastic": true,
+   "TUNED": true
+  },
+  {
+   "case": "Benign - admin queries tasks (schtasks /Query)",
+   "malicious": false,
+   "severity": "",
+   "CAR-2013-08-001": true,
+   "CAR-2021-12-001": false,
+   "CAR-2021-12-001-elastic": false,
+   "TUNED": false
+  },
+  {
+   "case": "Benign - Google Update task",
+   "malicious": false,
+   "severity": "",
+   "CAR-2013-08-001": false,
+   "CAR-2021-12-001": true,
+   "CAR-2021-12-001-elastic": true,
+   "TUNED": false
+  },
+  {
+   "case": "Benign - Office ClickToRun task (hourly)",
+   "malicious": false,
+   "severity": "",
+   "CAR-2013-08-001": false,
+   "CAR-2021-12-001": true,
+   "CAR-2021-12-001-elastic": true,
+   "TUNED": false
+  },
+  {
+   "case": "Benign - Windows Defender task (ProgramData)",
+   "malicious": false,
+   "severity": "",
+   "CAR-2013-08-001": false,
+   "CAR-2021-12-001": true,
+   "CAR-2021-12-001-elastic": true,
+   "TUNED": false
+  }
+ ],
+ "test_case_score": {
+  "CAR-2013-08-001": {
+   "caught": 3,
+   "malicious": 6,
+   "false_alarms": 1,
+   "benign": 4
+  },
+  "CAR-2021-12-001": {
+   "caught": 6,
+   "malicious": 6,
+   "false_alarms": 3,
+   "benign": 4
+  },
+  "CAR-2021-12-001-elastic": {
+   "caught": 4,
+   "malicious": 6,
+   "false_alarms": 3,
+   "benign": 4
+  },
+  "TUNED": {
+   "caught": 6,
+   "malicious": 6,
+   "false_alarms": 0,
+   "benign": 4
+  }
+ }
+}

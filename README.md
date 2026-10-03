@@ -16,7 +16,7 @@
 | 4 | The Cyber Kill Chain **(Assignment 2)** | Real-world Amadey → StealC intrusion on the 7 phases · each phase → ATT&CK v19 TTPs · Courses of Action | ✅ [week-04](week-04-kill-chain/) |
 | 5 | Threat Hunting Concept **(Assignment 3)** | 3 hypothesis-driven hunts (from Week 4 gaps) · ES\|QL/EQL/KQL · proven on a planted intrusion | ✅ [week-05](week-05-threat-hunting/) |
 | 6 | ATT&CK Framework | T1053.005 deep-dive from ATT&CK v19.2 (+ T1059 reference) · benign lab exercise → telemetry mapped to ATT&CK, detections tested | 🧪 [week-06](week-06-attack-framework/) — lab run pending |
-| 7 | MITRE CAR | CAR analytic → SIEM | 🚧 [week-07](week-07-mitre-car/) |
+| 7 | MITRE CAR | 102 CAR analytics × Amadey coverage · CAR-2021-12-001 reviewed, tuned, implemented in Elastic (Sigma → EQL → Kibana rule) · mapped to ATT&CK | 🧪 [week-07](week-07-mitre-car/) — lab run pending |
 | 8 | Adversary Emulation Plan **(Assignment 4)** | Amadey-style plan: initial access → persistence → exfiltration | 🚧 [week-08](week-08-adversary-emulation/) |
 | 9 | Atomic Red Team **(Assignment 5)** | Atomic tests for Amadey TTPs → SIEM | 🚧 [week-09](week-09-atomic-red-team/) |
 | 10 | APT Techniques **(Assignment 6)** | APT29 / APT41 TTPs → ATT&CK (+ Amadey users TA505, Kimsuky) | 🚧 [week-10](week-10-apt-techniques/) |
@@ -57,7 +57,9 @@ week-05-threat-hunting/        Hypothesis-driven hunts for Amadey (Elastic)
 week-06-attack-framework/      ATT&CK + Navigator, T1053.005 deep-dive, benign lab exercise
   lab/ queries/                ith-w6-task-exercise.ps1, ES|QL export of its telemetry
   scripts/ data/ navigator/    build_attack_profile.py, map_results.py, ATT&CK profile, layers
-week-07-mitre-car/             (in progress)
+week-07-mitre-car/             MITRE CAR: coverage of Amadey, CAR-2021-12-001 implemented + evaluated
+  sigma/ queries/ rules/       tuned Sigma rules, EQL + ES|QL, importable Kibana rules
+  scripts/ data/ navigator/    car_coverage.py, build_rules.py, evaluate_car.py, CAR catalogue, layer
 week-08-adversary-emulation/   (in progress)
 week-09-atomic-red-team/       (in progress)
 week-10-apt-techniques/        (in progress)

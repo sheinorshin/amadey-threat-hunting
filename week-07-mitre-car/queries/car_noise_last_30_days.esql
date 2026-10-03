@@ -1,0 +1,27 @@
+// Week 7 - how noisy is each version of the T1053.005 analytic in MY lab?
+// Kibana -> Discover -> ES|QL, time picker = Last 30 days.  One row, one count per version.
+//   car_2013_08_001          any schtasks.exe process                       (CAR pseudocode)
+//   car_2021_12_001          published logic, case-insensitive              (CAR pseudocode / Splunk semantics)
+//   tuned                    my version = sigma/*car_2021_12_001.yml        (writable path, profile folder,
+//                                                                            or interpreter every minute)
+// Text is lower-cased and "\" turned into "/" first, so the patterns need no escaping and no regex flags
+// (the Lucene regex engine behind RLIKE has no case-insensitive flag).
+FROM logs-system.security-*
+| WHERE event.code IN ("4688", "4698", "4702")
+| EVAL cl = REPLACE(TO_LOWER(COALESCE(process.command_line, "")), """\\""", "/"),
+       tc = REPLACE(TO_LOWER(COALESCE(winlog.event_data.TaskContent, "")), """\\""", "/")
+| EVAL is_task_event = event.code IN ("4698", "4702"),
+       is_schtasks = event.code == "4688" AND cl LIKE "*schtasks*",
+       creates = cl LIKE "*/create*" OR cl LIKE "*/change*",
+       text = CASE(event.code == "4688", cl, tc)
+| EVAL car_terms = text RLIKE """.*(\.cmd|\.ps1|\.vbs|\.py|\.js|\.exe|\.bat|javascript|powershell|wmic|rundll32|cmd|cscript|wscript|regsvr32|mshta|bitsadmin|certutil|msiexec|javaw|%appdata%|/appdata/roaming|%public%|c:/users/public|%programdata%|c:/programdata|%temp%|/appdata/local/temp|/windows/pla/system|/tasks|/registration/crmlog|/fxstmp|/spool/drivers/color|/tracing).*""",
+       writable = text RLIKE """.*(/appdata/|/users/public/|/programdata/|/temp/|%appdata%|%localappdata%|%temp%|%public%|%programdata%|/windows/tasks/|/windows/pla/system|/registration/crmlog|/fxstmp|/spool/drivers/color|/tracing/).*"""
+                  AND NOT text LIKE "*/programdata/microsoft/windows defender/*",
+       profile_root = text RLIKE """.*c:/users/[^/]+/[^/]+/[^/]+\.exe.*""",
+       every_minute = text LIKE "*pt1m*" OR text RLIKE """.*/sc +minute.*/mo +1([^0-9].*)?""",
+       interpreter = text RLIKE """.*(javascript|powershell|wmic|rundll32|cmd|cscript|wscript|regsvr32|mshta|bitsadmin|certutil|msiexec|javaw).*"""
+| EVAL suspicious = writable OR profile_root OR (every_minute AND interpreter)
+| STATS car_2013_08_001 = SUM(CASE(is_schtasks, 1, 0)),
+        car_2021_12_001 = SUM(CASE((is_schtasks AND creates AND car_terms) OR (is_task_event AND car_terms), 1, 0)),
+        tuned           = SUM(CASE((is_schtasks AND creates AND suspicious) OR (is_task_event AND suspicious), 1, 0)),
+        task_events     = SUM(CASE(is_task_event, 1, 0))

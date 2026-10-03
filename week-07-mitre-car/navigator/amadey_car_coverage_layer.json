@@ -1,0 +1,463 @@
+{
+  "versions": {
+    "attack": "19",
+    "navigator": "5.1.0",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "filters": {
+    "platforms": [
+      "Windows"
+    ]
+  },
+  "sorting": 0,
+  "layout": {
+    "layout": "side",
+    "aggregateFunction": "max",
+    "showID": true,
+    "showName": true,
+    "showAggregateScores": false,
+    "countUnscored": false,
+    "expandedSubtechniques": "annotated"
+  },
+  "hideDisabled": false,
+  "selectTechniquesAcrossTactics": true,
+  "selectSubtechniquesWithParent": false,
+  "selectVisibleTechniques": false,
+  "metadata": [
+    {
+      "name": "project",
+      "value": "github.com/sheinorshin/amadey-threat-hunting (Week 7)"
+    }
+  ],
+  "name": "Amadey techniques - MITRE CAR coverage",
+  "description": "The 40 Amadey techniques from Week 4, scored by MITRE CAR coverage: 3 = implemented in my SIEM this week, 2 = a CAR analytic exists, 1 = CAR covers only the parent technique, 0 = none.",
+  "gradient": {
+    "colors": [
+      "#d9d9d9",
+      "#f8c471",
+      "#5dade2",
+      "#1baf7a"
+    ],
+    "minValue": 0,
+    "maxValue": 3
+  },
+  "legendItems": [
+    {
+      "label": "Implemented in my SIEM (Week 7)",
+      "color": "#1baf7a"
+    },
+    {
+      "label": "CAR analytic exists",
+      "color": "#5dade2"
+    },
+    {
+      "label": "CAR covers parent only",
+      "color": "#f8c471"
+    },
+    {
+      "label": "No CAR analytic",
+      "color": "#d9d9d9"
+    }
+  ],
+  "showTacticRowBackground": false,
+  "tacticRowBackground": "#dddddd",
+  "techniques": [
+    {
+      "techniqueID": "T1591",
+      "tactic": "reconnaissance",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1587.001",
+      "tactic": "resource-development",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1588.001",
+      "tactic": "resource-development",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1027",
+      "tactic": "stealth",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1608.001",
+      "tactic": "resource-development",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1584.004",
+      "tactic": "resource-development",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1583.001",
+      "tactic": "resource-development",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1566.001",
+      "tactic": "initial-access",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1105",
+      "tactic": "command-and-control",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2013-07-001, CAR-2021-05-005, CAR-2021-05-006, CAR-2021-05-007",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1204.002",
+      "tactic": "execution",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2021-05-002",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1059.007",
+      "tactic": "execution",
+      "score": 1,
+      "color": "",
+      "comment": "CAR covers only the parent technique: CAR-2013-02-003, CAR-2013-04-002, CAR-2014-04-003, CAR-2014-11-002, CAR-2014-11-004, CAR-2021-01-002",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1218.005",
+      "tactic": "stealth",
+      "score": 1,
+      "color": "",
+      "comment": "CAR covers only the parent technique: CAR-2014-03-006, CAR-2019-04-002, CAR-2019-04-003, CAR-2020-11-009, CAR-2020-11-010",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1059.001",
+      "tactic": "execution",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2014-04-003, CAR-2014-11-004",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1106",
+      "tactic": "execution",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1053.005",
+      "tactic": "execution",
+      "score": 3,
+      "color": "",
+      "comment": "CAR analytic implemented in my SIEM (Week 7): CAR-2013-01-002, CAR-2013-04-002, CAR-2013-08-001, CAR-2015-04-002, CAR-2020-09-001, CAR-2021-12-001",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1053.005",
+      "tactic": "persistence",
+      "score": 3,
+      "color": "",
+      "comment": "CAR analytic implemented in my SIEM (Week 7): CAR-2013-01-002, CAR-2013-04-002, CAR-2013-08-001, CAR-2015-04-002, CAR-2020-09-001, CAR-2021-12-001",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1053.005",
+      "tactic": "privilege-escalation",
+      "score": 3,
+      "color": "",
+      "comment": "CAR analytic implemented in my SIEM (Week 7): CAR-2013-01-002, CAR-2013-04-002, CAR-2013-08-001, CAR-2015-04-002, CAR-2020-09-001, CAR-2021-12-001",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1547.001",
+      "tactic": "persistence",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2013-01-002, CAR-2013-03-001, CAR-2020-05-003, CAR-2021-12-002",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1547.001",
+      "tactic": "privilege-escalation",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2013-01-002, CAR-2013-03-001, CAR-2020-05-003, CAR-2021-12-002",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1112",
+      "tactic": "defense-impairment",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2013-01-002, CAR-2013-03-001, CAR-2013-04-002, CAR-2014-11-005, CAR-2020-05-003, CAR-2021-11-001, CAR-2021-11-002, CAR-2021-12-002",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1112",
+      "tactic": "persistence",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2013-01-002, CAR-2013-03-001, CAR-2013-04-002, CAR-2014-11-005, CAR-2020-05-003, CAR-2021-11-001, CAR-2021-11-002, CAR-2021-12-002",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1553.005",
+      "tactic": "defense-impairment",
+      "score": 1,
+      "color": "",
+      "comment": "CAR covers only the parent technique: CAR-2021-05-001",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1140",
+      "tactic": "stealth",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2021-05-009",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1564.001",
+      "tactic": "stealth",
+      "score": 1,
+      "color": "",
+      "comment": "CAR covers only the parent technique: CAR-2020-08-001, CAR-2020-08-002",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1071.001",
+      "tactic": "command-and-control",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1573.001",
+      "tactic": "command-and-control",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1568.001",
+      "tactic": "command-and-control",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1082",
+      "tactic": "discovery",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2013-04-002, CAR-2016-03-001",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1016",
+      "tactic": "discovery",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2013-04-002, CAR-2016-03-001",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1033",
+      "tactic": "discovery",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2013-04-002, CAR-2016-03-001",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1083",
+      "tactic": "discovery",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1518.001",
+      "tactic": "discovery",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2013-04-002",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1614",
+      "tactic": "discovery",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1005",
+      "tactic": "collection",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1041",
+      "tactic": "exfiltration",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1218.011",
+      "tactic": "stealth",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2014-03-006",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1115",
+      "tactic": "collection",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1555.003",
+      "tactic": "credential-access",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1113",
+      "tactic": "collection",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1090",
+      "tactic": "command-and-control",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1021.001",
+      "tactic": "lateral-movement",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2013-07-002, CAR-2013-10-001, CAR-2016-04-005",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1136.001",
+      "tactic": "persistence",
+      "score": 2,
+      "color": "",
+      "comment": "CAR analytic exists: CAR-2021-05-010",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1686",
+      "tactic": "defense-impairment",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1486",
+      "tactic": "impact",
+      "score": 0,
+      "color": "",
+      "comment": "no CAR analytic",
+      "enabled": true,
+      "showSubtechniques": false
+    }
+  ]
+}

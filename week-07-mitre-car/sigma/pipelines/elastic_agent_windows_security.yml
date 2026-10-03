@@ -1,0 +1,20 @@
+name: Elastic Agent (System + Windows integrations) field mapping - Week 7 CAR rules
+priority: 20
+transformations:
+  - id: ecs_field_mapping
+    type: field_name_mapping
+    mapping:
+      EventID: event.code
+      TaskContent: winlog.event_data.TaskContent
+      TaskName: winlog.event_data.TaskName
+      Image: process.executable
+      CommandLine: process.command_line
+      OriginalFileName: process.pe.original_file_name
+      ParentImage: process.parent.executable
+  - id: event_code_is_keyword
+    type: convert_type
+    target_type: str
+    field_name_conditions:
+      - type: include_fields
+        fields:
+          - event.code
