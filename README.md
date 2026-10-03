@@ -69,7 +69,7 @@ week-10-apt-techniques/        (in progress)
 
 ## AI use disclosure
 
-AI tools used (permitted by the course instructor): **Claude Opus 5.5** and **Fable 5.1**.
+AI tools used: **Claude Opus 5.5** and **Fable 5.1**.
 
 ## Main sources
 
