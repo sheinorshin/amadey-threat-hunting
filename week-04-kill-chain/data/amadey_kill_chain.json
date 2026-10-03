@@ -1,0 +1,713 @@
+{
+  "title": "Amadey intrusion (2025) mapped to the Lockheed Martin Cyber Kill Chain and MITRE ATT&CK",
+  "attack_version": "19.2",
+  "status_legend": {
+    "RULE": "Rule + data now",
+    "DATA": "Data now, no rule",
+    "SYSMON": "Needs Sysmon",
+    "BLIND": "Blind (proxy/mail/EDR)",
+    "CTI": "Outside network: CTI only"
+  },
+  "sources": {
+    "talos2025": "Cisco Talos, 'MaaS operation using Emmenhtal and Amadey linked to threats against Ukrainian entities', 17 Jul 2025 (A2)",
+    "trellix2025": "Trellix ARC, 'Amadey Exploiting Self-Hosted GitLab to Distribute StealC', 18 Dec 2025 (A2)",
+    "ms2026": "Microsoft Threat Intelligence, 'StealC and Amadey: Breaking down infostealers ...', 24 Jun 2026 (A2)",
+    "binan": "binaryanalys.is, 'Unmasking Amadey 5' (v5 commands, RC4 protocol) (B2)",
+    "asec2022": "AhnLab ASEC, Amadey distributing LockBit 3.0, Nov 2022 (A2)",
+    "s1025": "MITRE ATT&CK S1025 Amadey v1.1 (A1)",
+    "vt": "My VirusTotal relations + sandbox review of d7a366fa, Week 2",
+    "maltego": "My Maltego pivots (NS, reverse DNS, ASN), Week 2",
+    "misp": "My MISP events #1-#3, Week 3"
+  },
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Reconnaissance",
+      "lm_definition": "Research, identification and selection of targets.",
+      "summary": "Opportunistic MaaS targeting; the 2025 Talos campaign chose Ukrainian organisations.",
+      "actions": [
+        "Affiliate picks a target set (Ukrainian entities in the Talos campaign) and lure theme",
+        "No victim-specific research documented - commodity loader, volume over precision"
+      ],
+      "sources": [
+        "talos2025"
+      ],
+      "iocs_from_week3": 0,
+      "techniques": [
+        {
+          "id": "T1591",
+          "how": "Choice of Ukrainian organisations as targets (inferred, low confidence)",
+          "status": "CTI",
+          "confidence": "low",
+          "name": "Gather Victim Org Information",
+          "tactics": [
+            "reconnaissance"
+          ],
+          "tactic_names": [
+            "Reconnaissance"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "Weaponization",
+      "lm_definition": "Coupling a remote access trojan with an exploit into a deliverable payload.",
+      "summary": "Amadey bought as a service, configured, packed; payloads staged on GitHub and a hijacked GitLab.",
+      "actions": [
+        "Operator develops/sells the Amadey builder + panel (MaaS); affiliate obtains a build",
+        "Build config: bot ID 0702f, string-decryption key, encrypted strings; Emmenhtal JS is multi-layer obfuscated",
+        "Payloads uploaded to GitHub repos (Legendary99999) and to a compromised self-hosted GitLab",
+        "C2 domains registered, incl. brand-impersonating microsoft-telemetry.at"
+      ],
+      "sources": [
+        "talos2025",
+        "trellix2025",
+        "ms2026",
+        "maltego"
+      ],
+      "iocs_from_week3": 2,
+      "techniques": [
+        {
+          "id": "T1587.001",
+          "how": "Amadey developed and sold as MaaS since 2018 (operator side)",
+          "status": "CTI",
+          "confidence": "high",
+          "name": "Malware",
+          "tactics": [
+            "resource-development"
+          ],
+          "tactic_names": [
+            "Resource Development"
+          ]
+        },
+        {
+          "id": "T1588.001",
+          "how": "Affiliates buy Amadey builds (customer side)",
+          "status": "CTI",
+          "confidence": "high",
+          "name": "Malware",
+          "tactics": [
+            "resource-development"
+          ],
+          "tactic_names": [
+            "Resource Development"
+          ]
+        },
+        {
+          "id": "T1027",
+          "how": "Encrypted strings in the build, obfuscated Emmenhtal JavaScript",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "Obfuscated Files or Information",
+          "tactics": [
+            "stealth"
+          ],
+          "tactic_names": [
+            "Stealth"
+          ]
+        },
+        {
+          "id": "T1608.001",
+          "how": "Payloads staged in GitHub repos and in gitlab.bzctoons.net/suau/fds",
+          "status": "CTI",
+          "confidence": "high",
+          "name": "Upload Malware",
+          "tactics": [
+            "resource-development"
+          ],
+          "tactic_names": [
+            "Resource Development"
+          ]
+        },
+        {
+          "id": "T1584.004",
+          "how": "Self-hosted GitLab servers hijacked (bzctoons.net; gitd3ti.vokasi.uns.ac.id from my VT pivot)",
+          "status": "CTI",
+          "confidence": "high",
+          "name": "Server",
+          "tactics": [
+            "resource-development"
+          ],
+          "tactic_names": [
+            "Resource Development"
+          ]
+        },
+        {
+          "id": "T1583.001",
+          "how": "C2 domains such as microsoft-telemetry.at, goodpanelforgoodjob.com",
+          "status": "CTI",
+          "confidence": "medium",
+          "name": "Domains",
+          "tactics": [
+            "resource-development"
+          ],
+          "tactic_names": [
+            "Resource Development"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "Delivery",
+      "lm_definition": "Transmission of the weapon to the targeted environment.",
+      "summary": "Phishing archive with JavaScript -> Emmenhtal stage fetched as fake .mp4 -> Amadey EXE downloaded.",
+      "actions": [
+        "Phishing e-mail with an archive containing a JavaScript file",
+        "Next stage pulled from pivqmane[.]com/doc/fb.mp4 (Emmenhtal disguised as video)",
+        "Amadey binary downloaded from 185.215.113.16/test/amnew.exe"
+      ],
+      "sources": [
+        "talos2025",
+        "misp"
+      ],
+      "iocs_from_week3": 5,
+      "techniques": [
+        {
+          "id": "T1566.001",
+          "how": "Archive attachment with JavaScript in phishing mail",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "Spearphishing Attachment",
+          "tactics": [
+            "initial-access"
+          ],
+          "tactic_names": [
+            "Initial Access"
+          ]
+        },
+        {
+          "id": "T1105",
+          "how": "Emmenhtal stage and Amadey EXE downloaded over HTTP",
+          "status": "SYSMON",
+          "confidence": "high",
+          "name": "Ingress Tool Transfer",
+          "tactics": [
+            "command-and-control"
+          ],
+          "tactic_names": [
+            "Command and Control"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "Exploitation",
+      "lm_definition": "Triggering the intruder's code - a vulnerability, or the user/OS auto-executing it.",
+      "summary": "No software exploit: the user runs the script; Windows script hosts and LOLBins do the rest.",
+      "actions": [
+        "Victim opens the JavaScript from the archive (user execution - the 'exploited' component is the human)",
+        "JS -> mshta.exe runs the remote Emmenhtal stage -> PowerShell loads and starts Amadey"
+      ],
+      "sources": [
+        "talos2025"
+      ],
+      "iocs_from_week3": 6,
+      "techniques": [
+        {
+          "id": "T1204.002",
+          "how": "User double-clicks the JS file from the archive",
+          "status": "DATA",
+          "confidence": "high",
+          "name": "Malicious File",
+          "tactics": [
+            "execution"
+          ],
+          "tactic_names": [
+            "Execution"
+          ]
+        },
+        {
+          "id": "T1059.007",
+          "how": "JavaScript executed by Windows Script Host",
+          "status": "DATA",
+          "confidence": "high",
+          "name": "JavaScript",
+          "tactics": [
+            "execution"
+          ],
+          "tactic_names": [
+            "Execution"
+          ]
+        },
+        {
+          "id": "T1218.005",
+          "how": "mshta.exe executes the remote Emmenhtal stage",
+          "status": "DATA",
+          "confidence": "high",
+          "name": "Mshta",
+          "tactics": [
+            "stealth"
+          ],
+          "tactic_names": [
+            "Stealth"
+          ]
+        },
+        {
+          "id": "T1059.001",
+          "how": "Emmenhtal PowerShell layer downloads/starts the loader",
+          "status": "DATA",
+          "confidence": "high",
+          "name": "PowerShell",
+          "tactics": [
+            "execution"
+          ],
+          "tactic_names": [
+            "Execution"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "Installation",
+      "lm_definition": "Installing a backdoor / persistence on the victim system.",
+      "summary": "Amadey copies itself to a hex-named folder and survives reboots with a 1-minute scheduled task.",
+      "actions": [
+        "Copies itself to %TEMP%\\067640a009\\Yfgfwb.exe and starts it (CreateProcess)",
+        "Mutex f936986d553273aef6eeaeef713ad28f prevents double infection",
+        "Scheduled task Yfgfwb (C:\\Windows\\Tasks\\Yfgfwb.job) runs it every minute",
+        "Startup folder redirected in the registry; Zone.Identifier (MotW) zeroed; strings decrypted at runtime"
+      ],
+      "sources": [
+        "trellix2025",
+        "vt",
+        "s1025",
+        "talos2025"
+      ],
+      "iocs_from_week3": 20,
+      "techniques": [
+        {
+          "id": "T1106",
+          "how": "CreateProcessA starts the copied loader",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "Native API",
+          "tactics": [
+            "execution"
+          ],
+          "tactic_names": [
+            "Execution"
+          ]
+        },
+        {
+          "id": "T1053.005",
+          "how": "Task named after the EXE, trigger every 1 minute (confirmed in VT sandbox)",
+          "status": "RULE",
+          "confidence": "high",
+          "name": "Scheduled Task",
+          "tactics": [
+            "execution",
+            "persistence",
+            "privilege-escalation"
+          ],
+          "tactic_names": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation"
+          ]
+        },
+        {
+          "id": "T1547.001",
+          "how": "User Shell Folders\\Startup redirected to the install folder",
+          "status": "SYSMON",
+          "confidence": "high",
+          "name": "Registry Run Keys / Startup Folder",
+          "tactics": [
+            "persistence",
+            "privilege-escalation"
+          ],
+          "tactic_names": [
+            "Persistence",
+            "Privilege Escalation"
+          ]
+        },
+        {
+          "id": "T1112",
+          "how": "Registry values overwritten for persistence",
+          "status": "SYSMON",
+          "confidence": "high",
+          "name": "Modify Registry",
+          "tactics": [
+            "defense-impairment",
+            "persistence"
+          ],
+          "tactic_names": [
+            "Defense Impairment",
+            "Persistence"
+          ]
+        },
+        {
+          "id": "T1553.005",
+          "how": "Zone.Identifier ADS zeroed so SmartScreen/MotW checks do not fire",
+          "status": "SYSMON",
+          "confidence": "high",
+          "name": "Mark-of-the-Web Bypass",
+          "tactics": [
+            "defense-impairment"
+          ],
+          "tactic_names": [
+            "Defense Impairment"
+          ]
+        },
+        {
+          "id": "T1140",
+          "how": "Encrypted strings (AV names, C2, file names) decoded at runtime",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "Deobfuscate/Decode Files or Information",
+          "tactics": [
+            "stealth"
+          ],
+          "tactic_names": [
+            "Stealth"
+          ]
+        },
+        {
+          "id": "T1564.001",
+          "how": "Hidden files/directories (Talos STIX listed deprecated T1158)",
+          "status": "BLIND",
+          "confidence": "medium",
+          "name": "Hidden Files and Directories",
+          "tactics": [
+            "stealth"
+          ],
+          "tactic_names": [
+            "Stealth"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 6,
+      "name": "Command & Control",
+      "lm_definition": "Compromised host beacons outbound to an Internet controller.",
+      "summary": "HTTP POST check-in with an RC4-encrypted host profile; infrastructure shared with StealC.",
+      "actions": [
+        "POST /0gjSy4hf3/index.php to 91.92.243.129 (AS202412) - v5: st=s, then r=<hex(RC4(profile))>",
+        "Profile = computer, user, domain, OS, admin rights, AV product, locale check (skips Russia)",
+        "Fast-flux DNS for C2 domains; one C2 domain now sinkholed by Microsoft (my Maltego pivot)"
+      ],
+      "sources": [
+        "trellix2025",
+        "binan",
+        "s1025",
+        "maltego"
+      ],
+      "iocs_from_week3": 18,
+      "techniques": [
+        {
+          "id": "T1071.001",
+          "how": "HTTP POST to /<random>/index.php (Sigma rule ready, needs proxy logs)",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "Web Protocols",
+          "tactics": [
+            "command-and-control"
+          ],
+          "tactic_names": [
+            "Command and Control"
+          ]
+        },
+        {
+          "id": "T1573.001",
+          "how": "v5 encrypts the host profile with RC4 before sending",
+          "status": "BLIND",
+          "confidence": "medium",
+          "name": "Symmetric Cryptography",
+          "tactics": [
+            "command-and-control"
+          ],
+          "tactic_names": [
+            "Command and Control"
+          ]
+        },
+        {
+          "id": "T1568.001",
+          "how": "Fast-flux DNS hides C2 hosts (S1025)",
+          "status": "SYSMON",
+          "confidence": "medium",
+          "name": "Fast Flux DNS",
+          "tactics": [
+            "command-and-control"
+          ],
+          "tactic_names": [
+            "Command and Control"
+          ]
+        },
+        {
+          "id": "T1082",
+          "how": "OS version, computer name in the check-in",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "System Information Discovery",
+          "tactics": [
+            "discovery"
+          ],
+          "tactic_names": [
+            "Discovery"
+          ]
+        },
+        {
+          "id": "T1016",
+          "how": "Victim IP / network configuration",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "System Network Configuration Discovery",
+          "tactics": [
+            "discovery"
+          ],
+          "tactic_names": [
+            "Discovery"
+          ]
+        },
+        {
+          "id": "T1033",
+          "how": "User name (GetUserNameA)",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "System Owner/User Discovery",
+          "tactics": [
+            "discovery"
+          ],
+          "tactic_names": [
+            "Discovery"
+          ]
+        },
+        {
+          "id": "T1083",
+          "how": "Looks for AV program folders",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "File and Directory Discovery",
+          "tactics": [
+            "discovery"
+          ],
+          "tactic_names": [
+            "Discovery"
+          ]
+        },
+        {
+          "id": "T1518.001",
+          "how": "AV product code in the av= field",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "Security Software Discovery",
+          "tactics": [
+            "discovery"
+          ],
+          "tactic_names": [
+            "Discovery"
+          ]
+        },
+        {
+          "id": "T1614",
+          "how": "Locale / keyboard check, exits on Russian systems",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "System Location Discovery",
+          "tactics": [
+            "discovery"
+          ],
+          "tactic_names": [
+            "Discovery"
+          ]
+        },
+        {
+          "id": "T1005",
+          "how": "Host data collected for the panel",
+          "status": "BLIND",
+          "confidence": "high",
+          "name": "Data from Local System",
+          "tactics": [
+            "collection"
+          ],
+          "tactic_names": [
+            "Collection"
+          ]
+        },
+        {
+          "id": "T1041",
+          "how": "Host profile sent over the C2 channel",
+          "status": "SYSMON",
+          "confidence": "high",
+          "name": "Exfiltration Over C2 Channel",
+          "tactics": [
+            "exfiltration"
+          ],
+          "tactic_names": [
+            "Exfiltration"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 7,
+      "name": "Actions on Objectives",
+      "lm_definition": "The intruder achieves the original goal (theft, destruction, further access).",
+      "summary": "Plugins steal credentials and swap wallets; the real goal is delivering StealC (next kill chain).",
+      "actions": [
+        "Downloads /0gjSy4hf3/Plugins/clip64.dll; rundll32 ...clip64.dll, Main swaps crypto wallets in the clipboard",
+        "cred64.dll steals browser credentials",
+        "Pulls StealC (protected.zip) from the hijacked GitLab, PowerShell Expand-Archive, runs x64_protect.exe -> exfil to 158.94.208.130",
+        "v5 RAT options: screenshots, SOCKS proxy, RDP + hidden admin + firewall rule; historically LockBit 3.0"
+      ],
+      "sources": [
+        "trellix2025",
+        "vt",
+        "binan",
+        "asec2022"
+      ],
+      "iocs_from_week3": 30,
+      "techniques": [
+        {
+          "id": "T1105",
+          "how": "Plugins and StealC downloaded (clip64.dll, protected.zip)",
+          "status": "SYSMON",
+          "confidence": "high",
+          "name": "Ingress Tool Transfer",
+          "tactics": [
+            "command-and-control"
+          ],
+          "tactic_names": [
+            "Command and Control"
+          ]
+        },
+        {
+          "id": "T1218.011",
+          "how": "rundll32 <path>\\clip64.dll, Main",
+          "status": "RULE",
+          "confidence": "high",
+          "name": "Rundll32",
+          "tactics": [
+            "stealth"
+          ],
+          "tactic_names": [
+            "Stealth"
+          ]
+        },
+        {
+          "id": "T1115",
+          "how": "Clipper plugin replaces wallet addresses",
+          "status": "RULE",
+          "confidence": "high",
+          "name": "Clipboard Data",
+          "tactics": [
+            "collection"
+          ],
+          "tactic_names": [
+            "Collection"
+          ]
+        },
+        {
+          "id": "T1555.003",
+          "how": "cred64.dll and StealC steal browser credentials",
+          "status": "RULE",
+          "confidence": "high",
+          "name": "Credentials from Web Browsers",
+          "tactics": [
+            "credential-access"
+          ],
+          "tactic_names": [
+            "Credential Access"
+          ]
+        },
+        {
+          "id": "T1059.001",
+          "how": "PowerShell Expand-Archive unpacks protected.zip",
+          "status": "DATA",
+          "confidence": "high",
+          "name": "PowerShell",
+          "tactics": [
+            "execution"
+          ],
+          "tactic_names": [
+            "Execution"
+          ]
+        },
+        {
+          "id": "T1113",
+          "how": "v5 screen capture; screenshot upload URL index.php?scr=1 seen in VT relations of d7a366fa",
+          "status": "BLIND",
+          "confidence": "medium",
+          "name": "Screen Capture",
+          "tactics": [
+            "collection"
+          ],
+          "tactic_names": [
+            "Collection"
+          ]
+        },
+        {
+          "id": "T1090",
+          "how": "v5 command: SOCKS proxy through the victim",
+          "status": "SYSMON",
+          "confidence": "medium",
+          "name": "Proxy",
+          "tactics": [
+            "command-and-control"
+          ],
+          "tactic_names": [
+            "Command and Control"
+          ]
+        },
+        {
+          "id": "T1021.001",
+          "how": "v5 command: enable RDP (fDenyTSConnections=0)",
+          "status": "SYSMON",
+          "confidence": "medium",
+          "name": "Remote Desktop Protocol",
+          "tactics": [
+            "lateral-movement"
+          ],
+          "tactic_names": [
+            "Lateral Movement"
+          ]
+        },
+        {
+          "id": "T1136.001",
+          "how": "v5 command: hidden local admin account",
+          "status": "DATA",
+          "confidence": "medium",
+          "name": "Local Account",
+          "tactics": [
+            "persistence"
+          ],
+          "tactic_names": [
+            "Persistence"
+          ]
+        },
+        {
+          "id": "T1686",
+          "how": "v5 command: firewall rule for RDP (was T1562.004 before v19)",
+          "status": "DATA",
+          "confidence": "medium",
+          "name": "Disable or Modify System Firewall",
+          "tactics": [
+            "defense-impairment"
+          ],
+          "tactic_names": [
+            "Defense Impairment"
+          ]
+        },
+        {
+          "id": "T1486",
+          "how": "LockBit 3.0 delivered by Amadey (ASEC 2022) - customer-dependent impact",
+          "status": "BLIND",
+          "confidence": "medium",
+          "name": "Data Encrypted for Impact",
+          "tactics": [
+            "impact"
+          ],
+          "tactic_names": [
+            "Impact"
+          ]
+        }
+      ]
+    }
+  ],
+  "iocs_total_week3": 81,
+  "iocs_unmapped": 0
+}
