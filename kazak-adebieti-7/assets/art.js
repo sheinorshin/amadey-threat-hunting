@@ -40,6 +40,7 @@
     close: I('<path d="M6 6l12 12M18 6L6 18"/>'),
     left: I('<path d="M14.5 5.5L8 12l6.5 6.5"/>'),
     right: I('<path d="M9.5 5.5L16 12l-6.5 6.5"/>'),
+    up: I('<path d="M5.5 14.5L12 8l6.5 6.5"/>'),
     check: I('<path d="M4.5 12.5l4.8 4.8L19.5 7"/>'),
     home: I('<path d="M3.5 11L12 4l8.5 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/>'),
     books: I('<path d="M4 4.5h4v15H4zM9.5 4.5h4v15h-4z"/><path d="M15.3 5.6l3.8-1 3.6 13.8-3.8 1z"/>'),

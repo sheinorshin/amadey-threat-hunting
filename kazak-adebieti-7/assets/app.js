@@ -14,6 +14,8 @@
     set(k, v) { try { localStorage.setItem('ka7.' + k, JSON.stringify(v)); } catch (e) { /* сақтау мүмкін емес */ } }
   };
 
+  const PHONE = window.matchMedia('(max-width: 620px)');
+  const CALM = window.matchMedia('(prefers-reduced-motion: reduce)');
   const B = window.BOOK, CH = window.CHAPTERS, TP = window.TOPICS, AU = window.AUTHORS, CR = window.CHARACTERS;
   const TERMS = window.TERMS, WORDS = window.WORDS, TL = window.TIMELINE, QZ = window.QUIZ, RG = window.REGIONS, CITIES = window.CITIES;
   const EM = window.EMBLEMS, UI = window.UI;
@@ -68,7 +70,8 @@
 
   /* ---------- Ортақ бөлшектер ---------- */
   const secH = (title, more) => `<div class="sec-h"><h2>${title}</h2>${more || ''}</div>`;
-  const block = (title, inner, k) => `<section class="block"><h2>${title}${k ? `<span class="k">${k}</span>` : ''}</h2>${inner}</section>`;
+  const block = (title, inner, k, id) => `<section class="block"${id ? ` id="s-${id}"` : ''}><h2>${title}${k ? `<span class="k">${k}</span>` : ''}</h2>${inner}</section>`;
+  const readBtn = (id, cls = '') => { const r = READ.has(id); return `<button type="button" class="btn ${r ? 'done' : 'alt'} ${cls}" data-read="${id}" aria-pressed="${r}">${r ? UI.check + ' Оқылды' : 'Оқыдым деп белгілеу'}</button>`; };
   const paras = arr => (arr || []).map(p => `<p>${esc(p)}</p>`).join('');
   const quoteBlock = q => (q ? `<figure class="quote"><p>«${esc(q.text)}»</p><cite>— ${esc(q.by)}</cite></figure>` : '');
   const termCard = name => {
@@ -77,6 +80,8 @@
     return `<div class="term card"><b>${esc(g.t)}</b><p>${esc(g.d)}</p>${g.ex ? `<p class="ex">${esc(g.ex)}</p>` : ''}</div>`;
   };
   const wordsList = list => `<dl class="words">${list.map(w => `<div><dt>${esc(w[0])}</dt><dd>${esc(w[1])}</dd></div>`).join('')}</dl>`;
+  /* Телефонда ұзын сөз тізімінің алғашқы 6 сөзі ғана көрінеді, қалғаны батырмамен ашылады */
+  const clipWords = list => (list.length > 8 ? `<div class="clip">${wordsList(list)}<button type="button" class="btn alt clip-btn" data-unclip>Тағы ${list.length - 6} сөзді ашу</button></div>` : wordsList(list));
   const charCards = ids => `<div class="cgrid">${ids.map(id => CMAP[id]).filter(Boolean).map(c => {
     const t = TMAP[c.w];
     return `<button type="button" class="ccard" data-char="${c.id}" style="--c:${tColor(t)}">${ini(c.n, tColor(t))}<span><b>${esc(c.n)}</b><small>${esc(c.role)}${c.real ? ' · тарихи тұлға' : ''}</small><span class="d">${esc(c.d)}</span></span></button>`;
@@ -92,23 +97,37 @@
     const day = Math.floor(Date.now() / 864e5);
     return pool[day % pool.length];
   }
+  function spine(t, phone) {
+    const span = Math.min(t.p[1] - t.p[0], 28);
+    const h = Math.round(phone ? 206 + span * 2.4 : 196 + span * 3.6);
+    const a = workAuthor(t);
+    const au = a ? a.short : (t.kind === 'article' ? 'мақала' : 'халық жыры');
+    const title = t.t.replace(/[«»]/g, '');
+    return `<a class="spine" href="#t-${t.id}" style="--c:${cvar(t.ch)};height:${h}px" aria-label="${esc(t.full || t.t)}, ${esc(workBy(t))}${READ.has(t.id) ? ', оқылды' : ''}"><span class="pg">${t.p[0]}</span><span class="tt">${esc(title)}</span><span class="au">${esc(au)}</span>${READ.has(t.id) ? `<span class="ok">${UI.check}</span>` : ''}</a>`;
+  }
+  /* Компьютерде — бір ұзын сөре */
   function shelf() {
     let html = '', lastCh = 0;
     WORKS.forEach(t => {
       if (t.ch !== lastCh) { lastCh = t.ch; const ch = chOf(t.ch); html += `<a class="book-end" href="#c-${ch.n}" style="--c:${cvar(ch.n)}" title="${esc(ch.r + ' тарау: ' + ch.t)}">${ch.r}</a>`; }
-      const span = t.p[1] - t.p[0];
-      const h = Math.round(196 + Math.min(span, 28) * 3.6);
-      const a = workAuthor(t);
-      const au = a ? a.short : (t.kind === 'article' ? 'мақала' : 'халық жыры');
-      const title = t.t.replace(/[«»]/g, '');
-      html += `<a class="spine" href="#t-${t.id}" style="--c:${cvar(t.ch)};height:${h}px" aria-label="${esc(t.full || t.t)}, ${esc(workBy(t))}${READ.has(t.id) ? ', оқылды' : ''}"><span class="pg">${t.p[0]}</span><span class="tt">${esc(title)}</span><span class="au">${esc(au)}</span>${READ.has(t.id) ? `<span class="ok">${UI.check}</span>` : ''}</a>`;
+      html += spine(t, false);
     });
     return html;
+  }
+  /* Телефонда — әр тарауға бір шағын сөре, бүйірге жылжытпай-ақ толық көрінеді */
+  function phoneShelves() {
+    const six = chOf(6);
+    return CH.filter(c => WORKS.some(t => t.ch === c.n)).map(c => `<div class="pshelf" style="--c:${cvar(c.n)}">
+        <a class="pshelf-h" href="#c-${c.n}"><span class="rn">${c.r}</span><span class="t">${esc(c.t)}</span>${UI.right}</a>
+        <div class="pshelf-row">${WORKS.filter(t => t.ch === c.n).map(t => spine(t, true)).join('')}</div></div>`).join('') +
+      `<a class="pshelf-h pshelf-6" href="#c-6" style="--c:${cvar(6)}"><span class="rn">${six.r}</span><span class="t">${esc(six.t)}</span>${UI.right}</a>`;
   }
   function home() {
     const q = quoteOfDay();
     const qref = q[2].startsWith('a:') ? `#a-${q[2].slice(2)}` : `#t-${q[2]}`;
     const readN = WORKS.filter(t => READ.has(t.id)).length;
+    const last = TMAP[store.get('last', '')];
+    const cont = last ? `<section class="wrap cont-wrap"><a class="cont card" href="#t-${last.id}" style="--c:${tColor(last)}">${emb(last)}<span class="ct"><small>Соңғы ашқаның</small><b>${esc(last.t)}</b><span>${esc(workBy(last) || chOf(last.ch).t)}</span></span><span class="go">${UI.right}</span></a></section>` : '';
     return `
     <section class="hero wrap">
       <div>
@@ -131,17 +150,20 @@
         <div class="row"><span>Көлемі</span><span>${B.pages} бет, 6 тарау</span></div>
       </div>
     </section>
-
+    ${cont}
     <section class="sec wrap shelf-wrap" aria-labelledby="shelf-h">
       <div class="sec-h"><h2 id="shelf-h">Кітап сөресі</h2>
         <div class="progress" title="Оқылған шығармалар"><span>Оқылды: ${readN}/${WORKS.length}</span><span class="bar"><i style="width:${Math.round(readN / WORKS.length * 100)}%"></i></span></div>
       </div>
-      <p class="muted ui" style="font-size:15px">Әр кітап — оқулықтағы бір шығарма. Кітаптың биіктігі оқулықтағы бет санына сай, үстіндегі сан — басталатын беті.</p>
-      <div class="shelf-scroll"><div class="shelf">${shelf()}</div></div>
-      <div class="shelf-legend">${CH.slice(0, 5).map(c => `<span style="--c:${cvar(c.n)}"><i></i>${c.r}. ${esc(c.t)}</span>`).join('')}</div>
+      <p class="shelf-note">Әр кітап — оқулықтағы бір шығарма. Кітаптың биіктігі оқулықтағы бет санына сай, үстіндегі сан — басталатын беті.</p>
+      <div class="dshelf">
+        <div class="shelf-scroll"><div class="shelf">${shelf()}</div></div>
+        <div class="shelf-legend">${CH.slice(0, 5).map(c => `<span style="--c:${cvar(c.n)}"><i></i>${c.r}. ${esc(c.t)}</span>`).join('')}</div>
+      </div>
+      <div class="pshelves">${phoneShelves()}</div>
     </section>
 
-    <section class="sec wrap">
+    <section class="sec wrap chapters-sec">
       ${secH('Тараулар', '<a class="more" href="#works">Толық мазмұны →</a>')}
       <div class="chgrid">${CH.map(c => {
         const ts = TP.filter(t => t.ch === c.n);
@@ -171,7 +193,7 @@
       <div class="toc">${CH.map(c => `
         <section class="toc-ch" style="--c:${cvar(c.n)}">
           <a class="toc-head" href="#c-${c.n}"><span class="rn">${c.r}</span><h2>${esc(c.t)}</h2><span class="pg">${c.p}</span></a>
-          <ol class="toc-list">${TP.filter(t => t.ch === c.n).map(t => `<li><a href="#t-${t.id}"><span class="tl">${esc(t.full || t.t)}<small>${esc(workBy(t) || (t.kind === 'topic' ? 'Шолу тақырыбы' : ''))}</small></span><span class="dots"></span>${READ.has(t.id) ? `<span class="rd" title="Оқылды">${UI.check}</span>` : ''}<span class="pg">${t.p[0]}</span></a></li>`).join('')}</ol>
+          <ol class="toc-list">${TP.filter(t => t.ch === c.n).map(t => `<li><a href="#t-${t.id}"><span class="tn">${esc(t.full || t.t)}<small>${esc(workBy(t) || (t.kind === 'topic' ? 'Шолу тақырыбы' : ''))}</small></span><span class="dots"></span>${READ.has(t.id) ? `<span class="rd" title="Оқылды">${UI.check}</span>` : ''}<span class="pg">${t.p[0]}</span></a></li>`).join('')}</ol>
         </section>`).join('')}
       </div></div>`;
   }
@@ -216,39 +238,40 @@
     if (t.when) rows.push(['Уақыты', esc(t.when)]);
     if (t.place) rows.push(['Мекені', esc(t.place)]);
     rows.push(['Оқулықта', esc(pages(t))]);
-    if (t.chars && t.chars.length) rows.push(['Кейіпкерлері', `<a href="#chars-${t.id}" data-jump="chars">${t.chars.length} кейіпкер</a>`]);
+    if (t.chars && t.chars.length) rows.push(['Кейіпкерлері', `<button type="button" class="linkbtn" data-sec="chars">${t.chars.length} кейіпкер</button>`]);
     const words = WORDS.filter(w => w[2] === t.id);
-    const read = READ.has(t.id);
 
-    const blocks = [];
+    /* Әр бөлім бет мазмұнына (телефондағы жолақ пен компьютердегі «Бұл бетте») тіркеледі */
+    const blocks = [], secs = [];
+    const blk = (id, label, title, inner, k) => { secs.push([id, label]); return block(title, inner, k, id); };
     if (isWork) {
-      blocks.push(block('Шығарма туралы', `<div class="prose${dc(t.about)}" style="--c:${c}"><p>${esc(t.about)}</p>${t.structure ? `<p>${esc(t.structure)}</p>` : ''}</div>`));
+      blocks.push(blk('about', 'Туралы', 'Шығарма туралы', `<div class="prose${dc(t.about)}" style="--c:${c}"><p>${esc(t.about)}</p>${t.structure ? `<p>${esc(t.structure)}</p>` : ''}</div>`));
       if (t.plot) {
         const g = (t.genre || '').toLowerCase();
         const h = t.kind === 'article' ? 'Мақала желісі' : (/^(толғау|өлең)/.test(g) ? 'Өлең желісі' : 'Оқиға желісі');
-        blocks.push(block(h, `<ol class="plot" style="--c:${c}">${t.plot.map(([b, p]) => `<li><div><b>${esc(b)}</b><p>${esc(p)}</p></div></li>`).join('')}</ol>`));
+        blocks.push(blk('plot', 'Желісі', h, `<ol class="plot" style="--c:${c}">${t.plot.map(([b, p]) => `<li><div><b>${esc(b)}</b><p>${esc(p)}</p></div></li>`).join('')}</ol>`));
       }
-      blocks.push(block('Тақырыбы мен идеясы', `<div class="ti"><div class="card"><h3>Тақырыбы</h3><p>${esc(t.theme)}</p></div><div class="card"><h3>Идеясы</h3><p>${esc(t.idea)}</p></div></div>${t.lyric ? `<p class="note" style="margin-top:12px">${esc(t.lyric)}</p>` : ''}`));
-      if (t.chars && t.chars.length) blocks.push(`<div id="chars-${t.id}">${block('Кейіпкерлер', charCards(t.chars))}</div>`);
+      blocks.push(blk('idea', 'Идеясы', 'Тақырыбы мен идеясы', `<div class="ti"><div class="card"><h3>Тақырыбы</h3><p>${esc(t.theme)}</p></div><div class="card"><h3>Идеясы</h3><p>${esc(t.idea)}</p></div></div>${t.lyric ? `<p class="note" style="margin-top:12px">${esc(t.lyric)}</p>` : ''}`));
+      if (t.chars && t.chars.length) blocks.push(blk('chars', 'Кейіпкерлер', 'Кейіпкерлер', charCards(t.chars)));
     } else {
-      blocks.push(block('Тақырып туралы', `<div class="prose${dc((t.body || [])[0])}" style="--c:${c}">${paras(t.body)}</div>`));
-      if (t.list) blocks.push(block(esc(t.list.h), `<ul class="facts">${t.list.items.map(x => `<li><span>${esc(x)}</span></li>`).join('')}</ul>`));
-      if (t.examples) blocks.push(block('Үлгілері', `<div class="chips">${t.examples.map(x => `<span class="chip">${esc(x)}</span>`).join('')}</div>`));
-      if (t.runes) blocks.push(block('Тастағы алғашқы сөздер', `<div class="runes">${t.runes.map(([r, k]) => `<div class="rune card"><b lang="otk">${r}</b><span>${esc(k)}</span></div>`).join('')}</div><p class="note" style="margin-top:12px">Көне түркі жазуы оңнан солға қарай оқылады.</p>`));
-      if (t.periods) blocks.push(block('Ежелгі дәуір әдебиетінің кезеңдері', `<div class="tbl-wrap"><table class="periods"><tbody>${t.periods.map(([y, n, w]) => `<tr><th>${esc(y)}</th><td><b>${esc(n)}</b><span>${esc(w)}</span></td></tr>`).join('')}</tbody></table></div>`));
-      if (t.regions) blocks.push(block('Қазақстан өңірлері', `<div class="regions">${RG.map(r => `<div class="region card"><h3>${esc(r.zone)}</h3><ul>${r.items.map(([o, cc]) => `<li>${esc(o)}<span>${esc(cc)}</span></li>`).join('')}</ul><p class="w"><b>Ақын-жазушылар:</b> ${r.writers.map(esc).join(', ')}</p><div class="chips">${r.works.map(id => TMAP[id]).filter(Boolean).map(x => `<a class="chip" href="#t-${x.id}">${esc(x.t)}</a>`).join('')}</div></div>`).join('')}<div class="region card"><h3>Республикалық маңызы бар қалалар</h3><ul>${CITIES.map(([n, d]) => `<li>${esc(n)}<span>${esc(d)}</span></li>`).join('')}</ul></div></div>`));
+      blocks.push(blk('about', 'Туралы', 'Тақырып туралы', `<div class="prose${dc((t.body || [])[0])}" style="--c:${c}">${paras(t.body)}</div>`));
+      if (t.list) blocks.push(blk('list', esc(t.list.h.split(' (')[0]), esc(t.list.h), `<ul class="facts">${t.list.items.map(x => `<li><span>${esc(x)}</span></li>`).join('')}</ul>`));
+      if (t.examples) blocks.push(blk('examples', 'Үлгілері', 'Үлгілері', `<div class="chips">${t.examples.map(x => `<span class="chip">${esc(x)}</span>`).join('')}</div>`));
+      if (t.runes) blocks.push(blk('runes', 'Руна жазуы', 'Тастағы алғашқы сөздер', `<div class="runes">${t.runes.map(([r, k]) => `<div class="rune card"><b lang="otk">${r}</b><span>${esc(k)}</span></div>`).join('')}</div><p class="note" style="margin-top:12px">Көне түркі жазуы оңнан солға қарай оқылады.</p>`));
+      if (t.periods) blocks.push(blk('periods', 'Кезеңдері', 'Ежелгі дәуір әдебиетінің кезеңдері', `<div class="tbl-wrap"><table class="periods"><tbody>${t.periods.map(([y, n, w]) => `<tr><th>${esc(y)}</th><td><b>${esc(n)}</b><span>${esc(w)}</span></td></tr>`).join('')}</tbody></table></div>`));
+      if (t.regions) blocks.push(blk('regions', 'Өңірлер', 'Қазақстан өңірлері', `<div class="regions">${RG.map(r => `<div class="region card"><h3>${esc(r.zone)}</h3><ul>${r.items.map(([o, cc]) => `<li>${esc(o)}<span>${esc(cc)}</span></li>`).join('')}</ul><p class="w"><b>Ақын-жазушылар:</b> ${r.writers.map(esc).join(', ')}</p><div class="chips">${r.works.map(id => TMAP[id]).filter(Boolean).map(x => `<a class="chip" href="#t-${x.id}">${esc(x.t)}</a>`).join('')}</div></div>`).join('')}<div class="region card"><h3>Республикалық маңызы бар қалалар</h3><ul>${CITIES.map(([n, d]) => `<li>${esc(n)}<span>${esc(d)}</span></li>`).join('')}</ul></div></div>`));
     }
     if (t.excerpt) {
       const ex = t.excerpt;
-      blocks.push(block('Үзінді', `<figure class="verse" style="--c:${c}"><div class="vh">${esc(ex.h)}</div><div class="vl${ex.prose ? ' prose-ex' : ''}">${ex.lines.map(l => `<span>${esc(l)}</span>`).join('')}</div>${ex.note ? `<div class="vn">${esc(ex.note)}</div>` : ''}</figure>`));
+      blocks.push(blk('excerpt', 'Үзінді', 'Үзінді', `<figure class="verse" style="--c:${c}"><div class="vh">${esc(ex.h)}</div><div class="vl${ex.prose ? ' prose-ex' : ''}">${ex.lines.map(l => `<span>${esc(l)}</span>`).join('')}</div>${ex.note ? `<div class="vn">${esc(ex.note)}</div>` : ''}</figure>`));
     }
     if ((t.facts && t.facts.length) || t.quote) {
-      blocks.push(block('Бағалы дерек', `${t.facts ? `<ul class="facts">${t.facts.map(f => `<li><span>${esc(f)}</span></li>`).join('')}</ul>` : ''}${t.quote ? `<div style="margin-top:18px"><div class="eyebrow" style="margin-bottom:8px">Зерделі сөз</div>${quoteBlock(t.quote)}</div>` : ''}`));
+      blocks.push(blk('facts', 'Дерек', 'Бағалы дерек', `${t.facts ? `<ul class="facts">${t.facts.map(f => `<li><span>${esc(f)}</span></li>`).join('')}</ul>` : ''}${t.quote ? `<div style="margin-top:18px"><div class="eyebrow" style="margin-bottom:8px">Зерделі сөз</div>${quoteBlock(t.quote)}</div>` : ''}`));
     }
-    if (t.proverbs) blocks.push(block('Сөздің көркі — мақал', `<div class="proverbs">${t.proverbs.map(p => `<p>${esc(p)}</p>`).join('')}</div>`));
-    if (t.terms && t.terms.length) blocks.push(block('Әдебиет теориясы', `<div class="terms">${t.terms.map(termCard).join('')}</div>`));
-    if (words.length) blocks.push(block('Сөзмаржан', wordsList(words), words.length + ' сөз'));
-    if (t.qs) blocks.push(block('Өзіңді тексер', `<ol class="qs" style="--c:${c}">${t.qs.map(([lv, q]) => `<li><span class="lv">${esc(lv)}</span><span>${esc(q)}</span></li>`).join('')}</ol>`));
+    if (t.proverbs) blocks.push(blk('proverbs', 'Мақал', 'Сөздің көркі — мақал', `<div class="proverbs">${t.proverbs.map(p => `<p>${esc(p)}</p>`).join('')}</div>`));
+    if (t.terms && t.terms.length) blocks.push(blk('terms', 'Теория', 'Әдебиет теориясы', `<div class="terms">${t.terms.map(termCard).join('')}</div>`));
+    if (words.length) blocks.push(blk('words', 'Сөзмаржан', 'Сөзмаржан', clipWords(words), words.length + ' сөз'));
+    if (t.qs) blocks.push(blk('qs', 'Сұрақтар', 'Өзіңді тексер', `<ol class="qs" style="--c:${c}">${t.qs.map(([lv, q]) => `<li><span class="lv">${esc(lv)}</span><span>${esc(q)}</span></li>`).join('')}</ol>`));
 
     return `<div class="wrap">
       <header class="thero" style="--c:${c}">
@@ -258,11 +281,13 @@
         </div>
         ${emb(t)}
       </header>
+      <nav class="rail" aria-label="Бет бөлімдері"><div class="rail-in">${secs.map(([id, l]) => `<button type="button" data-sec="${id}">${l}</button>`).join('')}</div></nav>
       <div class="tlayout">
-        <div class="content">${blocks.join('')}</div>
+        <div class="content">${blocks.join('')}${readBtn(t.id, 'end-read')}</div>
         <aside class="aside">
           <div class="passport card" style="--c:${c}"><h2>${isWork ? 'Шығарма паспорты' : 'Тақырып паспорты'}</h2><dl>${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl></div>
-          <button type="button" class="btn ${read ? 'done' : 'alt'}" data-read="${t.id}" aria-pressed="${read}">${read ? UI.check + ' Оқылды' : 'Оқыдым деп белгілеу'}</button>
+          ${readBtn(t.id, 'side-read')}
+          <div class="onpage card"><h2>Бұл бетте</h2>${secs.map(([id, l]) => `<button type="button" data-sec="${id}">${l}</button>`).join('')}</div>
         </aside>
       </div>
       <nav class="pn" aria-label="Тақырыптар">
@@ -291,7 +316,7 @@
       <header class="ahero" style="--c:${c}">${ini(a.n, c)}
         <div><span class="eyebrow"><a href="#authors">Ақын-жазушылар</a></span><h1 style="margin-top:8px">${esc(a.n)}</h1><p class="y">${esc(a.y)}</p><p class="r">${esc(a.role)}${a.born && a.born !== '—' ? ' · ' + esc(a.born) : ''}</p></div>
       </header>
-      <div class="tlayout">
+      <div class="tlayout aside-last">
         <div class="content">
           ${block('Өмірі мен шығармашылығы', `<div class="prose${dc(a.bio)}" style="--c:${c}"><p>${esc(a.bio)}</p></div>`)}
           ${a.life && a.life.length ? block('Өмір белестері', `<ol class="life" style="--c:${c}">${a.life.map(([y, x]) => `<li><b>${esc(y)}</b><span>${esc(x)}</span></li>`).join('')}</ol>`) : ''}
@@ -425,7 +450,7 @@
       <header class="ph"><span class="eyebrow">Терминдер мен сирек сөздер</span><h1>Сөздік</h1>
       <p class="lead">«Әдебиет теориясы» айдарындағы терминдер және әр шығармадағы «Сөзмаржан» сөздері.</p></header>
       <div class="tabs" role="tablist">
-        <button type="button" role="tab" data-gt="terms" aria-selected="${glTab === 'terms'}">Әдебиет теориясы · ${TERMS.length}</button>
+        <button type="button" role="tab" data-gt="terms" aria-selected="${glTab === 'terms'}">Терминдер · ${TERMS.length}</button>
         <button type="button" role="tab" data-gt="words" aria-selected="${glTab === 'words'}">Сөзмаржан · ${WORDS.length}</button>
       </div>
       <label class="searchbox">${UI.search}<span class="sr">Сөздіктен іздеу</span><input id="glQ" type="search" placeholder="Іздеу: теңеу, қорамсақ…" value="${esc(glQ)}" autocomplete="off"></label>
@@ -536,11 +561,30 @@
     lastFocus = document.activeElement;
     const m = document.createElement('div');
     m.className = 'modal';
-    m.innerHTML = `<div class="shade" data-close></div><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mtitle"><button type="button" class="ib x" data-close aria-label="Жабу">${UI.close}</button>${inner}</div>`;
+    m.innerHTML = `<div class="shade" data-close></div><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mtitle"><span class="grip" aria-hidden="true"></span><button type="button" class="ib x" data-close aria-label="Жабу">${UI.close}</button>${inner}</div>`;
     document.body.appendChild(m);
+    swipeToClose($('.sheet', m));
     document.body.style.overflow = 'hidden';
     onClose = cb || null;
     setTimeout(() => { const f = $('.sheet input', m) || $('.sheet .x', m); if (f) f.focus({ preventScroll: true }); }, 20);
+  }
+  /* Телефонда төменгі терезені саусақпен төмен сырғытып жабуға болады */
+  function swipeToClose(sh) {
+    let y0 = null, dy = 0;
+    sh.addEventListener('touchstart', e => {
+      y0 = (PHONE.matches && sh.scrollTop <= 0 && e.touches.length === 1) ? e.touches[0].clientY : null; dy = 0;
+    }, { passive: true });
+    sh.addEventListener('touchmove', e => {
+      if (y0 == null) return;
+      dy = e.touches[0].clientY - y0;
+      if (dy < 0) { y0 = null; sh.style.transform = ''; return; }
+      sh.style.transition = 'none'; sh.style.transform = `translateY(${dy}px)`;
+    }, { passive: true });
+    sh.addEventListener('touchend', () => {
+      if (y0 == null) return;
+      y0 = null; sh.style.transition = '';
+      if (dy > 110) closeModal(); else sh.style.transform = '';
+    });
   }
   function closeModal(silent) {
     const m = $('.modal'); if (!m) return;
@@ -590,11 +634,23 @@
     $$('[data-nav]').forEach(a => a.classList.toggle('on', a.dataset.nav === key));
     $$('[data-tab]').forEach(a => a.classList.toggle('on', a.dataset.tab === key));
   }
+  /* Артқа қайтқанда бет бұрынғы орнынан ашылады; сілтеме басылса — басынан */
+  const SCROLL = {};
+  let curHash = null, viaLink = false, linkTimer = 0;
+  try { history.scrollRestoration = 'manual'; } catch (e) { /* ескі браузер */ }
+  document.addEventListener('click', e => {
+    if (!e.target.closest('a[href^="#"]')) return;
+    viaLink = true; clearTimeout(linkTimer); linkTimer = setTimeout(() => { viaLink = false; }, 400);
+  }, true);
   function render() {
     closeModal(true);
     const h = decodeURIComponent((location.hash || '').slice(1)) || 'home';
+    if (curHash != null) SCROLL[curHash] = window.scrollY;
+    const back = !viaLink && curHash != null;
+    viaLink = false;
+    curHash = h; activeSec = null;
     let html = '', nav = h, title = '', post = null, after = null;
-    if (h.startsWith('t-') && TMAP[h.slice(2)]) { const t = TMAP[h.slice(2)]; html = topicPage(t); nav = 'works'; title = (t.full || t.t).replace(/[«»]/g, ''); }
+    if (h.startsWith('t-') && TMAP[h.slice(2)]) { const t = TMAP[h.slice(2)]; html = topicPage(t); nav = 'works'; title = (t.full || t.t).replace(/[«»]/g, ''); store.set('last', t.id); }
     else if (h.startsWith('c-') && chOf(+h.slice(2))) { const c = chOf(+h.slice(2)); html = chapterPage(c); nav = 'works'; title = c.r + ' тарау'; }
     else if (h.startsWith('a-') && AMAP[h.slice(2)]) { const a = AMAP[h.slice(2)]; html = authorPage(a); nav = 'authors'; title = a.n; }
     else if (h.startsWith('k-') && CMAP[h.slice(2)]) {
@@ -611,9 +667,10 @@
     main.innerHTML = `<div class="page">${html}</div>`;
     setNav(nav);
     document.title = title ? `${title} · Қазақ әдебиеті 7` : 'Қазақ әдебиеті · 7-сынып';
-    window.scrollTo(0, 0);
     main.focus({ preventScroll: true });
     if (post) post();
+    window.scrollTo(0, back && SCROLL[h] ? SCROLL[h] : 0);
+    onScroll();
     if (after) after();
   }
   window.addEventListener('hashchange', render);
@@ -629,12 +686,21 @@
       if (READ.has(id)) READ.delete(id); else READ.add(id);
       saveRead();
       const on = READ.has(id);
-      rd.className = 'btn ' + (on ? 'done' : 'alt'); rd.setAttribute('aria-pressed', String(on));
-      rd.innerHTML = on ? UI.check + ' Оқылды' : 'Оқыдым деп белгілеу';
+      $$(`[data-read="${id}"]`).forEach(b => {
+        b.classList.toggle('done', on); b.classList.toggle('alt', !on); b.setAttribute('aria-pressed', String(on));
+        b.innerHTML = on ? UI.check + ' Оқылды' : 'Оқыдым деп белгілеу';
+      });
       return;
     }
-    const jump = e.target.closest('[data-jump]');
-    if (jump) { e.preventDefault(); const el = document.getElementById(jump.getAttribute('href').slice(1)); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    const sec = e.target.closest('[data-sec]');
+    if (sec) {
+      const el = document.getElementById('s-' + sec.dataset.sec);
+      if (el) el.scrollIntoView({ behavior: CALM.matches ? 'auto' : 'smooth', block: 'start' });
+      return;
+    }
+    const un = e.target.closest('[data-unclip]');
+    if (un) { const c = un.closest('.clip'); c.classList.add('open'); un.remove(); return; }
+    if (e.target.closest('.totop')) { window.scrollTo({ top: 0, behavior: CALM.matches ? 'auto' : 'smooth' }); return; }
     const gt = e.target.closest('[data-gterm]');
     if (gt) { glTab = 'terms'; glQ = gt.dataset.gterm; if (location.hash === '#glossary') { e.preventDefault(); render(); } return; }
     const act = e.target.closest('[data-act]');
@@ -659,6 +725,29 @@
       if (e.key in map) answer(map[e.key]);
     }
   });
+
+  /* Бет айналдырылғанда: бөлім жолағындағы белсенді бөлім және «жоғарыға» батырмасы */
+  const toTop = document.createElement('button');
+  toTop.type = 'button'; toTop.className = 'totop'; toTop.setAttribute('aria-label', 'Беттің басына'); toTop.innerHTML = UI.up;
+  document.body.appendChild(toTop);
+  let ticking = false, activeSec = null;
+  function onScroll() {
+    ticking = false;
+    toTop.classList.toggle('show', window.scrollY > 1400);
+    const blocks = $$('.content > .block[id]');
+    if (!blocks.length) { activeSec = null; return; }
+    const line = 110;
+    let cur = blocks[0].id;
+    for (const b of blocks) { if (b.getBoundingClientRect().top - line <= 0) cur = b.id; else break; }
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = blocks[blocks.length - 1].id;
+    if (cur === activeSec) return;
+    activeSec = cur;
+    const id = cur.slice(2);
+    $$('.rail [data-sec], .onpage [data-sec]').forEach(b => { if (b.dataset.sec === id) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+    const rail = $('.rail-in'), btn = rail && $(`[data-sec="${id}"]`, rail);
+    if (btn) rail.scrollTo({ left: btn.offsetLeft - (rail.clientWidth - btn.offsetWidth) / 2, behavior: CALM.matches ? 'auto' : 'smooth' });
+  }
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 
   /* Іске қосу */
   $('#searchBtn').innerHTML = UI.search;
