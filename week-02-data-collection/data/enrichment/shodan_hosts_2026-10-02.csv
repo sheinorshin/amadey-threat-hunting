@@ -1,0 +1,8 @@
+ip,role,shodan_status,last_seen,country,city,organization,isp,asn,os,open_ports,hostnames,tags,notes
+158.94.208.130,StealC C2 (Trellix),data,2026-10-02,United Kingdom,London,Omegatech LTD,Omegatech LTD,AS202412,Windows 11 (version 22H2) (build 10.0.22621),22;80;135;443;445;3389;9090,natureofarizona.com,self-signed,OpenSSH 9.2p1 Debian + Apache httpd 2.4.x + SMB/RDP exposed; looks re-purposed
+91.92.243.129,Amadey C2 (Trellix),data,2026-09-28,Netherlands,Amsterdam,Neterra Ltd.,NTT America Inc.,AS2914,Windows,80,,,Microsoft IIS httpd 10.0 answering 404; Shodan ASN differs from RIPE/VT (AS202412)
+185.215.113.43,Amadey C2 (Talos),no information,,,,,,,,,,,404 Not Found in Shodan
+185.215.113.16,Amadey payload host (Talos),no information,,,,,,,,,,,
+185.215.113.209,network IOC (Talos),no information,,,,,,,,,,,
+185.215.113.75,network IOC (Talos),no information,,,,,,,,,,,
+185.156.73.73,network IOC (Talos),no information,,,,,,,,,,,

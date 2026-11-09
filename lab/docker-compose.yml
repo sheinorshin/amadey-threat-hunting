@@ -1,0 +1,28 @@
+# Minimal Elastic + Kibana for running the project's hunt queries on the synthetic data.
+# Security is OFF on purpose (lab only, localhost) so there is no password/TLS to deal with.
+# Start:  sudo sysctl -w vm.max_map_count=262144   # once per boot, Elasticsearch needs it
+#         docker compose up -d
+# Kibana: http://localhost:5601   (wait ~2 min after "up")
+# Stop + wipe:  docker compose down -v
+services:
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.3
+    container_name: ith-es
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.license.self_generated.type=basic
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ulimits:
+      memlock: { soft: -1, hard: -1 }
+    ports:
+      - "9200:9200"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.15.3
+    container_name: ith-kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - es

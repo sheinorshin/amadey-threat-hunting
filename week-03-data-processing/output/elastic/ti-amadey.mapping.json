@@ -1,0 +1,114 @@
+{
+  "mappings": {
+    "properties": {
+      "@timestamp": {
+        "type": "date"
+      },
+      "event": {
+        "properties": {
+          "kind": {
+            "type": "keyword"
+          },
+          "category": {
+            "type": "keyword"
+          },
+          "type": {
+            "type": "keyword"
+          },
+          "dataset": {
+            "type": "keyword"
+          }
+        }
+      },
+      "threat": {
+        "properties": {
+          "feed": {
+            "properties": {
+              "name": {
+                "type": "keyword"
+              }
+            }
+          },
+          "software": {
+            "properties": {
+              "name": {
+                "type": "keyword"
+              },
+              "id": {
+                "type": "keyword"
+              }
+            }
+          },
+          "indicator": {
+            "properties": {
+              "type": {
+                "type": "keyword"
+              },
+              "ip": {
+                "type": "ip"
+              },
+              "file": {
+                "properties": {
+                  "hash": {
+                    "properties": {
+                      "sha256": {
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "path": {
+                    "type": "keyword"
+                  },
+                  "name": {
+                    "type": "keyword"
+                  }
+                }
+              },
+              "url": {
+                "properties": {
+                  "full": {
+                    "type": "keyword"
+                  },
+                  "domain": {
+                    "type": "keyword"
+                  },
+                  "path": {
+                    "type": "keyword"
+                  }
+                }
+              },
+              "description": {
+                "type": "text"
+              },
+              "provider": {
+                "type": "keyword"
+              },
+              "confidence": {
+                "type": "keyword"
+              },
+              "first_seen": {
+                "type": "date"
+              },
+              "last_seen": {
+                "type": "date"
+              },
+              "modified_at": {
+                "type": "date"
+              },
+              "marking": {
+                "properties": {
+                  "tlp": {
+                    "type": "keyword"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "tags": {
+        "type": "keyword"
+      }
+    }
+  }
+}

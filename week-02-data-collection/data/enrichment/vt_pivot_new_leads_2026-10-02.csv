@@ -1,0 +1,10 @@
+indicator,type,found_via,vt_first_scan,vt_detections,http_status,assessment
+http://gitd3ti.vokasi.uns.ac.id/Aubin/vrms-backend/-/raw/development/werdigo.exe,url,VT relations of d7a366fa (Amadey 5.70): contacted URL,2025-11-20,0/98,200,NEW - second compromised self-hosted GitLab (Indonesian university) used as payload host; not in any vendor report
+http://gitd3ti.vokasi.uns.ac.id/Aubin/vrms-backend/-/raw/development/exe.werdigo,url,VT relations of d7a366fa: contacted URL,2025-11-20,0/98,404,NEW - same repo; payload already removed
+gitd3ti.vokasi.uns.ac.id,domain,VT relations of d7a366fa: contacted domain,,0/91,,NEW - compromised legitimate GitLab; block the URL path not the university domain
+203.6.149.147,ip,VT relations of d7a366fa + DNS A record of gitd3ti.vokasi.uns.ac.id,,0/91,,NEW - AS55684 (ID); hosts the compromised GitLab
+http://91.92.243.129/0gjSy4hf3/Plugins/clip64.dll,url,VT relations of d7a366fa: contacted URL,2026-02-10,21/94,200,NEW - plugin download path pattern /<panel>/Plugins/<plugin>.dll
+http://91.92.243.129/0gjSy4hf3/index.php?scr=1,url,VT relations of d7a366fa: contacted URL,2025-11-21,13/98,,NEW - scr=1 parameter (screenshot upload to panel)
+f936986d553273aef6eeaeef713ad28f,mutex,VT behavior (sandbox) of d7a366fa,,,,CONFIRMS Trellix mutex in independent sandbox runs
+C:\Windows\Tasks\Yfgfwb.job,scheduled_task,VT behavior (sandbox) of d7a366fa,,,,CONFIRMS legacy Task Scheduler 1.0 .job file (also C:\Windows\System32\Tasks\Yfgfwb)
+%TEMP%\10000210101\exe.exe,file_path,VT behavior (sandbox) of d7a366fa,,,,NEW - next-stage drop folder pattern %TEMP%\1000xxxxxxx\ (Trellix saw %TEMP%\10000340261\)

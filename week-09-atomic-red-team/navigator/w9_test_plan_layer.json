@@ -1,0 +1,228 @@
+{
+  "versions": {
+    "attack": "19",
+    "navigator": "5.1.0",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "filters": {
+    "platforms": [
+      "Windows"
+    ]
+  },
+  "sorting": 0,
+  "layout": {
+    "layout": "side",
+    "aggregateFunction": "max",
+    "showID": true,
+    "showName": true,
+    "showAggregateScores": false,
+    "countUnscored": false,
+    "expandedSubtechniques": "annotated"
+  },
+  "hideDisabled": false,
+  "selectTechniquesAcrossTactics": true,
+  "selectSubtechniquesWithParent": false,
+  "selectVisibleTechniques": false,
+  "metadata": [
+    {
+      "name": "project",
+      "value": "github.com/sheinorshin/amadey-threat-hunting (Week 9)"
+    }
+  ],
+  "name": "Week 9 Atomic Red Team plan - predicted results",
+  "description": "Techniques in the Week 9 test plan, scored by the result predicted BEFORE the run: 3 = Technique-level detection, 2 = General/Tactic, 1 = Telemetry only, 0 = None.",
+  "gradient": {
+    "colors": [
+      "#d03b3b",
+      "#fab219",
+      "#0ca30c"
+    ],
+    "minValue": 0,
+    "maxValue": 3
+  },
+  "legendItems": [
+    {
+      "label": "Technique detection",
+      "color": "#0ca30c"
+    },
+    {
+      "label": "General / Tactic",
+      "color": "#5dade2"
+    },
+    {
+      "label": "Telemetry only",
+      "color": "#fab219"
+    },
+    {
+      "label": "None",
+      "color": "#d03b3b"
+    }
+  ],
+  "showTacticRowBackground": false,
+  "tacticRowBackground": "#dddddd",
+  "techniques": [
+    {
+      "techniqueID": "T1059.001",
+      "tactic": "execution",
+      "score": 1,
+      "color": "#fab219",
+      "comment": "W9-A1 (tier A) predicted Telemetry. Amadey KC4 (Emmenhtal PowerShell) and KC7 (Expand-Archive); used by all five actors in Week 10. Expected: 4688 powershell.exe (+ -EncodedCommand); 4104 script block.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1059.003",
+      "tactic": "execution",
+      "score": 1,
+      "color": "#fab219",
+      "comment": "W9-A2 (tier A) predicted Telemetry. syllabus example T1059; Windows Command Shell used by APT29, APT41, TA505, Kimsuky. Expected: 4688 cmd.exe with command line.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1053.005",
+      "tactic": "execution",
+      "score": 3,
+      "color": "#0ca30c",
+      "comment": "W9-A3 (tier A) predicted Technique. Amadey KC5 (every-minute task) - the technique of Weeks 3, 5, 6 and 7; also APT29, APT41, Kimsuky. Expected: 4688 schtasks.exe /create; 4698 task created; TaskScheduler 106 / 200 / 201; 4104 Register-ScheduledTask.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1053.005",
+      "tactic": "persistence",
+      "score": 3,
+      "color": "#0ca30c",
+      "comment": "W9-A3 (tier A) predicted Technique. Amadey KC5 (every-minute task) - the technique of Weeks 3, 5, 6 and 7; also APT29, APT41, Kimsuky. Expected: 4688 schtasks.exe /create; 4698 task created; TaskScheduler 106 / 200 / 201; 4104 Register-ScheduledTask.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1053.005",
+      "tactic": "privilege-escalation",
+      "score": 3,
+      "color": "#0ca30c",
+      "comment": "W9-A3 (tier A) predicted Technique. Amadey KC5 (every-minute task) - the technique of Weeks 3, 5, 6 and 7; also APT29, APT41, Kimsuky. Expected: 4688 schtasks.exe /create; 4698 task created; TaskScheduler 106 / 200 / 201; 4104 Register-ScheduledTask.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1105",
+      "tactic": "command-and-control",
+      "score": 1,
+      "color": "#fab219",
+      "comment": "W9-A4 (tier A) predicted Telemetry. Amadey KC3 / KC7 (loader and StealC downloads); all five actors. Expected: 4688 certutil.exe / bitsadmin.exe / powershell.exe with a URL; 4104 for the PowerShell variant.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1136.001",
+      "tactic": "persistence",
+      "score": 3,
+      "color": "#0ca30c",
+      "comment": "W9-A5 (tier A) predicted Technique. Amadey v5 hidden local admin (KC7); APT41, Kimsuky. Expected: 4720 user created; 4732 member added to Administrators; 4688 net.exe / 4104 New-LocalUser.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1686",
+      "tactic": "defense-impairment",
+      "score": 3,
+      "color": "#0ca30c",
+      "comment": "W9-A6 (tier A) predicted Technique. Amadey v5 firewall rule for RDP (KC7; was T1562.004 before ATT&CK v19); APT29, Kimsuky. Expected: 4946 firewall rule added; 4688 netsh.exe / 4104 New-NetFirewallRule.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1218.011",
+      "tactic": "stealth",
+      "score": 1,
+      "color": "#fab219",
+      "comment": "W9-A7 (tier A) predicted Telemetry. Amadey KC7 plugins (rundll32 ..., Main); all five actors - tests Week 10's 'nominal coverage' finding. Expected: 4688 rundll32.exe with the DLL path.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1082",
+      "tactic": "discovery",
+      "score": 1,
+      "color": "#fab219",
+      "comment": "W9-A8 (tier A) predicted Telemetry. Amadey KC6 check-in data; APT41, Kimsuky - tests Week 10's 'procedure, not technique' finding. Expected: 4688 systeminfo.exe / hostname.exe / cmd.exe.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1059.007",
+      "tactic": "execution",
+      "score": 3,
+      "color": "#0ca30c",
+      "comment": "W9-B1 (tier B) predicted Technique. Amadey KC4: Emmenhtal JavaScript run by Windows Script Host. Expected: 4688 wscript.exe / cscript.exe; 4688 powershell.exe with parent wscript.exe / cscript.exe.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1218.005",
+      "tactic": "stealth",
+      "score": 3,
+      "color": "#0ca30c",
+      "comment": "W9-B2 (tier B) predicted Technique. Amadey KC4: mshta.exe runs Emmenhtal. Expected: 4688 mshta.exe; 4688 powershell.exe with parent mshta.exe.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1547.001",
+      "tactic": "persistence",
+      "score": 1,
+      "color": "#fab219",
+      "comment": "W9-B3 (tier B) predicted Telemetry. Amadey KC5: Startup folder redirected / Run key. Expected: 4688 reg.exe add ...\\Run; 4104 Set-ItemProperty / New-ItemProperty.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1547.001",
+      "tactic": "privilege-escalation",
+      "score": 1,
+      "color": "#fab219",
+      "comment": "W9-B3 (tier B) predicted Telemetry. Amadey KC5: Startup folder redirected / Run key. Expected: 4688 reg.exe add ...\\Run; 4104 Set-ItemProperty / New-ItemProperty.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1112",
+      "tactic": "defense-impairment",
+      "score": 1,
+      "color": "#fab219",
+      "comment": "W9-B4 (tier B) predicted Telemetry. Amadey v5 enables RDP (fDenyTSConnections = 0) before adding the admin and the firewall rule. Expected: 4688 reg.exe with Terminal Server\\fDenyTSConnections; 4104 Set-ItemProperty.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1112",
+      "tactic": "persistence",
+      "score": 1,
+      "color": "#fab219",
+      "comment": "W9-B4 (tier B) predicted Telemetry. Amadey v5 enables RDP (fDenyTSConnections = 0) before adding the admin and the firewall rule. Expected: 4688 reg.exe with Terminal Server\\fDenyTSConnections; 4104 Set-ItemProperty.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1003.002",
+      "tactic": "credential-access",
+      "score": 1,
+      "color": "#fab219",
+      "comment": "W9-C1 (tier C) predicted Telemetry. syllabus example T1003; APT29 and APT41 both save the SAM hive with reg save (Week 10); not an Amadey technique. Expected: 4688 reg.exe save HKLM\\SAM / HKLM\\SYSTEM.",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1003.001",
+      "tactic": "credential-access",
+      "score": 1,
+      "color": "#fab219",
+      "comment": "W9-C2 (tier C) predicted Telemetry. syllabus example T1003; APT41, Kimsuky, APT1 (LSASS memory). Expected: 4688 of the process that accesses LSASS; Defender 1116/1117 if it blocks.",
+      "enabled": true,
+      "showSubtechniques": false
+    }
+  ]
+}

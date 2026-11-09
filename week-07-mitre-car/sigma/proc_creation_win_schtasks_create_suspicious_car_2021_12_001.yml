@@ -1,0 +1,75 @@
+title: Schtasks Creates or Changes a Task With a User-Writable or Every-Minute Interpreter Action (CAR-2021-12-001, tuned)
+id: 0a5c9d23-7e41-5f6b-8c2a-3b1e9f4d7a62
+status: experimental
+description: |
+    Tuned implementation of the process branch of MITRE CAR-2021-12-001: schtasks.exe with /create or /change
+    whose task action is in a user-writable location, or that schedules a script interpreter / LOLBin every minute.
+    Case-insensitive by design - the Elastic query published with CAR-2021-12-001 matches "SCHTASKS" and "/CREATE"
+    case-sensitively and therefore misses the lower-case "schtasks.exe /Create" that Amadey and most tools use.
+    Companion of win_security_task_created_user_writable_car_2021_12_001.yml (Task Scheduler side).
+references:
+    - https://car.mitre.org/analytics/CAR-2021-12-001/
+    - https://car.mitre.org/analytics/CAR-2013-08-001/
+    - https://attack.mitre.org/techniques/T1053/005/
+author: Sayat Abdiraiym (AITU, Intro to Threat Hunting)
+date: 2026-10-03
+tags:
+    - attack.execution
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1053.005
+    - car.2021-12-001
+    - car.2013-08-001
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_img:
+        - Image|endswith: '\schtasks.exe'
+        - OriginalFileName: 'schtasks.exe'
+    selection_action:
+        CommandLine|contains:
+            - '/create'
+            - '/change'
+    selection_writable:
+        CommandLine|contains:
+            - '\AppData\'
+            - '\Users\Public\'
+            - '\ProgramData\'
+            - '\Temp\'
+            - '%APPDATA%'
+            - '%LOCALAPPDATA%'
+            - '%TEMP%'
+            - '%PUBLIC%'
+            - '%ProgramData%'
+            - '\Windows\Tasks\'
+            - '\Windows\PLA\System'
+            - '\Registration\CRMLog'
+            - '\FxsTmp'
+            - '\spool\drivers\color'
+            - '\tracing\'
+    filter_defender:
+        CommandLine|contains: '\ProgramData\Microsoft\Windows Defender\'
+    selection_profile_root:
+        CommandLine|re|i: '.*c:\\users\\[^\\]+\\[^\\]+\\[^\\]+\.exe.*'
+    selection_every_minute:
+        CommandLine|re|i: '.*/sc[ ]+minute.*/mo[ ]+1([^0-9].*)?'
+    selection_interpreter:
+        CommandLine|contains:
+            - 'javascript'
+            - 'powershell'
+            - 'wmic'
+            - 'rundll32'
+            - 'cmd'
+            - 'cscript'
+            - 'wscript'
+            - 'regsvr32'
+            - 'mshta'
+            - 'bitsadmin'
+            - 'certutil'
+            - 'msiexec'
+            - 'javaw'
+    condition: selection_img and selection_action and ((selection_writable and not filter_defender) or selection_profile_root or (selection_every_minute and selection_interpreter))
+falsepositives:
+    - Software installers that register per-user update tasks under AppData
+level: medium

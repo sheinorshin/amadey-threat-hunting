@@ -1,0 +1,7 @@
+// H3 (EQL) - a privileged account change and a firewall rule on the same host within 30 minutes.
+// This is the correlation that separates the Amadey chain (both, minutes apart) from the
+// benign near-misses (a lone firewall rule, or an account added only to Remote Desktop Users).
+sequence by host.name with maxspan=30m
+  [ any where (event.code == "4732" and winlog.event_data.TargetUserName == "Administrators")
+           or (event.code == "4720" and winlog.event_data.TargetUserName like "*$") ]
+  [ any where event.code == "4946" ]

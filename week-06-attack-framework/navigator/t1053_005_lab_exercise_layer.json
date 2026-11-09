@@ -1,0 +1,133 @@
+{
+  "versions": {
+    "attack": "19",
+    "navigator": "5.1.0",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "filters": {
+    "platforms": [
+      "Windows"
+    ]
+  },
+  "sorting": 0,
+  "layout": {
+    "layout": "side",
+    "aggregateFunction": "max",
+    "showID": true,
+    "showName": true,
+    "showAggregateScores": false,
+    "countUnscored": false,
+    "expandedSubtechniques": "annotated"
+  },
+  "hideDisabled": false,
+  "selectTechniquesAcrossTactics": true,
+  "selectSubtechniquesWithParent": false,
+  "selectVisibleTechniques": false,
+  "metadata": [
+    {
+      "name": "project",
+      "value": "github.com/sheinorshin/amadey-threat-hunting (Week 6)"
+    }
+  ],
+  "name": "Week 6 lab exercise - T1053.005 Scheduled Task",
+  "description": "Techniques touched by the benign Week 6 lab exercise. Score = expected visibility in my lab (2 = logged today, 1 = needs a logging change, 0 = not visible).",
+  "gradient": {
+    "colors": [
+      "#ffffff",
+      "#f8c471",
+      "#1baf7a"
+    ],
+    "minValue": 0,
+    "maxValue": 2
+  },
+  "legendItems": [
+    {
+      "label": "Logged with current lab settings",
+      "color": "#1baf7a"
+    },
+    {
+      "label": "Needs a logging change",
+      "color": "#f8c471"
+    }
+  ],
+  "showTacticRowBackground": false,
+  "tacticRowBackground": "#dddddd",
+  "techniques": [
+    {
+      "techniqueID": "T1053.005",
+      "tactic": "execution",
+      "score": 2,
+      "color": "",
+      "enabled": true,
+      "showSubtechniques": false,
+      "comment": "Method A: schtasks.exe /Create /SC MINUTE /MO 1; Method B: Register-ScheduledTask. Task runs a harmless logging .cmd from C:\\Users\\Public, then is deleted. Expected telemetry: 4688 schtasks.exe / powershell.exe; 4698 task created; 4699 task deleted; TaskScheduler/Operational 106, 200, 201, 141; 4688 cmd.exe with parent svchost.exe",
+      "metadata": [
+        {
+          "name": "name",
+          "value": "Scheduled Task"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1053.005",
+      "tactic": "persistence",
+      "score": 2,
+      "color": "",
+      "enabled": true,
+      "showSubtechniques": false,
+      "comment": "Method A: schtasks.exe /Create /SC MINUTE /MO 1; Method B: Register-ScheduledTask. Task runs a harmless logging .cmd from C:\\Users\\Public, then is deleted. Expected telemetry: 4688 schtasks.exe / powershell.exe; 4698 task created; 4699 task deleted; TaskScheduler/Operational 106, 200, 201, 141; 4688 cmd.exe with parent svchost.exe",
+      "metadata": [
+        {
+          "name": "name",
+          "value": "Scheduled Task"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1053.005",
+      "tactic": "privilege-escalation",
+      "score": 2,
+      "color": "",
+      "enabled": true,
+      "showSubtechniques": false,
+      "comment": "Method A: schtasks.exe /Create /SC MINUTE /MO 1; Method B: Register-ScheduledTask. Task runs a harmless logging .cmd from C:\\Users\\Public, then is deleted. Expected telemetry: 4688 schtasks.exe / powershell.exe; 4698 task created; 4699 task deleted; TaskScheduler/Operational 106, 200, 201, 141; 4688 cmd.exe with parent svchost.exe",
+      "metadata": [
+        {
+          "name": "name",
+          "value": "Scheduled Task"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1059.001",
+      "tactic": "execution",
+      "score": 2,
+      "color": "",
+      "enabled": true,
+      "showSubtechniques": false,
+      "comment": "Method B creates the task with PowerShell cmdlets (no schtasks.exe process). Expected telemetry: 4688 powershell.exe; PowerShell/Operational 4104 script block with Register-ScheduledTask",
+      "metadata": [
+        {
+          "name": "name",
+          "value": "PowerShell"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1059.003",
+      "tactic": "execution",
+      "score": 2,
+      "color": "",
+      "enabled": true,
+      "showSubtechniques": false,
+      "comment": "The task's action runs cmd.exe /c <logging .cmd> every minute. Expected telemetry: 4688 cmd.exe, parent svchost.exe (Schedule service), command line with the .cmd path",
+      "metadata": [
+        {
+          "name": "name",
+          "value": "Windows Command Shell"
+        }
+      ]
+    }
+  ]
+}

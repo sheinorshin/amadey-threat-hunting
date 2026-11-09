@@ -1,0 +1,395 @@
+{
+  "versions": {
+    "attack": "19",
+    "navigator": "5.1.0",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "filters": {
+    "platforms": [
+      "Windows"
+    ]
+  },
+  "sorting": 0,
+  "layout": {
+    "layout": "side",
+    "aggregateFunction": "max",
+    "showID": true,
+    "showName": true,
+    "showAggregateScores": false,
+    "countUnscored": false,
+    "expandedSubtechniques": "annotated"
+  },
+  "hideDisabled": false,
+  "selectTechniquesAcrossTactics": true,
+  "selectSubtechniquesWithParent": false,
+  "selectVisibleTechniques": false,
+  "metadata": [
+    {
+      "name": "project",
+      "value": "github.com/sheinorshin/amadey-threat-hunting (Week 4)"
+    }
+  ],
+  "name": "Amadey - Cyber Kill Chain phases",
+  "description": "Techniques of the analysed Amadey intrusion, coloured by Lockheed Martin kill-chain phase (first phase if several).",
+  "gradient": {
+    "colors": [
+      "#ffffff",
+      "#2a78d6"
+    ],
+    "minValue": 0,
+    "maxValue": 7
+  },
+  "legendItems": [
+    {
+      "label": "KC1 Reconnaissance",
+      "color": "#2a78d6"
+    },
+    {
+      "label": "KC2 Weaponization",
+      "color": "#eb6834"
+    },
+    {
+      "label": "KC3 Delivery",
+      "color": "#1baf7a"
+    },
+    {
+      "label": "KC4 Exploitation",
+      "color": "#eda100"
+    },
+    {
+      "label": "KC5 Installation",
+      "color": "#e87ba4"
+    },
+    {
+      "label": "KC6 Command & Control",
+      "color": "#008300"
+    },
+    {
+      "label": "KC7 Actions on Objectives",
+      "color": "#4a3aa7"
+    }
+  ],
+  "techniques": [
+    {
+      "techniqueID": "T1591",
+      "color": "#2a78d6",
+      "score": 1,
+      "comment": "KC1 Reconnaissance: Target choice; the linked phishing campaign hit Ukrainian entities (inferred, low confidence)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1587.001",
+      "color": "#eb6834",
+      "score": 2,
+      "comment": "KC2 Weaponization: Amadey developed and sold as MaaS since 2018 (operator side)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1588.001",
+      "color": "#eb6834",
+      "score": 2,
+      "comment": "KC2 Weaponization: Affiliates buy Amadey builds (customer side)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1027",
+      "color": "#eb6834",
+      "score": 2,
+      "comment": "KC2 Weaponization: Encrypted strings in the build, obfuscated Emmenhtal JavaScript",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1608.001",
+      "color": "#eb6834",
+      "score": 2,
+      "comment": "KC2 Weaponization: Payloads staged in GitHub repos and in gitlab.bzctoons.net/suau/fds",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1584.004",
+      "color": "#eb6834",
+      "score": 2,
+      "comment": "KC2 Weaponization: Self-hosted GitLab servers hijacked (bzctoons.net; gitd3ti.vokasi.uns.ac.id from my VT pivot)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1583.001",
+      "color": "#eb6834",
+      "score": 2,
+      "comment": "KC2 Weaponization: C2 domains such as microsoft-telemetry.at, goodpanelforgoodjob.com",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1566.001",
+      "color": "#1baf7a",
+      "score": 3,
+      "comment": "KC3 Delivery: Archive attachment with JavaScript in phishing mail (Talos: seen with SmokeLoader, likely for Amadey)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1105",
+      "color": "#1baf7a",
+      "score": 3,
+      "comment": "KC3 Delivery: Emmenhtal stage and Amadey EXE downloaded over HTTP | KC7 Actions on Objectives: Plugins and StealC downloaded (clip64.dll, protected.zip)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1204.002",
+      "color": "#eda100",
+      "score": 4,
+      "comment": "KC4 Exploitation: User double-clicks the JS file from the archive",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1059.007",
+      "color": "#eda100",
+      "score": 4,
+      "comment": "KC4 Exploitation: JavaScript executed by Windows Script Host (WScript.Shell launches PowerShell)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1218.005",
+      "color": "#eda100",
+      "score": 4,
+      "comment": "KC4 Exploitation: mshta.exe runs Emmenhtal disguised as .mp4 (Orange Cyberdefense pattern; not in Talos' JS samples)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1059.001",
+      "color": "#eda100",
+      "score": 4,
+      "comment": "KC4 Exploitation: Emmenhtal PowerShell layer downloads/starts the loader | KC7 Actions on Objectives: PowerShell Expand-Archive unpacks protected.zip",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1106",
+      "color": "#e87ba4",
+      "score": 5,
+      "comment": "KC5 Installation: CreateProcessA starts the copied loader",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1053.005",
+      "color": "#e87ba4",
+      "score": 5,
+      "comment": "KC5 Installation: Task named after the EXE, trigger every 1 minute (confirmed in VT sandbox)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1547.001",
+      "color": "#e87ba4",
+      "score": 5,
+      "comment": "KC5 Installation: User Shell Folders\\Startup redirected to the install folder",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1112",
+      "color": "#e87ba4",
+      "score": 5,
+      "comment": "KC5 Installation: Registry values overwritten for persistence",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1553.005",
+      "color": "#e87ba4",
+      "score": 5,
+      "comment": "KC5 Installation: Zone.Identifier ADS zeroed so SmartScreen/MotW checks do not fire",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1140",
+      "color": "#e87ba4",
+      "score": 5,
+      "comment": "KC5 Installation: Encrypted strings (AV names, C2, file names) decoded at runtime",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1564.001",
+      "color": "#e87ba4",
+      "score": 5,
+      "comment": "KC5 Installation: Hidden files/directories (Talos STIX listed revoked T1158)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1071.001",
+      "color": "#008300",
+      "score": 6,
+      "comment": "KC6 Command & Control: HTTP POST to /<random>/index.php (Sigma rule ready, needs proxy logs)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1573.001",
+      "color": "#008300",
+      "score": 6,
+      "comment": "KC6 Command & Control: v5 encrypts the host profile with RC4 before sending",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1568.001",
+      "color": "#008300",
+      "score": 6,
+      "comment": "KC6 Command & Control: Fast-flux DNS hides C2 hosts (S1025)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1082",
+      "color": "#008300",
+      "score": 6,
+      "comment": "KC6 Command & Control: OS version, computer name in the check-in",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1016",
+      "color": "#008300",
+      "score": 6,
+      "comment": "KC6 Command & Control: Victim IP / network configuration",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1033",
+      "color": "#008300",
+      "score": 6,
+      "comment": "KC6 Command & Control: User name (GetUserNameA)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1083",
+      "color": "#008300",
+      "score": 6,
+      "comment": "KC6 Command & Control: Looks for AV program folders",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1518.001",
+      "color": "#008300",
+      "score": 6,
+      "comment": "KC6 Command & Control: AV product code in the av= field",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1614",
+      "color": "#008300",
+      "score": 6,
+      "comment": "KC6 Command & Control: Locale / keyboard check, exits on Russian systems",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1005",
+      "color": "#008300",
+      "score": 6,
+      "comment": "KC6 Command & Control: Host data collected for the panel",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1041",
+      "color": "#008300",
+      "score": 6,
+      "comment": "KC6 Command & Control: Host profile sent over the C2 channel",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1218.011",
+      "color": "#4a3aa7",
+      "score": 7,
+      "comment": "KC7 Actions on Objectives: rundll32 <path>\\clip64.dll, Main",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1115",
+      "color": "#4a3aa7",
+      "score": 7,
+      "comment": "KC7 Actions on Objectives: Clipper plugin replaces wallet addresses",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1555.003",
+      "color": "#4a3aa7",
+      "score": 7,
+      "comment": "KC7 Actions on Objectives: cred64.dll and StealC steal browser credentials",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1113",
+      "color": "#4a3aa7",
+      "score": 7,
+      "comment": "KC7 Actions on Objectives: v5 screen capture; screenshot upload URL index.php?scr=1 seen in VT relations of d7a366fa",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1090",
+      "color": "#4a3aa7",
+      "score": 7,
+      "comment": "KC7 Actions on Objectives: v5 command: SOCKS proxy through the victim",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1021.001",
+      "color": "#4a3aa7",
+      "score": 7,
+      "comment": "KC7 Actions on Objectives: v5 command: enable RDP (fDenyTSConnections=0)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1136.001",
+      "color": "#4a3aa7",
+      "score": 7,
+      "comment": "KC7 Actions on Objectives: v5 command: hidden local admin account",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1686",
+      "color": "#4a3aa7",
+      "score": 7,
+      "comment": "KC7 Actions on Objectives: v5 command: firewall rule for RDP (was T1562.004 before v19)",
+      "enabled": true,
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1486",
+      "color": "#4a3aa7",
+      "score": 7,
+      "comment": "KC7 Actions on Objectives: LockBit 3.0 delivered by Amadey (ASEC 2022) - customer-dependent impact",
+      "enabled": true,
+      "showSubtechniques": false
+    }
+  ]
+}

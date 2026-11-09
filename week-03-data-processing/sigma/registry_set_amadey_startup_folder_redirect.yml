@@ -1,0 +1,29 @@
+title: Startup Folder Redirected to Temp or AppData Subfolder (Amadey)
+id: 3efa068d-34c0-5507-a4a4-a85a3c97df5f
+status: experimental
+description: |
+    Detects modification of the per-user "Startup" shell folder so that it points to a
+    non-standard folder. Amadey changes HKCU\...\Explorer\User Shell Folders\Startup to its own
+    install directory, so Windows launches it at every logon (T1547.001).
+references:
+    - https://attack.mitre.org/software/S1025/
+    - https://asec.ahnlab.com/en/36634/
+author: Sayat Abdiraiym (AITU, Intro to Threat Hunting)
+date: 2026-10-02
+tags:
+    - attack.persistence
+    - attack.t1547.001
+    - attack.defense-impairment
+    - attack.t1112
+logsource:
+    category: registry_set
+    product: windows
+detection:
+    selection:
+        TargetObject|endswith: '\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Startup'
+    filter_legit:
+        Details|contains: '\Start Menu\Programs\Startup'
+    condition: selection and not filter_legit
+falsepositives:
+    - Folder redirection by GPO / OneDrive Known Folder Move (check Image = explorer.exe / OneDrive.exe)
+level: high

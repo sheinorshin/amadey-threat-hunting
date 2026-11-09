@@ -1,0 +1,3815 @@
+{
+ "attack_version": "19.2",
+ "sizes": {
+  "APT29": 119,
+  "APT41": 105,
+  "TA505": 34,
+  "Kimsuky": 130,
+  "Amadey": 40,
+  "APT1": 23
+ },
+ "jaccard": {
+  "subtechnique": {
+   "APT29": {
+    "APT29": 1.0,
+    "APT41": 0.217,
+    "TA505": 0.15,
+    "Kimsuky": 0.233,
+    "Amadey": 0.128,
+    "APT1": 0.092
+   },
+   "APT41": {
+    "APT29": 0.217,
+    "APT41": 1.0,
+    "TA505": 0.139,
+    "Kimsuky": 0.27,
+    "Amadey": 0.179,
+    "APT1": 0.123
+   },
+   "TA505": {
+    "APT29": 0.15,
+    "APT41": 0.139,
+    "TA505": 1.0,
+    "Kimsuky": 0.18,
+    "Amadey": 0.298,
+    "APT1": 0.118
+   },
+   "Kimsuky": {
+    "APT29": 0.233,
+    "APT41": 0.27,
+    "TA505": 0.18,
+    "Kimsuky": 1.0,
+    "Amadey": 0.223,
+    "APT1": 0.125
+   },
+   "Amadey": {
+    "APT29": 0.128,
+    "APT41": 0.179,
+    "TA505": 0.298,
+    "Kimsuky": 0.223,
+    "Amadey": 1.0,
+    "APT1": 0.105
+   },
+   "APT1": {
+    "APT29": 0.092,
+    "APT41": 0.123,
+    "TA505": 0.118,
+    "Kimsuky": 0.125,
+    "Amadey": 0.105,
+    "APT1": 1.0
+   }
+  },
+  "parent": {
+   "APT29": {
+    "APT29": 1.0,
+    "APT41": 0.485,
+    "TA505": 0.231,
+    "Kimsuky": 0.395,
+    "Amadey": 0.294,
+    "APT1": 0.211
+   },
+   "APT41": {
+    "APT29": 0.485,
+    "APT41": 1.0,
+    "TA505": 0.221,
+    "Kimsuky": 0.412,
+    "Amadey": 0.28,
+    "APT1": 0.174
+   },
+   "TA505": {
+    "APT29": 0.231,
+    "APT41": 0.221,
+    "TA505": 1.0,
+    "Kimsuky": 0.233,
+    "Amadey": 0.378,
+    "APT1": 0.128
+   },
+   "Kimsuky": {
+    "APT29": 0.395,
+    "APT41": 0.412,
+    "TA505": 0.233,
+    "Kimsuky": 1.0,
+    "Amadey": 0.374,
+    "APT1": 0.176
+   },
+   "Amadey": {
+    "APT29": 0.294,
+    "APT41": 0.28,
+    "TA505": 0.378,
+    "Kimsuky": 0.374,
+    "Amadey": 1.0,
+    "APT1": 0.16
+   },
+   "APT1": {
+    "APT29": 0.211,
+    "APT41": 0.174,
+    "TA505": 0.128,
+    "Kimsuky": 0.176,
+    "Amadey": 0.16,
+    "APT1": 1.0
+   }
+  }
+ },
+ "tactic_counts": {
+  "APT29": {
+   "reconnaissance": 2,
+   "resource-development": 9,
+   "initial-access": 11,
+   "execution": 11,
+   "persistence": 18,
+   "privilege-escalation": 17,
+   "stealth": 17,
+   "defense-impairment": 8,
+   "credential-access": 16,
+   "discovery": 11,
+   "lateral-movement": 8,
+   "collection": 6,
+   "command-and-control": 11,
+   "exfiltration": 1,
+   "impact": 0
+  },
+  "APT41": {
+   "reconnaissance": 5,
+   "resource-development": 4,
+   "initial-access": 5,
+   "execution": 12,
+   "persistence": 13,
+   "privilege-escalation": 10,
+   "stealth": 21,
+   "defense-impairment": 6,
+   "credential-access": 7,
+   "discovery": 13,
+   "lateral-movement": 4,
+   "collection": 8,
+   "command-and-control": 12,
+   "exfiltration": 5,
+   "impact": 2
+  },
+  "TA505": {
+   "reconnaissance": 0,
+   "resource-development": 4,
+   "initial-access": 3,
+   "execution": 8,
+   "persistence": 2,
+   "privilege-escalation": 2,
+   "stealth": 8,
+   "defense-impairment": 4,
+   "credential-access": 2,
+   "discovery": 2,
+   "lateral-movement": 0,
+   "collection": 0,
+   "command-and-control": 3,
+   "exfiltration": 0,
+   "impact": 1
+  },
+  "Kimsuky": {
+   "reconnaissance": 10,
+   "resource-development": 15,
+   "initial-access": 6,
+   "execution": 11,
+   "persistence": 12,
+   "privilege-escalation": 9,
+   "stealth": 31,
+   "defense-impairment": 4,
+   "credential-access": 10,
+   "discovery": 13,
+   "lateral-movement": 3,
+   "collection": 12,
+   "command-and-control": 10,
+   "exfiltration": 3,
+   "impact": 2
+  },
+  "Amadey": {
+   "reconnaissance": 1,
+   "resource-development": 5,
+   "initial-access": 1,
+   "execution": 5,
+   "persistence": 4,
+   "privilege-escalation": 2,
+   "stealth": 5,
+   "defense-impairment": 3,
+   "credential-access": 1,
+   "discovery": 6,
+   "lateral-movement": 1,
+   "collection": 3,
+   "command-and-control": 5,
+   "exfiltration": 1,
+   "impact": 1
+  },
+  "APT1": {
+   "reconnaissance": 0,
+   "resource-development": 5,
+   "initial-access": 2,
+   "execution": 1,
+   "persistence": 0,
+   "privilege-escalation": 0,
+   "stealth": 1,
+   "defense-impairment": 0,
+   "credential-access": 1,
+   "discovery": 6,
+   "lateral-movement": 2,
+   "collection": 5,
+   "command-and-control": 0,
+   "exfiltration": 0,
+   "impact": 0
+  }
+ },
+ "lab_coverage": {
+  "APT29": {
+   "RULE": 1,
+   "HUNT": 5,
+   "DATA": 37,
+   "SYSMON": 43,
+   "BLIND": 8,
+   "OUT": 14,
+   "CTI": 11
+  },
+  "APT41": {
+   "RULE": 1,
+   "HUNT": 5,
+   "DATA": 35,
+   "SYSMON": 50,
+   "BLIND": 1,
+   "OUT": 4,
+   "CTI": 9
+  },
+  "TA505": {
+   "RULE": 0,
+   "HUNT": 3,
+   "DATA": 9,
+   "SYSMON": 18,
+   "BLIND": 0,
+   "OUT": 0,
+   "CTI": 4
+  },
+  "Kimsuky": {
+   "RULE": 1,
+   "HUNT": 7,
+   "DATA": 46,
+   "SYSMON": 50,
+   "BLIND": 1,
+   "OUT": 0,
+   "CTI": 25
+  },
+  "Amadey": {
+   "RULE": 1,
+   "HUNT": 7,
+   "DATA": 12,
+   "SYSMON": 14,
+   "BLIND": 0,
+   "OUT": 0,
+   "CTI": 6
+  },
+  "APT1": {
+   "RULE": 0,
+   "HUNT": 1,
+   "DATA": 9,
+   "SYSMON": 8,
+   "BLIND": 0,
+   "OUT": 0,
+   "CTI": 5
+  }
+ },
+ "visibility_bounds": {
+  "APT29": {
+   "windows_techniques": 94,
+   "lenient_any_source": 83,
+   "chosen_half_of_sources": 41,
+   "strict_all_sources": 10
+  },
+  "APT41": {
+   "windows_techniques": 92,
+   "lenient_any_source": 83,
+   "chosen_half_of_sources": 39,
+   "strict_all_sources": 11
+  },
+  "TA505": {
+   "windows_techniques": 30,
+   "lenient_any_source": 27,
+   "chosen_half_of_sources": 10,
+   "strict_all_sources": 3
+  },
+  "Kimsuky": {
+   "windows_techniques": 105,
+   "lenient_any_source": 99,
+   "chosen_half_of_sources": 51,
+   "strict_all_sources": 12
+  },
+  "Amadey": {
+   "windows_techniques": 34,
+   "lenient_any_source": 30,
+   "chosen_half_of_sources": 17,
+   "strict_all_sources": 3
+  },
+  "APT1": {
+   "windows_techniques": 18,
+   "lenient_any_source": 18,
+   "chosen_half_of_sources": 10,
+   "strict_all_sources": 4
+  }
+ },
+ "nominal_only": {
+  "APT29": [
+   "T1071.001",
+   "T1204.002",
+   "T1218.011",
+   "T1547.001",
+   "T1555.003"
+  ],
+  "APT41": [
+   "T1071.001",
+   "T1112",
+   "T1218.011",
+   "T1547.001",
+   "T1555.003"
+  ],
+  "TA505": [
+   "T1071.001",
+   "T1112",
+   "T1204.002",
+   "T1218.011",
+   "T1555.003"
+  ],
+  "Kimsuky": [
+   "T1071.001",
+   "T1112",
+   "T1115",
+   "T1204.002",
+   "T1218.011",
+   "T1547.001",
+   "T1555.003"
+  ],
+  "Amadey": [
+   "T1071.001",
+   "T1112",
+   "T1115",
+   "T1204.002",
+   "T1218.011",
+   "T1547.001",
+   "T1555.003"
+  ],
+  "APT1": []
+ },
+ "car_coverage": {
+  "APT29": {
+   "exact": 36,
+   "parent_only": 28
+  },
+  "APT41": {
+   "exact": 43,
+   "parent_only": 8
+  },
+  "TA505": {
+   "exact": 14,
+   "parent_only": 6
+  },
+  "Kimsuky": {
+   "exact": 34,
+   "parent_only": 17
+  },
+  "Amadey": {
+   "exact": 14,
+   "parent_only": 4
+  },
+  "APT1": {
+   "exact": 11,
+   "parent_only": 0
+  }
+ },
+ "apt29_and_apt41": [
+  "T1003.002",
+  "T1005",
+  "T1018",
+  "T1021.001",
+  "T1021.002",
+  "T1027.002",
+  "T1036.004",
+  "T1036.005",
+  "T1037",
+  "T1047",
+  "T1053.005",
+  "T1059.001",
+  "T1059.003",
+  "T1069",
+  "T1070.004",
+  "T1071.001",
+  "T1078",
+  "T1083",
+  "T1087.002",
+  "T1105",
+  "T1133",
+  "T1140",
+  "T1190",
+  "T1195.002",
+  "T1203",
+  "T1213.003",
+  "T1218.011",
+  "T1505.003",
+  "T1546.008",
+  "T1547.001",
+  "T1553.002",
+  "T1555",
+  "T1555.003",
+  "T1560.001",
+  "T1566.001",
+  "T1586.003",
+  "T1588.002",
+  "T1595.002",
+  "T1680",
+  "T1685"
+ ],
+ "apt29_only": 79,
+ "apt41_only": 65,
+ "both_apts_and_amadey": [
+  "T1005",
+  "T1021.001",
+  "T1053.005",
+  "T1059.001",
+  "T1071.001",
+  "T1083",
+  "T1105",
+  "T1140",
+  "T1218.011",
+  "T1547.001",
+  "T1555.003",
+  "T1566.001"
+ ],
+ "amadey_with_apt29": [
+  "T1005",
+  "T1021.001",
+  "T1053.005",
+  "T1059.001",
+  "T1071.001",
+  "T1083",
+  "T1105",
+  "T1140",
+  "T1204.002",
+  "T1218.005",
+  "T1218.011",
+  "T1547.001",
+  "T1553.005",
+  "T1555.003",
+  "T1566.001",
+  "T1583.001",
+  "T1587.001",
+  "T1686"
+ ],
+ "amadey_with_apt41": [
+  "T1005",
+  "T1016",
+  "T1021.001",
+  "T1027",
+  "T1033",
+  "T1041",
+  "T1053.005",
+  "T1059.001",
+  "T1059.007",
+  "T1071.001",
+  "T1082",
+  "T1083",
+  "T1090",
+  "T1105",
+  "T1112",
+  "T1136.001",
+  "T1140",
+  "T1218.011",
+  "T1486",
+  "T1547.001",
+  "T1555.003",
+  "T1566.001"
+ ],
+ "amadey_attack_s1025": {
+  "techniques": 17,
+  "in_week4": 17,
+  "week4_only": 23
+ },
+ "apt1_still_used_by_both_apts": [
+  "T1005",
+  "T1021.001",
+  "T1036.005",
+  "T1059.003",
+  "T1560.001",
+  "T1566.001",
+  "T1588.002"
+ ],
+ "core_tradecraft": [
+  {
+   "id": "T1059.001",
+   "name": "PowerShell",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "my_detections": [
+    "W5-H1"
+   ],
+   "car": [
+    "CAR-2014-04-003",
+    "CAR-2014-11-004"
+   ]
+  },
+  {
+   "id": "T1105",
+   "name": "Ingress Tool Transfer",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "my_detections": [
+    "W5-H1"
+   ],
+   "car": [
+    "CAR-2013-07-001",
+    "CAR-2021-05-005",
+    "CAR-2021-05-006",
+    "CAR-2021-05-007"
+   ]
+  },
+  {
+   "id": "T1071.001",
+   "name": "Web Protocols",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "my_detections": [
+    "W3-C2-POST"
+   ],
+   "car": []
+  },
+  {
+   "id": "T1140",
+   "name": "Deobfuscate/Decode Files or Information",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": [
+    "CAR-2021-05-009"
+   ]
+  },
+  {
+   "id": "T1218.011",
+   "name": "Rundll32",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "my_detections": [
+    "W3-RUNDLL32"
+   ],
+   "car": [
+    "CAR-2014-03-006"
+   ]
+  },
+  {
+   "id": "T1555.003",
+   "name": "Credentials from Web Browsers",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "my_detections": [
+    "W3-RUNDLL32"
+   ],
+   "car": []
+  },
+  {
+   "id": "T1566.001",
+   "name": "Spearphishing Attachment",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1053.005",
+   "name": "Scheduled Task",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "RULE",
+   "my_detections": [
+    "W3-SCHTASKS",
+    "W5-H2",
+    "W7-CAR-TASK",
+    "W7-CAR-PROC"
+   ],
+   "car": [
+    "CAR-2013-01-002",
+    "CAR-2013-04-002",
+    "CAR-2013-08-001",
+    "CAR-2015-04-002",
+    "CAR-2020-09-001",
+    "CAR-2021-12-001"
+   ]
+  },
+  {
+   "id": "T1021.001",
+   "name": "Remote Desktop Protocol",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "my_detections": [
+    "W3-RDP-REG",
+    "W5-H3"
+   ],
+   "car": [
+    "CAR-2013-07-002",
+    "CAR-2013-10-001",
+    "CAR-2016-04-005"
+   ]
+  },
+  {
+   "id": "T1059.007",
+   "name": "JavaScript",
+   "actors": 4,
+   "who": [
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "my_detections": [
+    "W5-H1"
+   ],
+   "car": []
+  },
+  {
+   "id": "T1005",
+   "name": "Data from Local System",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1027.002",
+   "name": "Software Packing",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1083",
+   "name": "File and Directory Discovery",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1112",
+   "name": "Modify Registry",
+   "actors": 4,
+   "who": [
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "my_detections": [
+    "W3-RDP-REG",
+    "W3-STARTUP-REG"
+   ],
+   "car": [
+    "CAR-2013-01-002",
+    "CAR-2013-03-001",
+    "CAR-2013-04-002",
+    "CAR-2014-11-005",
+    "CAR-2020-05-003",
+    "CAR-2021-11-001",
+    "CAR-2021-11-002",
+    "CAR-2021-12-002"
+   ]
+  },
+  {
+   "id": "T1553.002",
+   "name": "Code Signing",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1059.003",
+   "name": "Windows Command Shell",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": [
+    "CAR-2013-02-003",
+    "CAR-2014-11-002"
+   ]
+  },
+  {
+   "id": "T1204.002",
+   "name": "Malicious File",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "my_detections": [
+    "W3-HEXEXE",
+    "W5-H2"
+   ],
+   "car": [
+    "CAR-2021-05-002"
+   ]
+  },
+  {
+   "id": "T1547.001",
+   "name": "Registry Run Keys / Startup Folder",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "my_detections": [
+    "W3-STARTUP-REG"
+   ],
+   "car": [
+    "CAR-2013-01-002",
+    "CAR-2013-03-001",
+    "CAR-2020-05-003",
+    "CAR-2021-12-002"
+   ]
+  },
+  {
+   "id": "T1685",
+   "name": "Disable or Modify Tools",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": [
+    "CAR-2013-04-002",
+    "CAR-2016-04-003",
+    "CAR-2020-09-003",
+    "CAR-2021-01-007",
+    "CAR-2022-03-001"
+   ]
+  },
+  {
+   "id": "T1583.001",
+   "name": "Domains",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "CTI",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1588.002",
+   "name": "Tool",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "CTI",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1136.001",
+   "name": "Local Account",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "my_detections": [
+    "W5-H3"
+   ],
+   "car": [
+    "CAR-2021-05-010"
+   ]
+  },
+  {
+   "id": "T1218.005",
+   "name": "Mshta",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "my_detections": [
+    "W5-H1"
+   ],
+   "car": []
+  },
+  {
+   "id": "T1686",
+   "name": "Disable or Modify System Firewall",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "my_detections": [
+    "W5-H3"
+   ],
+   "car": []
+  },
+  {
+   "id": "T1016",
+   "name": "System Network Configuration Discovery",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": [
+    "CAR-2013-04-002",
+    "CAR-2016-03-001"
+   ]
+  },
+  {
+   "id": "T1027",
+   "name": "Obfuscated Files or Information",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1033",
+   "name": "System Owner/User Discovery",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": [
+    "CAR-2013-04-002",
+    "CAR-2016-03-001"
+   ]
+  },
+  {
+   "id": "T1036.004",
+   "name": "Masquerade Task or Service",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1036.005",
+   "name": "Match Legitimate Resource Name or Location",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": [
+    "CAR-2021-04-001"
+   ]
+  },
+  {
+   "id": "T1059.005",
+   "name": "Visual Basic",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": [
+    "CAR-2013-04-002"
+   ]
+  },
+  {
+   "id": "T1069",
+   "name": "Permission Groups Discovery",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": [
+    "CAR-2013-04-002",
+    "CAR-2016-03-001",
+    "CAR-2020-11-006"
+   ]
+  },
+  {
+   "id": "T1082",
+   "name": "System Information Discovery",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": [
+    "CAR-2013-04-002",
+    "CAR-2016-03-001"
+   ]
+  },
+  {
+   "id": "T1133",
+   "name": "External Remote Services",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1505.003",
+   "name": "Web Shell",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": [
+    "CAR-2021-02-001"
+   ]
+  },
+  {
+   "id": "T1680",
+   "name": "Local Storage Discovery",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1027.013",
+   "name": "Encrypted/Encoded File",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1041",
+   "name": "Exfiltration Over C2 Channel",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1070.004",
+   "name": "File Deletion",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1106",
+   "name": "Native API",
+   "actors": 3,
+   "who": [
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1190",
+   "name": "Exploit Public-Facing Application",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1204.001",
+   "name": "Malicious Link",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1486",
+   "name": "Data Encrypted for Impact",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "TA505",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1553.005",
+   "name": "Mark-of-the-Web Bypass",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "TA505",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1560.001",
+   "name": "Archive via Utility",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": [
+    "CAR-2013-07-005"
+   ]
+  },
+  {
+   "id": "T1566.002",
+   "name": "Spearphishing Link",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1587.001",
+   "name": "Malware",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "CTI",
+   "my_detections": [],
+   "car": []
+  },
+  {
+   "id": "T1608.001",
+   "name": "Upload Malware",
+   "actors": 3,
+   "who": [
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "CTI",
+   "my_detections": [],
+   "car": []
+  }
+ ],
+ "priorities": [
+  {
+   "id": "T1059.001",
+   "name": "PowerShell",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "next_step": "turn the hunt into a scheduled rule, then validate",
+   "nominal_only": false
+  },
+  {
+   "id": "T1105",
+   "name": "Ingress Tool Transfer",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "next_step": "turn the hunt into a scheduled rule, then validate",
+   "nominal_only": false
+  },
+  {
+   "id": "T1071.001",
+   "name": "Web Protocols",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": true
+  },
+  {
+   "id": "T1140",
+   "name": "Deobfuscate/Decode Files or Information",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1218.011",
+   "name": "Rundll32",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": true
+  },
+  {
+   "id": "T1555.003",
+   "name": "Credentials from Web Browsers",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": true
+  },
+  {
+   "id": "T1566.001",
+   "name": "Spearphishing Attachment",
+   "actors": 5,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1005",
+   "name": "Data from Local System",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1027.002",
+   "name": "Software Packing",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1083",
+   "name": "File and Directory Discovery",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1112",
+   "name": "Modify Registry",
+   "actors": 4,
+   "who": [
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": true
+  },
+  {
+   "id": "T1553.002",
+   "name": "Code Signing",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1021.001",
+   "name": "Remote Desktop Protocol",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "next_step": "turn the hunt into a scheduled rule, then validate",
+   "nominal_only": false
+  },
+  {
+   "id": "T1059.007",
+   "name": "JavaScript",
+   "actors": 4,
+   "who": [
+    "APT41",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "next_step": "turn the hunt into a scheduled rule, then validate",
+   "nominal_only": false
+  },
+  {
+   "id": "T1053.005",
+   "name": "Scheduled Task",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "RULE",
+   "next_step": "validate the rule with an atomic test (Week 9)",
+   "nominal_only": false
+  },
+  {
+   "id": "T1059.003",
+   "name": "Windows Command Shell",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1204.002",
+   "name": "Malicious File",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": true
+  },
+  {
+   "id": "T1547.001",
+   "name": "Registry Run Keys / Startup Folder",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": true
+  },
+  {
+   "id": "T1685",
+   "name": "Disable or Modify Tools",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1583.001",
+   "name": "Domains",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "TA505",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1588.002",
+   "name": "Tool",
+   "actors": 4,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1016",
+   "name": "System Network Configuration Discovery",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1027",
+   "name": "Obfuscated Files or Information",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1033",
+   "name": "System Owner/User Discovery",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1036.004",
+   "name": "Masquerade Task or Service",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1036.005",
+   "name": "Match Legitimate Resource Name or Location",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1059.005",
+   "name": "Visual Basic",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1069",
+   "name": "Permission Groups Discovery",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "TA505"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1082",
+   "name": "System Information Discovery",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1133",
+   "name": "External Remote Services",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1505.003",
+   "name": "Web Shell",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1680",
+   "name": "Local Storage Discovery",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1136.001",
+   "name": "Local Account",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "next_step": "turn the hunt into a scheduled rule, then validate",
+   "nominal_only": false
+  },
+  {
+   "id": "T1218.005",
+   "name": "Mshta",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "next_step": "turn the hunt into a scheduled rule, then validate",
+   "nominal_only": false
+  },
+  {
+   "id": "T1686",
+   "name": "Disable or Modify System Firewall",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "HUNT",
+   "next_step": "turn the hunt into a scheduled rule, then validate",
+   "nominal_only": false
+  },
+  {
+   "id": "T1027.013",
+   "name": "Encrypted/Encoded File",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1041",
+   "name": "Exfiltration Over C2 Channel",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1070.004",
+   "name": "File Deletion",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1190",
+   "name": "Exploit Public-Facing Application",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1204.001",
+   "name": "Malicious Link",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1486",
+   "name": "Data Encrypted for Impact",
+   "actors": 3,
+   "who": [
+    "APT41",
+    "TA505",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1553.005",
+   "name": "Mark-of-the-Web Bypass",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "TA505",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1560.001",
+   "name": "Archive via Utility",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1566.002",
+   "name": "Spearphishing Link",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "TA505",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1587.001",
+   "name": "Malware",
+   "actors": 3,
+   "who": [
+    "APT29",
+    "Kimsuky",
+    "Amadey"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1012",
+   "name": "Query Registry",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1018",
+   "name": "Remote System Discovery",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1021.002",
+   "name": "SMB/Windows Admin Shares",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1037",
+   "name": "Boot or Logon Initialization Scripts",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1057",
+   "name": "Process Discovery",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1059.006",
+   "name": "Python",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1078",
+   "name": "Valid Accounts",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1078.002",
+   "name": "Domain Accounts",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "TA505"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1078.003",
+   "name": "Local Accounts",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1087.002",
+   "name": "Domain Account",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1098.007",
+   "name": "Additional Local or Domain Groups",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1203",
+   "name": "Exploitation for Client Execution",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1550.002",
+   "name": "Pass the Hash",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1568",
+   "name": "Dynamic Resolution",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1684.001",
+   "name": "Impersonation",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1003.001",
+   "name": "LSASS Memory",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1003.002",
+   "name": "Security Account Manager",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1027.001",
+   "name": "Binary Padding",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1047",
+   "name": "Windows Management Instrumentation",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1055",
+   "name": "Process Injection",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1056.001",
+   "name": "Keylogging",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1071.002",
+   "name": "File Transfer Protocols",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1074.001",
+   "name": "Local Data Staging",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1090",
+   "name": "Proxy",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Amadey"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1102.001",
+   "name": "Dead Drop Resolver",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1102.002",
+   "name": "Bidirectional Communication",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1114.002",
+   "name": "Remote Email Collection",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1195.002",
+   "name": "Compromise Software Supply Chain",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1539",
+   "name": "Steal Web Session Cookie",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1543.003",
+   "name": "Windows Service",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1546.008",
+   "name": "Accessibility Features",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1552.004",
+   "name": "Private Keys",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1555",
+   "name": "Credentials from Password Stores",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1560.003",
+   "name": "Archive via Custom Method",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1567.002",
+   "name": "Exfiltration to Cloud Storage",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1070.006",
+   "name": "Timestomp",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "BLIND",
+   "next_step": "needs a new sensor (network/EDR) - document as an accepted gap",
+   "nominal_only": false
+  },
+  {
+   "id": "T1213.003",
+   "name": "Code Repositories",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1583.006",
+   "name": "Web Services",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1584.001",
+   "name": "Domains",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1585.001",
+   "name": "Social Media Accounts",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1586.002",
+   "name": "Email Accounts",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "Kimsuky"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1586.003",
+   "name": "Cloud Accounts",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1588.003",
+   "name": "Code Signing Certificates",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1593.002",
+   "name": "Search Engines",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1594",
+   "name": "Search Victim-Owned Websites",
+   "actors": 2,
+   "who": [
+    "APT41",
+    "Kimsuky"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1595.002",
+   "name": "Vulnerability Scanning",
+   "actors": 2,
+   "who": [
+    "APT29",
+    "APT41"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1016.001",
+   "name": "Internet Connection Discovery",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1021.006",
+   "name": "Windows Remote Management",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1046",
+   "name": "Network Service Discovery",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1049",
+   "name": "System Network Connections Discovery",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1068",
+   "name": "Exploitation for Privilege Escalation",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1069.002",
+   "name": "Domain Groups",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1087",
+   "name": "Account Discovery",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1087.001",
+   "name": "Local Account",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1090.002",
+   "name": "External Proxy",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1098.002",
+   "name": "Additional Email Delegate Permissions",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1104",
+   "name": "Multi-Stage Channels",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1110",
+   "name": "Brute Force",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1110.001",
+   "name": "Password Guessing",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1110.003",
+   "name": "Password Spraying",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1119",
+   "name": "Automated Collection",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1197",
+   "name": "BITS Jobs",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1496.001",
+   "name": "Compute Hijacking",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1550",
+   "name": "Use Alternate Authentication Material",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1558.003",
+   "name": "Kerberoasting",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1568.002",
+   "name": "Domain Generation Algorithms",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1606.001",
+   "name": "Web Cookies",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1606.002",
+   "name": "SAML Tokens",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1621",
+   "name": "Multi-Factor Authentication Request Generation",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1685.001",
+   "name": "Disable or Modify Windows Event Log",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1685.005",
+   "name": "Clear Windows Event Logs",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "DATA",
+   "next_step": "quick win: data is already collected - write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1001.002",
+   "name": "Steganography",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1001.003",
+   "name": "Protocol or Service Impersonation",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1003.003",
+   "name": "NTDS",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1003.004",
+   "name": "LSA Secrets",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1008",
+   "name": "Fallback Channels",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1014",
+   "name": "Rootkit",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1027.003",
+   "name": "Steganography",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1027.006",
+   "name": "HTML Smuggling",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1030",
+   "name": "Data Transfer Size Limits",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1048.002",
+   "name": "Exfiltration Over Asymmetric Encrypted Non-C2 Protocol",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1048.003",
+   "name": "Exfiltration Over Unencrypted Non-C2 Protocol",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1070",
+   "name": "Indicator Removal",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1070.003",
+   "name": "Clear Command History",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1070.008",
+   "name": "Clear Mailbox Data",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1071.004",
+   "name": "DNS",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1074.002",
+   "name": "Remote Data Staging",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1090.001",
+   "name": "Internal Proxy",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1090.003",
+   "name": "Multi-hop Proxy",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1090.004",
+   "name": "Domain Fronting",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1102",
+   "name": "Web Service",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1134",
+   "name": "Access Token Manipulation",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1135",
+   "name": "Network Share Discovery",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1199",
+   "name": "Trusted Relationship",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1213.006",
+   "name": "Databases",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1218.001",
+   "name": "Compiled HTML File",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1480.001",
+   "name": "Environmental Keying",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1482",
+   "name": "Domain Trust Discovery",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1542.003",
+   "name": "Bootkit",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1546.003",
+   "name": "Windows Management Instrumentation Event Subscription",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1548.002",
+   "name": "Bypass User Account Control",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1550.003",
+   "name": "Pass the Ticket",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1566.003",
+   "name": "Spearphishing via Service",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1567",
+   "name": "Exfiltration Over Web Service",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1569.002",
+   "name": "Service Execution",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1570",
+   "name": "Lateral Tool Transfer",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1573",
+   "name": "Encrypted Channel",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1573.002",
+   "name": "Asymmetric Cryptography",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1574",
+   "name": "Hijack Execution Flow",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1574.001",
+   "name": "DLL",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "SYSMON",
+   "next_step": "install Sysmon (Week 4 priority #2), then write a rule",
+   "nominal_only": false
+  },
+  {
+   "id": "T1003.006",
+   "name": "DCSync",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "BLIND",
+   "next_step": "needs a new sensor (network/EDR) - document as an accepted gap",
+   "nominal_only": false
+  },
+  {
+   "id": "T1098.005",
+   "name": "Device Registration",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "BLIND",
+   "next_step": "needs a new sensor (network/EDR) - document as an accepted gap",
+   "nominal_only": false
+  },
+  {
+   "id": "T1213",
+   "name": "Data from Information Repositories",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "BLIND",
+   "next_step": "needs a new sensor (network/EDR) - document as an accepted gap",
+   "nominal_only": false
+  },
+  {
+   "id": "T1484.001",
+   "name": "Group Policy Modification",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "BLIND",
+   "next_step": "needs a new sensor (network/EDR) - document as an accepted gap",
+   "nominal_only": false
+  },
+  {
+   "id": "T1484.002",
+   "name": "Trust Modification",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "BLIND",
+   "next_step": "needs a new sensor (network/EDR) - document as an accepted gap",
+   "nominal_only": false
+  },
+  {
+   "id": "T1556.007",
+   "name": "Hybrid Identity",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "BLIND",
+   "next_step": "needs a new sensor (network/EDR) - document as an accepted gap",
+   "nominal_only": false
+  },
+  {
+   "id": "T1649",
+   "name": "Steal or Forge Authentication Certificates",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "BLIND",
+   "next_step": "needs a new sensor (network/EDR) - document as an accepted gap",
+   "nominal_only": false
+  },
+  {
+   "id": "T1665",
+   "name": "Hide Infrastructure",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "BLIND",
+   "next_step": "needs a new sensor (network/EDR) - document as an accepted gap",
+   "nominal_only": false
+  },
+  {
+   "id": "T1021.007",
+   "name": "Cloud Services",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1037.004",
+   "name": "RC Scripts",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1059.004",
+   "name": "Unix Shell",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1059.009",
+   "name": "Cloud API",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1078.004",
+   "name": "Cloud Accounts",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1087.004",
+   "name": "Cloud Account",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1098.001",
+   "name": "Additional Cloud Credentials",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1098.003",
+   "name": "Additional Cloud Roles",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1136.003",
+   "name": "Cloud Account",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1528",
+   "name": "Steal Application Access Token",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1550.001",
+   "name": "Application Access Token",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1550.004",
+   "name": "Web Session Cookie",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1574.006",
+   "name": "Dynamic Linker Hijacking",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1599",
+   "name": "Network Boundary Bridging",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1651",
+   "name": "Cloud Administration Command",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1685.002",
+   "name": "Disable or Modify Cloud Log",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "OUT",
+   "next_step": "outside the Windows lab - cloud/identity/network-device logs",
+   "nominal_only": false
+  },
+  {
+   "id": "T1583.007",
+   "name": "Serverless",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1587.003",
+   "name": "Digital Certificates",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1589.001",
+   "name": "Credentials",
+   "actors": 1,
+   "who": [
+    "APT29"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1595.003",
+   "name": "Wordlist Scanning",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  },
+  {
+   "id": "T1596.005",
+   "name": "Scan Databases",
+   "actors": 1,
+   "who": [
+    "APT41"
+   ],
+   "status": "CTI",
+   "next_step": "CTI only - watch reporting, nothing to log inside the network",
+   "nominal_only": false
+  }
+ ],
+ "visibility_check_vs_week4": {
+  "agree": 17,
+  "total": 40,
+  "disagreements": [
+   {
+    "id": "T1027",
+    "name": "Obfuscated Files or Information",
+    "week4": "BLIND",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN1064: 2/3 log sources now, 3/3 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1566.001",
+    "name": "Spearphishing Attachment",
+    "week4": "BLIND",
+    "auto": "SYSMON",
+    "auto_evidence": [
+     "AN0655: 1/4 log sources now, 3/4 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1204.002",
+    "name": "Malicious File",
+    "week4": "DATA",
+    "auto": "SYSMON",
+    "auto_evidence": [
+     "AN0819: 1/3 log sources now, 3/3 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1059.007",
+    "name": "JavaScript",
+    "week4": "DATA",
+    "auto": "SYSMON",
+    "auto_evidence": [
+     "AN0733: 1/3 log sources now, 2/3 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1218.005",
+    "name": "Mshta",
+    "week4": "DATA",
+    "auto": "SYSMON",
+    "auto_evidence": [
+     "AN1397: 1/3 log sources now, 3/3 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1106",
+    "name": "Native API",
+    "week4": "BLIND",
+    "auto": "SYSMON",
+    "auto_evidence": [
+     "AN1465: 1/3 log sources now, 3/3 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1112",
+    "name": "Modify Registry",
+    "week4": "SYSMON",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN0781: 1/2 log sources now, 2/2 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1140",
+    "name": "Deobfuscate/Decode Files or Information",
+    "week4": "BLIND",
+    "auto": "SYSMON",
+    "auto_evidence": [
+     "AN0767: 1/3 log sources now, 3/3 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1564.001",
+    "name": "Hidden Files and Directories",
+    "week4": "BLIND",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN0091: 1/2 log sources now, 2/2 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1071.001",
+    "name": "Web Protocols",
+    "week4": "BLIND",
+    "auto": "SYSMON",
+    "auto_evidence": [
+     "AN0075: 0/2 log sources now, 1/2 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1573.001",
+    "name": "Symmetric Cryptography",
+    "week4": "BLIND",
+    "auto": "SYSMON",
+    "auto_evidence": [
+     "AN0400: 0/2 log sources now, 2/2 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1082",
+    "name": "System Information Discovery",
+    "week4": "BLIND",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN1452: 3/4 log sources now, 4/4 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1016",
+    "name": "System Network Configuration Discovery",
+    "week4": "BLIND",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN0559: 2/2 log sources now, 2/2 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1033",
+    "name": "System Owner/User Discovery",
+    "week4": "BLIND",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN0254: 2/2 log sources now, 2/2 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1083",
+    "name": "File and Directory Discovery",
+    "week4": "BLIND",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN1040: 1/2 log sources now, 2/2 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1518.001",
+    "name": "Security Software Discovery",
+    "week4": "BLIND",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN0048: 1/2 log sources now, 2/2 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1614",
+    "name": "System Location Discovery",
+    "week4": "BLIND",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN0119: 1/2 log sources now, 1/2 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1005",
+    "name": "Data from Local System",
+    "week4": "BLIND",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN1070: 1/2 log sources now, 2/2 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1218.011",
+    "name": "Rundll32",
+    "week4": "RULE",
+    "auto": "SYSMON",
+    "auto_evidence": [
+     "AN1308: 1/4 log sources now, 4/4 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1555.003",
+    "name": "Credentials from Web Browsers",
+    "week4": "RULE",
+    "auto": "SYSMON",
+    "auto_evidence": [
+     "AN0105: 1/3 log sources now, 2/3 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1113",
+    "name": "Screen Capture",
+    "week4": "BLIND",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN0980: 1/2 log sources now, 2/2 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1021.001",
+    "name": "Remote Desktop Protocol",
+    "week4": "SYSMON",
+    "auto": "DATA",
+    "auto_evidence": [
+     "AN0931: 2/4 log sources now, 3/4 with Sysmon"
+    ]
+   },
+   {
+    "id": "T1486",
+    "name": "Data Encrypted for Impact",
+    "week4": "BLIND",
+    "auto": "SYSMON",
+    "auto_evidence": [
+     "AN0602: 1/3 log sources now, 3/3 with Sysmon"
+    ]
+   }
+  ]
+ },
+ "status_legend": {
+  "RULE": "Rule + data now (generic logic)",
+  "HUNT": "Hunt query + data now",
+  "DATA": "Data now, no rule",
+  "SYSMON": "Needs Sysmon",
+  "BLIND": "Blind on Windows (network/EDR/other sensor)",
+  "OUT": "Not a Windows technique (cloud, identity, network device, Linux)",
+  "CTI": "Outside network: CTI only (PRE)"
+ },
+ "lab_security_events": [
+  1102,
+  4624,
+  4625,
+  4634,
+  4648,
+  4672,
+  4688,
+  4698,
+  4699,
+  4702,
+  4720,
+  4722,
+  4724,
+  4726,
+  4732,
+  4738,
+  4740,
+  4946,
+  4947,
+  4948
+ ],
+ "lab_channels": [
+  "WinEventLog:Application",
+  "WinEventLog:Microsoft-Windows-Windows Defender/Operational",
+  "WinEventLog:PowerShell",
+  "WinEventLog:System",
+  "WinEventLog:TaskScheduler"
+ ],
+ "my_detections": [
+  {
+   "id": "W3-HEXEXE",
+   "kind": "rule",
+   "scope": "amadey",
+   "needs": null,
+   "techniques": [
+    "T1204.002"
+   ],
+   "file": "week-03-data-processing/sigma/proc_creation_win_amadey_hex_folder_exe.yml",
+   "logic": "EXE started from a 10-hex-character folder (Amadey install path)"
+  },
+  {
+   "id": "W3-RUNDLL32",
+   "kind": "rule",
+   "scope": "amadey",
+   "needs": null,
+   "techniques": [
+    "T1218.011",
+    "T1555.003",
+    "T1115"
+   ],
+   "file": "week-03-data-processing/sigma/proc_creation_win_amadey_rundll32_plugin.yml",
+   "logic": "rundll32 loading cred64.dll / clip64.dll (Amadey plugin names)"
+  },
+  {
+   "id": "W3-SCHTASKS",
+   "kind": "rule",
+   "scope": "amadey",
+   "needs": null,
+   "techniques": [
+    "T1053.005"
+   ],
+   "file": "week-03-data-processing/sigma/proc_creation_win_amadey_schtasks_every_minute.yml",
+   "logic": "schtasks.exe /Create every minute from a user folder"
+  },
+  {
+   "id": "W3-C2-POST",
+   "kind": "rule",
+   "scope": "amadey",
+   "needs": "proxy logs",
+   "techniques": [
+    "T1071.001"
+   ],
+   "file": "week-03-data-processing/sigma/proxy_amadey_c2_index_php_post.yml",
+   "logic": "POST to /<random>/index.php"
+  },
+  {
+   "id": "W3-RDP-REG",
+   "kind": "rule",
+   "scope": "generic",
+   "needs": "Sysmon 13",
+   "techniques": [
+    "T1021.001",
+    "T1112"
+   ],
+   "file": "week-03-data-processing/sigma/registry_set_amadey_rdp_enabled_from_user_path.yml",
+   "logic": "fDenyTSConnections=0 set by a process in a user-writable path"
+  },
+  {
+   "id": "W3-STARTUP-REG",
+   "kind": "rule",
+   "scope": "generic",
+   "needs": "Sysmon 13",
+   "techniques": [
+    "T1547.001",
+    "T1112"
+   ],
+   "file": "week-03-data-processing/sigma/registry_set_amadey_startup_folder_redirect.yml",
+   "logic": "User Shell Folders\\Startup redirected away from the Start Menu"
+  },
+  {
+   "id": "W5-H1",
+   "kind": "hunt",
+   "scope": "generic",
+   "needs": null,
+   "techniques": [
+    "T1059.001",
+    "T1059.007",
+    "T1218.005",
+    "T1105"
+   ],
+   "file": "week-05-threat-hunting/queries/h1_script_host_powershell.esql",
+   "logic": "script host (wscript/cscript/mshta/wmic/regsvr32) -> PowerShell, 4104 download cradles"
+  },
+  {
+   "id": "W5-H2",
+   "kind": "hunt",
+   "scope": "amadey",
+   "needs": null,
+   "techniques": [
+    "T1053.005",
+    "T1204.002"
+   ],
+   "file": "week-05-threat-hunting/queries/h2_hexfolder_minute_task.esql",
+   "logic": "hex-folder EXE + every-minute task on the same host"
+  },
+  {
+   "id": "W5-H3",
+   "kind": "hunt",
+   "scope": "generic",
+   "needs": null,
+   "techniques": [
+    "T1136.001",
+    "T1021.001",
+    "T1686"
+   ],
+   "file": "week-05-threat-hunting/queries/h3_new_admin_firewall.esql",
+   "logic": "new local admin + new firewall rule on the same host"
+  },
+  {
+   "id": "W7-CAR-TASK",
+   "kind": "rule",
+   "scope": "generic",
+   "needs": null,
+   "techniques": [
+    "T1053.005"
+   ],
+   "file": "week-07-mitre-car/sigma/win_security_task_created_user_writable_car_2021_12_001.yml",
+   "logic": "4698/4702 task whose action is in a user-writable path or an every-minute interpreter"
+  },
+  {
+   "id": "W7-CAR-PROC",
+   "kind": "rule",
+   "scope": "generic",
+   "needs": null,
+   "techniques": [
+    "T1053.005"
+   ],
+   "file": "week-07-mitre-car/sigma/proc_creation_win_schtasks_create_suspicious_car_2021_12_001.yml",
+   "logic": "schtasks /create|/change with a user-writable or every-minute interpreter action"
+  }
+ ]
+}

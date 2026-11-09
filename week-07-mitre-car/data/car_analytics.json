@@ -1,0 +1,4153 @@
+{
+ "source": "https://car.mitre.org/analytics/",
+ "count": 102,
+ "analytics": [
+  {
+   "id": "CAR-2013-01-002",
+   "title": "Autorun Differences",
+   "submitted": "2013/01/25",
+   "analytic_types": [
+    "Situational Awareness",
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1543",
+     "subtechniques": [
+      "T1543.003"
+     ],
+     "tactics": [
+      "TA0003"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1053",
+     "subtechniques": [
+      "T1053.005"
+     ],
+     "tactics": [
+      "TA0003"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1547",
+     "subtechniques": [
+      "T1547.001",
+      "T1547.010",
+      "T1547.004"
+     ],
+     "tactics": [
+      "TA0003"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1574",
+     "subtechniques": [
+      "T1574.007",
+      "T1574.008",
+      "T1574.009",
+      "T1574.010",
+      "T1574.011"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1546",
+     "subtechniques": [
+      "T1546.001",
+      "T1546.003",
+      "T1546.008",
+      "T1546.010"
+     ],
+     "tactics": [
+      "TA0004",
+      "TA0003"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1112",
+     "subtechniques": [],
+     "tactics": [
+      "TA0003",
+      "TA0002"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1037",
+     "subtechniques": [
+      "T1037.001"
+     ],
+     "tactics": [
+      "TA0003"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [],
+   "data_model_references": [],
+   "d3fend": [
+    "D3-SICA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2013-01-003",
+   "title": "SMB Events Monitoring",
+   "submitted": "2013/01/25",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "N/A"
+   ],
+   "coverage": [
+    {
+     "technique": "T1039",
+     "subtechniques": [],
+     "tactics": [
+      "TA0009"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1021",
+     "subtechniques": [
+      "T1021.002"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/message/dest_port",
+    "flow/message/proto_info"
+   ],
+   "d3fend": [
+    "D3-IPCTA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2013-02-003",
+   "title": "Processes Spawning cmd.exe",
+   "submitted": "2013/02/05",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1059",
+     "subtechniques": [
+      "T1059.003"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "logpoint",
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2013-02-008",
+   "title": "Simultaneous Logins on a Host",
+   "submitted": "2013/02/18",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1078",
+     "subtechniques": [
+      "T1078.002",
+      "T1078.003"
+     ],
+     "tactics": [
+      "TA0001"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "user_session/login/user",
+    "user_session/login/hostname"
+   ],
+   "d3fend": [
+    "D3-ANET"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2013-02-012",
+   "title": "User Logged in to Multiple Hosts",
+   "submitted": "2013/02/27",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1078",
+     "subtechniques": [
+      "T1078.002",
+      "T1078.003"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [],
+   "data_model_references": [],
+   "d3fend": [
+    "D3-ANET"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2013-03-001",
+   "title": "Reg.exe called from Command Shell",
+   "submitted": "2013/03/28",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1012",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1112",
+     "subtechniques": [],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1547",
+     "subtechniques": [
+      "T1547.001"
+     ],
+     "tactics": [
+      "TA0003"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1574",
+     "subtechniques": [
+      "T1574.011"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "process/create/command_line",
+    "process/create/hostname",
+    "process/create/exe",
+    "process/create/parent_exe",
+    "process/create/pid",
+    "process/create/ppid"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2013-04-002",
+   "title": "Quick execution of a series of suspicious commands",
+   "submitted": "2013/04/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1087",
+     "subtechniques": [
+      "T1087.001",
+      "T1087.002"
+     ],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1003",
+     "subtechniques": [
+      "T1003.002"
+     ],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1069",
+     "subtechniques": [
+      "T1069.001",
+      "T1069.002"
+     ],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1057",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1021",
+     "subtechniques": [
+      "T1021.002"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1543",
+     "subtechniques": [
+      "T1543.003"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1112",
+     "subtechniques": [],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1574",
+     "subtechniques": [
+      "T1574.011"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1018",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1569",
+     "subtechniques": [
+      "T1569.002"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1053",
+     "subtechniques": [
+      "T1053.002",
+      "T1053.005"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004",
+      "TA0002"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1029",
+     "subtechniques": [],
+     "tactics": [
+      "TA0010"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1033",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1007",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1082",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1049",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1016",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1010",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1518",
+     "subtechniques": [
+      "T1518.001"
+     ],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1046",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1562",
+     "subtechniques": [
+      "T1562.001",
+      "T1562.006"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1098",
+     "subtechniques": [],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1059",
+     "subtechniques": [
+      "T1059.005"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1012",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "logpoint",
+    "pseudocode",
+    "sigma"
+   ],
+   "data_model_references": [
+    "process/create/hostname",
+    "process/create/ppid",
+    "process/create/exe"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2013-05-002",
+   "title": "Suspicious Run Locations",
+   "submitted": "2013/05/07",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1036",
+     "subtechniques": [],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "logpoint",
+    "pseudocode",
+    "sigma"
+   ],
+   "data_model_references": [
+    "process/create/image_path"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2013-05-003",
+   "title": "SMB Write Request",
+   "submitted": "2013/05/13",
+   "analytic_types": [
+    "Situational Awareness",
+    "TTP"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1570",
+     "subtechniques": [],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1021",
+     "subtechniques": [
+      "T1021.002"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1078",
+     "subtechniques": [
+      "T1078.002",
+      "T1078.003"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/message/proto_info",
+    "flow/message/dest_port"
+   ],
+   "d3fend": [
+    "D3-IPCTA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2013-05-004",
+   "title": "Execution with AT",
+   "submitted": "2013/05/13",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1053",
+     "subtechniques": [
+      "T1053.002"
+     ],
+     "tactics": [
+      "TA0002",
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "eql",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line",
+    "process/create/exe"
+   ],
+   "d3fend": [
+    "D3-SJA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2013-05-005",
+   "title": "SMB Copy and Execution",
+   "submitted": "2013/05/13",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1021",
+     "subtechniques": [
+      "T1021.002"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1078",
+     "subtechniques": [
+      "T1078.002",
+      "T1078.003"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1570",
+     "subtechniques": [],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "process/create/image_path",
+    "process/create/proto_info",
+    "process/create/hostname"
+   ],
+   "d3fend": [
+    "D3-IPCTA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2013-05-009",
+   "title": "Running executables with same hash and different names",
+   "submitted": "2013/05/23",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1036",
+     "subtechniques": [
+      "T1036.003"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "logpoint",
+    "sigma",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/md5_hash"
+   ],
+   "d3fend": [
+    "D3-SBV",
+    "D3-SFA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2013-07-001",
+   "title": "Suspicious Arguments",
+   "submitted": "2013/07/05",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1003",
+     "subtechniques": [
+      "T1003.001"
+     ],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1021",
+     "subtechniques": [],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1105",
+     "subtechniques": [],
+     "tactics": [
+      "TA0011",
+      "TA0008"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "eql",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line",
+    "process/create/exe"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2013-07-002",
+   "title": "RDP Connection Detection",
+   "submitted": "2013/07/24",
+   "analytic_types": [
+    "Situational Awareness",
+    "TTP"
+   ],
+   "platforms": [],
+   "coverage": [
+    {
+     "technique": "T1021",
+     "subtechniques": [
+      "T1021.001"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Medium"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "sigma"
+   ],
+   "data_model_references": [
+    "flow/end/dest_port",
+    "flow/start/dest_ip",
+    "flow/start/dest_port",
+    "flow/start/src_ip"
+   ],
+   "d3fend": [
+    "D3-RTSD"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2013-07-005",
+   "title": "Command Line Usage of Archiving Software",
+   "submitted": "2013/07/31",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1560",
+     "subtechniques": [
+      "T1560.001"
+     ],
+     "tactics": [
+      "TA0010"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "logpoint",
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2013-08-001",
+   "title": "Execution with schtasks",
+   "submitted": "2013/08/07",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1053",
+     "subtechniques": [
+      "T1053.005"
+     ],
+     "tactics": [
+      "TA0003"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "logpoint",
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-SJA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2013-09-003",
+   "title": "SMB Session Setups",
+   "submitted": "2013/09/12",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [],
+   "coverage": [
+    {
+     "technique": "T1187",
+     "subtechniques": [],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/message/dest_port",
+    "flow/message/proto_info",
+    "flow/message/protocol"
+   ],
+   "d3fend": [
+    "D3-IPCTA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2013-09-005",
+   "title": "Service Outlier Executables",
+   "submitted": "2013/09/23",
+   "analytic_types": [
+    "Detection"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1543",
+     "subtechniques": [
+      "T1543.003"
+     ],
+     "tactics": [
+      "TA0003"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "sigma"
+   ],
+   "data_model_references": [
+    "process/create/parent_image_path"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2013-10-001",
+   "title": "User Login Activity Monitoring",
+   "submitted": "2013/10/03",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1021",
+     "subtechniques": [
+      "T1021.001"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1078",
+     "subtechniques": [
+      "T1078.002",
+      "T1078.003"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [],
+   "d3fend": [
+    "D3-ANET"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2013-10-002",
+   "title": "DLL Injection via Load Library",
+   "submitted": "2013/10/07",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1055",
+     "subtechniques": [
+      "T1055.001"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1548",
+     "subtechniques": [
+      "T1548.002"
+     ],
+     "tactics": [
+      "TA0004"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "thread/remote_create/src_pid",
+    "thread/remote_create/start_function"
+   ],
+   "d3fend": [
+    "D3-SCA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-02-001",
+   "title": "Service Binary Modifications",
+   "submitted": "2014/02/14",
+   "analytic_types": [
+    "Situational Awareness",
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1543",
+     "subtechniques": [
+      "T1543.003"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1574",
+     "subtechniques": [
+      "T1574.010"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1569",
+     "subtechniques": [
+      "T1569.002"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "file/create/file_path",
+    "file/create/image_path",
+    "process/create/image_path",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-SBV"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-03-001",
+   "title": "SMB Write Request - NamedPipes",
+   "submitted": "2014/03/03",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1570",
+     "subtechniques": [],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/message/proto_info",
+    "flow/start/dest_port"
+   ],
+   "d3fend": [
+    "D3-IPCTA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-03-005",
+   "title": "Remotely Launched Executables via Services",
+   "submitted": "2014/03/18",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1543",
+     "subtechniques": [
+      "T1543.003"
+     ],
+     "tactics": [
+      "TA0003"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1569",
+     "subtechniques": [
+      "T1569.002"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/start/pid",
+    "process/create/parent_exe",
+    "process/create/pid"
+   ],
+   "d3fend": [
+    "D3-RTA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-03-006",
+   "title": "RunDLL32.exe monitoring",
+   "submitted": "2014/03/28",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1218",
+     "subtechniques": [
+      "T1218.011"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "logpoint",
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2014-04-003",
+   "title": "Powershell Execution",
+   "submitted": "2014/04/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1059",
+     "subtechniques": [
+      "T1059.001"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "High"
+    },
+    {
+     "technique": "T1059",
+     "subtechniques": [
+      "T1059.001"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "eql",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-05-001",
+   "title": "RPC Activity",
+   "submitted": "2014/05/01",
+   "analytic_types": [
+    "TTP",
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1021",
+     "subtechniques": [
+      "T1021.002",
+      "T1021.003",
+      "T1021.006"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/start/dest_port",
+    "flow/start/src_port"
+   ],
+   "d3fend": [
+    "D3-RTA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-05-002",
+   "title": "Services launching Cmd",
+   "submitted": "2014/05/05",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1543",
+     "subtechniques": [
+      "T1543.003"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "dnif",
+    "eql",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-07-001",
+   "title": "Service Search Path Interception",
+   "submitted": "2014/07/17",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1574",
+     "subtechniques": [
+      "T1574.009"
+     ],
+     "tactics": [
+      "TA0004",
+      "TA0003"
+     ],
+     "level": "High"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "process/create/command_line",
+    "process/create/image_path",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-11-002",
+   "title": "Outlier Parents of Cmd",
+   "submitted": "2014/11/06",
+   "analytic_types": [
+    "Anomaly",
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1059",
+     "subtechniques": [
+      "T1059.003"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-11-003",
+   "title": "Debuggers for Accessibility Applications",
+   "submitted": "2014/11/21",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1546",
+     "subtechniques": [
+      "T1546.008"
+     ],
+     "tactics": [
+      "TA0004",
+      "TA0003"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "process/create/command_line",
+    "process/create/exe"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2014-11-004",
+   "title": "Remote PowerShell Sessions",
+   "submitted": "2014/11/19",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1059",
+     "subtechniques": [
+      "T1059.001"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1021",
+     "subtechniques": [
+      "T1021.006"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "eql",
+    "logpoint",
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-11-005",
+   "title": "Remote Registry",
+   "submitted": "2014/11/19",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1112",
+     "subtechniques": [],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/message/dest_port",
+    "flow/message/proto_info"
+   ],
+   "d3fend": [
+    "D3-IPCTA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-11-006",
+   "title": "Windows Remote Management (WinRM)",
+   "submitted": "2014/11/19",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1021",
+     "subtechniques": [
+      "T1021.006"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/start/dest_port"
+   ],
+   "d3fend": [
+    "D3-ANAA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-11-007",
+   "title": "Remote Windows Management Instrumentation (WMI) over RPC",
+   "submitted": "2014/11/19",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1047",
+     "subtechniques": [],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/message/proto_info"
+   ],
+   "d3fend": [
+    "D3-RTA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-11-008",
+   "title": "Command Launched from WinLogon",
+   "submitted": "2014/11/19",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1546",
+     "subtechniques": [
+      "T1546.008"
+     ],
+     "tactics": [
+      "TA0004",
+      "TA0003"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "eql",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2014-12-001",
+   "title": "Remotely Launched Executables via WMI",
+   "submitted": "2014/12/02",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1047",
+     "subtechniques": [],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "High"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/message/dest_port",
+    "flow/message/proto_info",
+    "flow/message/src_port",
+    "process/create/command_line",
+    "process/create/exe",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2015-04-001",
+   "title": "Remotely Scheduled Tasks via AT",
+   "submitted": "2015/04/29",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1053",
+     "subtechniques": [
+      "T1053.002"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/message/proto_info"
+   ],
+   "d3fend": [
+    "D3-IPCTA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2015-04-002",
+   "title": "Remotely Scheduled Tasks via Schtasks",
+   "submitted": "2015/04/29",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1053",
+     "subtechniques": [
+      "T1053.005"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "flow/message/dest_port",
+    "flow/message/src_port",
+    "flow/message/proto_info"
+   ],
+   "d3fend": [
+    "D3-RTA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2015-07-001",
+   "title": "All Logins Since Last Boot",
+   "submitted": "2015/07/17",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [
+    "user_session/login/user"
+   ],
+   "d3fend": [],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2016-03-001",
+   "title": "Host Discovery Commands",
+   "submitted": "2016/03/24",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1087",
+     "subtechniques": [
+      "T1087.001",
+      "T1087.002"
+     ],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1069",
+     "subtechniques": [
+      "T1069.001",
+      "T1069.002"
+     ],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1016",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1082",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1033",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1057",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1007",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "eql",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line",
+    "process/create/exe"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2016-03-002",
+   "title": "Create Remote Process via WMIC",
+   "submitted": "2016/03/28",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1047",
+     "subtechniques": [],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "eql",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2016-04-002",
+   "title": "User Activity from Clearing Event Logs",
+   "submitted": "2016/04/14",
+   "analytic_types": [
+    "Anomaly"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1070",
+     "subtechniques": [
+      "T1070.001"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "sigma",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-RTA"
+   ],
+   "unit_tests": 4
+  },
+  {
+   "id": "CAR-2016-04-003",
+   "title": "User Activity from Stopping Windows Defensive Services",
+   "submitted": "2016/04/15",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1562",
+     "subtechniques": [
+      "T1562.001"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode"
+   ],
+   "data_model_references": [],
+   "d3fend": [
+    "D3-SDM"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2016-04-004",
+   "title": "Successful Local Account Login",
+   "submitted": "2016/04/18",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1550",
+     "subtechniques": [
+      "T1550.002"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode"
+   ],
+   "data_model_references": [],
+   "d3fend": [
+    "D3-LAM"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2016-04-005",
+   "title": "Remote Desktop Logon",
+   "submitted": "2016/04/19",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1021",
+     "subtechniques": [
+      "T1021.001"
+     ],
+     "tactics": [
+      "TA0008"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "sigma"
+   ],
+   "data_model_references": [],
+   "d3fend": [
+    "D3-RTSD"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2019-04-001",
+   "title": "UAC Bypass",
+   "submitted": "2019/04/19",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1548",
+     "subtechniques": [
+      "T1548.002"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "sigma",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/image_path",
+    "process/create/parent_image_path",
+    "process/create/integrity_level",
+    "process/create/user",
+    "process/create/parent_command_line"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2019-04-002",
+   "title": "Generic Regsvr32",
+   "submitted": "2019/04/24",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1218",
+     "subtechniques": [
+      "T1218.010"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/parent_exe",
+    "process/create/command_line",
+    "process/create/image",
+    "process/create/parent_image"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2019-04-003",
+   "title": "Squiblydoo",
+   "submitted": "2019/04/24",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1218",
+     "subtechniques": [
+      "T1218.010"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "eql",
+    "logpoint",
+    "psuedocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2019-04-004",
+   "title": "Credential Dumping via Mimikatz",
+   "submitted": "2019/04/29",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1003",
+     "subtechniques": [
+      "T1003.001"
+     ],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "splunk"
+   ],
+   "data_model_references": [],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2019-07-001",
+   "title": "Access Permission Modification",
+   "submitted": "2019/07/08",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux",
+    "macOS"
+   ],
+   "coverage": [
+    {
+     "technique": "T1222",
+     "subtechniques": [
+      "T1222.001",
+      "T1222.002"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [],
+   "d3fend": [
+    "D3-SFA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2019-07-002",
+   "title": "Lsass Process Dump via Procdump",
+   "submitted": "2019/07/29",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1003",
+     "subtechniques": [
+      "T1003.001"
+     ],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "eql",
+    "logpoint",
+    "pseudocode",
+    "sigma",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2019-08-001",
+   "title": "Credential Dumping via Windows Task Manager",
+   "submitted": "2019/08/05",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1003",
+     "subtechniques": [
+      "T1003.001"
+     ],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "eql",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "file/create/file_name",
+    "file/create/image_path"
+   ],
+   "d3fend": [
+    "D3-FCA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2019-08-002",
+   "title": "Active Directory Dumping via NTDSUtil",
+   "submitted": "2019/08/13",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1003",
+     "subtechniques": [
+      "T1003.003"
+     ],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "eql",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "file/create/file_name",
+    "file/create/image_path"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 1
+  },
+  {
+   "id": "CAR-2020-04-001",
+   "title": "Shadow Copy Deletion",
+   "submitted": "2020/04/10",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [],
+   "implementations": [],
+   "data_model_references": [],
+   "d3fend": [],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-05-001",
+   "title": "MiniDump of LSASS",
+   "submitted": "2020/05/04",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1003",
+     "subtechniques": [
+      "T1003.003"
+     ],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "splunk"
+   ],
+   "data_model_references": [],
+   "d3fend": [
+    "D3-SCA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-05-003",
+   "title": "Rare LolBAS Command Lines",
+   "submitted": "2020/05/04",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1012",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1112",
+     "subtechniques": [],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1547",
+     "subtechniques": [
+      "T1547.001"
+     ],
+     "tactics": [
+      "TA0003"
+     ],
+     "level": "Low"
+    },
+    {
+     "technique": "T1574",
+     "subtechniques": [
+      "T1574.011"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-08-001",
+   "title": "NTFS Alternate Data Stream Execution - System Utilities",
+   "submitted": "2020/08/03",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1564",
+     "subtechniques": [
+      "T1564.004"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-08-002",
+   "title": "NTFS Alternate Data Stream Execution - LOLBAS",
+   "submitted": "2020/08/03",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1564",
+     "subtechniques": [
+      "T1564.004"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-09-001",
+   "title": "Scheduled Task - FileAccess",
+   "submitted": "2020/09/10",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1053",
+     "subtechniques": [
+      "T1053.005"
+     ],
+     "tactics": [
+      "TA0002",
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "file/create/file_path",
+    "file/create/image_path"
+   ],
+   "d3fend": [
+    "D3-FCA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-09-002",
+   "title": "Component Object Model Hijacking",
+   "submitted": "2020/09/10",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1546",
+     "subtechniques": [
+      "T1546.015"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "registry/add/key",
+    "registry/remove/key",
+    "registry/edit/key"
+   ],
+   "d3fend": [
+    "D3-SICA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-09-003",
+   "title": "Indicator Blocking - Driver Unloaded",
+   "submitted": "2020/09/10",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1562",
+     "subtechniques": [
+      "T1562.006"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-09-004",
+   "title": "Credentials in Files & Registry",
+   "submitted": "2020/09/10",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1552",
+     "subtechniques": [
+      "T1552.001",
+      "T1552.002"
+     ],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-09-005",
+   "title": "AppInit DLLs",
+   "submitted": "2020/09/10",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1546",
+     "subtechniques": [
+      "T1546.010"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "registry/add/key",
+    "registry/remove/key",
+    "registry/edit/key"
+   ],
+   "d3fend": [
+    "D3-SICA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-11-001",
+   "title": "Boot or Logon Initialization Scripts",
+   "submitted": "2020/11/30",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1037",
+     "subtechniques": [
+      "T1037.001"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0008"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line",
+    "process/create/exe",
+    "registry/add/key",
+    "registry/edit/key"
+   ],
+   "d3fend": [
+    "D3-SICA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-11-002",
+   "title": "Local Network Sniffing",
+   "submitted": "2020/11/30",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1040",
+     "subtechniques": [],
+     "tactics": [
+      "TA0006",
+      "TA0007"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-11-003",
+   "title": "DLL Injection with Mavinject",
+   "submitted": "2020/11/30",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1055",
+     "subtechniques": [
+      "T1055.001"
+     ],
+     "tactics": [
+      "TA0004",
+      "TA0005"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-11-004",
+   "title": "Processes Started From Irregular Parent",
+   "submitted": "2020/11/30",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1055",
+     "subtechniques": [
+      "T1055.012"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-11-005",
+   "title": "Clear Powershell Console Command History",
+   "submitted": "2020/11/30",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1070",
+     "subtechniques": [
+      "T1070.003"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-11-006",
+   "title": "Local Permission Group Discovery",
+   "submitted": "2020/11/30",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1069",
+     "subtechniques": [
+      "T1069.001",
+      "T1069.002"
+     ],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-11-007",
+   "title": "Network Share Connection Removal",
+   "submitted": "2020/11/30",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1070",
+     "subtechniques": [
+      "T1070.005"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "High"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-11-008",
+   "title": "MSBuild and msxsl",
+   "submitted": "2020/11/30",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1127",
+     "subtechniques": [
+      "T1127.001"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "High"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/image_path"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-11-009",
+   "title": "Compiled HTML Access",
+   "submitted": "2020/11/30",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1218",
+     "subtechniques": [
+      "T1218.001"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "High"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-11-010",
+   "title": "CMSTP",
+   "submitted": "2020/11/30",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1218",
+     "subtechniques": [
+      "T1218.003"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "High"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/src_ip"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2020-11-011",
+   "title": "Registry Edit from Screensaver",
+   "submitted": "2020/11/30",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1546",
+     "subtechniques": [
+      "T1546.002"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "High"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "registry/edit/key",
+    "registry/add/key"
+   ],
+   "d3fend": [
+    "D3-USICA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2021-01-001",
+   "title": "Identifying Port Scanning Activity",
+   "submitted": "2020/10/23",
+   "analytic_types": [
+    "Situational Awareness"
+   ],
+   "platforms": [
+    "Windows",
+    "Linux"
+   ],
+   "coverage": [
+    {
+     "technique": "T1046",
+     "subtechniques": [],
+     "tactics": [
+      "TA0007"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "splunk"
+   ],
+   "data_model_references": [
+    "flow/start/dest_ip"
+   ],
+   "d3fend": [
+    "D3-CAA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2021-01-002",
+   "title": "Unusually Long Command Line Strings",
+   "submitted": "2020/11/27",
+   "analytic_types": [
+    "Anomaly"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1059",
+     "subtechniques": [],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2021-01-003",
+   "title": "Clearing Windows Logs with Wevtutil",
+   "submitted": "2020/12/02",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1070",
+     "subtechniques": [
+      "T1070.001"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2021-01-004",
+   "title": "Unusual Child Process for Spoolsv.Exe or Connhost.Exe",
+   "submitted": "2020/12/03",
+   "analytic_types": [
+    "Anomaly"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1068",
+     "subtechniques": [],
+     "tactics": [
+      "TA0004"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2021-01-006",
+   "title": "Unusual Child Process spawned using DDE exploit",
+   "submitted": "2020/12/03",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1559",
+     "subtechniques": [
+      "T1559.002"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2021-01-007",
+   "title": "Detecting Tampering of Windows Defender Command Prompt",
+   "submitted": "2020/12/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1562",
+     "subtechniques": [
+      "T1562.001"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Medium"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2021-01-008",
+   "title": "Disable UAC",
+   "submitted": "2020/12/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1548",
+     "subtechniques": [
+      "T1548.002"
+     ],
+     "tactics": [
+      "TA0004"
+     ],
+     "level": "Medium"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/image_path",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2021-01-009",
+   "title": "Detecting Shadow Copy Deletion or Resize",
+   "submitted": "2020/12/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1490",
+     "subtechniques": [],
+     "tactics": [
+      "TA0040"
+     ],
+     "level": "Low"
+    }
+   ],
+   "implementations": [
+    "elastic",
+    "logpoint",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 3
+  },
+  {
+   "id": "CAR-2021-02-001",
+   "title": "Webshell-Indicative Process Tree",
+   "submitted": "2020/11/29",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1505",
+     "subtechniques": [
+      "T1505.003"
+     ],
+     "tactics": [
+      "TA0003"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/parent_exe"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2021-02-002",
+   "title": "Get System Elevation",
+   "submitted": "2021/01/15",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1548",
+     "subtechniques": [],
+     "tactics": [
+      "TA0004",
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/parent_exe",
+    "process/create/command_line",
+    "service/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PLA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-04-001",
+   "title": "Common Windows Process Masquerading",
+   "submitted": "2021/02/12",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1036",
+     "subtechniques": [
+      "T1036.005"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/image_path",
+    "process/access/exe",
+    "process/access/image_path",
+    "process/terminate/exe",
+    "process/terminate/image_path"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 0
+  },
+  {
+   "id": "CAR-2021-05-001",
+   "title": "Attempt To Add Certificate To Untrusted Store",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1553",
+     "subtechniques": [
+      "T1553.004"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-05-002",
+   "title": "Batch File Write to System32",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1204",
+     "subtechniques": [
+      "T1204.002"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "file/create/extension",
+    "file/create/file_path"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-05-003",
+   "title": "BCDEdit Failure Recovery Modification",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1490",
+     "subtechniques": [],
+     "tactics": [
+      "TA0040"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA",
+    "D3-PLA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-05-004",
+   "title": "BITS Job Persistence",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1197",
+     "subtechniques": [],
+     "tactics": [
+      "TA0005",
+      "TA0003"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-05-005",
+   "title": "BITSAdmin Download File",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1197",
+     "subtechniques": [],
+     "tactics": [
+      "TA0005",
+      "TA0003"
+     ],
+     "level": "Moderate"
+    },
+    {
+     "technique": "T1105",
+     "subtechniques": [],
+     "tactics": [
+      "TA0011"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-05-006",
+   "title": "CertUtil Download With URLCache and Split Arguments",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1105",
+     "subtechniques": [],
+     "tactics": [
+      "TA0011"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-05-007",
+   "title": "CertUtil Download With VerifyCtl and Split Arguments",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1105",
+     "subtechniques": [],
+     "tactics": [
+      "TA0011"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-05-008",
+   "title": "Certutil exe certificate extraction",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1606",
+     "subtechniques": [
+      "T1606.002"
+     ],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-05-009",
+   "title": "CertUtil With Decode Argument",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1140",
+     "subtechniques": [],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-05-010",
+   "title": "Create local admin accounts using net exe",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1136",
+     "subtechniques": [
+      "T1136.001"
+     ],
+     "tactics": [
+      "TA0003"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/exe",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-05-011",
+   "title": "Create Remote Thread into LSASS",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1003",
+     "subtechniques": [
+      "T1003.001"
+     ],
+     "tactics": [
+      "TA0006"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "thread/remote_create"
+   ],
+   "d3fend": [
+    "D3-SCA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-05-012",
+   "title": "Create Service In Suspicious File Path",
+   "submitted": "2021/05/11",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1569",
+     "subtechniques": [
+      "T1569.001",
+      "T1569.002"
+     ],
+     "tactics": [
+      "TA0002"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "service/create/image_path"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-11-001",
+   "title": "Registry Edit with Creation of SafeDllSearchMode Key Set to 0",
+   "submitted": "2021/11/24",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1574",
+     "subtechniques": [
+      "T1574.001"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004",
+      "TA0005"
+     ],
+     "level": "Medium"
+    },
+    {
+     "technique": "T1112",
+     "subtechniques": [],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Medium"
+    }
+   ],
+   "implementations": [
+    "elastic",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line",
+    "registry/add/key"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-11-002",
+   "title": "Registry Edit with Modification of Userinit, Shell or Notify",
+   "submitted": "2021/11/28",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1547",
+     "subtechniques": [
+      "T1547.004"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Medium"
+    },
+    {
+     "technique": "T1112",
+     "subtechniques": [],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Medium"
+    }
+   ],
+   "implementations": [
+    "elastic",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line",
+    "registry/add/key"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-12-001",
+   "title": "Scheduled Task Creation or Modification Containing Suspicious Scripts, Extensions or User Writable Paths",
+   "submitted": "2021/12/04",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1053",
+     "subtechniques": [
+      "T1053.005"
+     ],
+     "tactics": [
+      "TA0002",
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Medium"
+    }
+   ],
+   "implementations": [
+    "elastic",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2021-12-002",
+   "title": "Modification of Default Startup Folder in the Registry Key 'Common Startup'",
+   "submitted": "2021/12/06",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1547",
+     "subtechniques": [
+      "T1547.001"
+     ],
+     "tactics": [
+      "TA0003",
+      "TA0004"
+     ],
+     "level": "Medium"
+    },
+    {
+     "technique": "T1112",
+     "subtechniques": [],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Medium"
+    }
+   ],
+   "implementations": [
+    "elastic",
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "process/create/command_line",
+    "registry/add/key"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 2
+  },
+  {
+   "id": "CAR-2022-03-001",
+   "title": "Disable Windows Event Logging",
+   "submitted": "2022/03/14",
+   "analytic_types": [
+    "TTP"
+   ],
+   "platforms": [
+    "Windows"
+   ],
+   "coverage": [
+    {
+     "technique": "T1562",
+     "subtechniques": [
+      "T1562.002"
+     ],
+     "tactics": [
+      "TA0005"
+     ],
+     "level": "Moderate"
+    }
+   ],
+   "implementations": [
+    "logpoint",
+    "pseudocode",
+    "splunk"
+   ],
+   "data_model_references": [
+    "registry/value_edit/value",
+    "process/create/command_line"
+   ],
+   "d3fend": [
+    "D3-PSA"
+   ],
+   "unit_tests": 7
+  }
+ ]
+}

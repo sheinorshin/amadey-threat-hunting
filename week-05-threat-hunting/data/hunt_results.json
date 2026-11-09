@@ -1,0 +1,70 @@
+{
+  "dataset_events": 976,
+  "hosts": [
+    "WIN-DEV-11",
+    "WIN-E1HKS3CTHMI",
+    "WIN-FIN-07",
+    "WIN-HR-02",
+    "WIN-SALES-05"
+  ],
+  "H1": {
+    "scope": 76,
+    "cradle_only_naive": 27,
+    "candidates": 1,
+    "confirmed": [
+      {
+        "t": "2026-10-01T11:14:09Z",
+        "host": "WIN-FIN-07",
+        "user": "e.carter",
+        "code": "4688",
+        "proc": "powershell.exe",
+        "parent": "mshta.exe",
+        "cmd": "powershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkA"
+      }
+    ]
+  },
+  "H2": {
+    "scope": 850,
+    "hexexe": 1,
+    "schtasks_mo1": 1,
+    "task4698_every_min": 1,
+    "confirmed_hosts": [
+      "WIN-FIN-07"
+    ],
+    "hexexe_rows": [
+      {
+        "t": "2026-10-01T11:15:02Z",
+        "host": "WIN-FIN-07",
+        "user": "e.carter",
+        "code": "4688",
+        "proc": "Yfgfwb.exe",
+        "parent": "amnew.exe",
+        "cmd": "\"C:\\Users\\e.carter\\AppData\\Local\\Temp\\067640a009\\Yfgfwb.exe\""
+      }
+    ]
+  },
+  "H3": {
+    "scope": 6,
+    "candidate_accounts": 2,
+    "candidate_fw": 2,
+    "confirmed": [
+      {
+        "host": "WIN-FIN-07",
+        "account_event": "4720",
+        "account": "sysupd$",
+        "rule": "Remote Desktop (TCP-In) svc",
+        "t_account": "2026-10-01T11:19:32Z",
+        "t_rule": "2026-10-01T11:20:10Z"
+      },
+      {
+        "host": "WIN-FIN-07",
+        "account_event": "4732",
+        "account": "sysupd$",
+        "rule": "Remote Desktop (TCP-In) svc",
+        "t_account": "2026-10-01T11:19:34Z",
+        "t_rule": "2026-10-01T11:20:10Z"
+      }
+    ]
+  },
+  "self_checks_pass": true
+}

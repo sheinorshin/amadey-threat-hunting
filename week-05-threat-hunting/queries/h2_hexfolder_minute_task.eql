@@ -1,0 +1,5 @@
+// H2 (EQL) - hex-folder EXE runs, then an every-minute scheduled task is created on the same host.
+sequence by host.name with maxspan=10m
+  [ process where event.code == "4688" and process.executable regex~ """.*\\[a-f0-9]{10}\\[^\\]+\.exe""" ]
+  [ process where event.code == "4688" and process.name == "schtasks.exe"
+        and process.command_line like "*MINUTE*" and process.command_line like "*/MO 1*" ]

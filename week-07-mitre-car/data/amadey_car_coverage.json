@@ -1,0 +1,596 @@
+{
+ "car_analytics": 102,
+ "stale_technique_ids": {
+  "T1562": {
+   "state": "revoked",
+   "now": "T1685",
+   "analytics": [
+    "CAR-2013-04-002",
+    "CAR-2016-04-003",
+    "CAR-2020-09-003",
+    "CAR-2021-01-007",
+    "CAR-2022-03-001"
+   ]
+  },
+  "T1562.001": {
+   "state": "revoked",
+   "now": "T1685",
+   "analytics": [
+    "CAR-2013-04-002",
+    "CAR-2016-04-003",
+    "CAR-2021-01-007"
+   ]
+  },
+  "T1562.006": {
+   "state": "revoked",
+   "now": "T1685",
+   "analytics": [
+    "CAR-2013-04-002",
+    "CAR-2020-09-003"
+   ]
+  },
+  "T1070.001": {
+   "state": "revoked",
+   "now": "T1685.005",
+   "analytics": [
+    "CAR-2016-04-002",
+    "CAR-2021-01-003"
+   ]
+  },
+  "T1562.002": {
+   "state": "revoked",
+   "now": "T1685.001",
+   "analytics": [
+    "CAR-2022-03-001"
+   ]
+  }
+ },
+ "amadey_techniques": 40,
+ "covered_exact": 14,
+ "covered_parent_only": 4,
+ "not_covered": 22,
+ "implemented_this_week": {
+  "CAR-2021-12-001": "primary",
+  "CAR-2013-08-001": "baseline"
+ },
+ "techniques": [
+  {
+   "id": "T1591",
+   "name": "Gather Victim Org Information",
+   "tactics": [
+    "reconnaissance"
+   ],
+   "week4_lab_status": "CTI",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1587.001",
+   "name": "Malware",
+   "tactics": [
+    "resource-development"
+   ],
+   "week4_lab_status": "CTI",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1588.001",
+   "name": "Malware",
+   "tactics": [
+    "resource-development"
+   ],
+   "week4_lab_status": "CTI",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1027",
+   "name": "Obfuscated Files or Information",
+   "tactics": [
+    "stealth"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1608.001",
+   "name": "Upload Malware",
+   "tactics": [
+    "resource-development"
+   ],
+   "week4_lab_status": "CTI",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1584.004",
+   "name": "Server",
+   "tactics": [
+    "resource-development"
+   ],
+   "week4_lab_status": "CTI",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1583.001",
+   "name": "Domains",
+   "tactics": [
+    "resource-development"
+   ],
+   "week4_lab_status": "CTI",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1566.001",
+   "name": "Spearphishing Attachment",
+   "tactics": [
+    "initial-access"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1105",
+   "name": "Ingress Tool Transfer",
+   "tactics": [
+    "command-and-control"
+   ],
+   "week4_lab_status": "SYSMON",
+   "car_exact": [
+    "CAR-2013-07-001",
+    "CAR-2021-05-005",
+    "CAR-2021-05-006",
+    "CAR-2021-05-007"
+   ],
+   "car_parent_only": [],
+   "score": 2
+  },
+  {
+   "id": "T1204.002",
+   "name": "Malicious File",
+   "tactics": [
+    "execution"
+   ],
+   "week4_lab_status": "DATA",
+   "car_exact": [
+    "CAR-2021-05-002"
+   ],
+   "car_parent_only": [],
+   "score": 2
+  },
+  {
+   "id": "T1059.007",
+   "name": "JavaScript",
+   "tactics": [
+    "execution"
+   ],
+   "week4_lab_status": "DATA",
+   "car_exact": [],
+   "car_parent_only": [
+    "CAR-2013-02-003",
+    "CAR-2013-04-002",
+    "CAR-2014-04-003",
+    "CAR-2014-11-002",
+    "CAR-2014-11-004",
+    "CAR-2021-01-002"
+   ],
+   "score": 1
+  },
+  {
+   "id": "T1218.005",
+   "name": "Mshta",
+   "tactics": [
+    "stealth"
+   ],
+   "week4_lab_status": "DATA",
+   "car_exact": [],
+   "car_parent_only": [
+    "CAR-2014-03-006",
+    "CAR-2019-04-002",
+    "CAR-2019-04-003",
+    "CAR-2020-11-009",
+    "CAR-2020-11-010"
+   ],
+   "score": 1
+  },
+  {
+   "id": "T1059.001",
+   "name": "PowerShell",
+   "tactics": [
+    "execution"
+   ],
+   "week4_lab_status": "DATA",
+   "car_exact": [
+    "CAR-2014-04-003",
+    "CAR-2014-11-004"
+   ],
+   "car_parent_only": [
+    "CAR-2013-02-003",
+    "CAR-2013-04-002",
+    "CAR-2014-11-002",
+    "CAR-2021-01-002"
+   ],
+   "score": 2
+  },
+  {
+   "id": "T1106",
+   "name": "Native API",
+   "tactics": [
+    "execution"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1053.005",
+   "name": "Scheduled Task",
+   "tactics": [
+    "execution",
+    "persistence",
+    "privilege-escalation"
+   ],
+   "week4_lab_status": "RULE",
+   "car_exact": [
+    "CAR-2013-01-002",
+    "CAR-2013-04-002",
+    "CAR-2013-08-001",
+    "CAR-2015-04-002",
+    "CAR-2020-09-001",
+    "CAR-2021-12-001"
+   ],
+   "car_parent_only": [
+    "CAR-2013-05-004",
+    "CAR-2015-04-001"
+   ],
+   "score": 3
+  },
+  {
+   "id": "T1547.001",
+   "name": "Registry Run Keys / Startup Folder",
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ],
+   "week4_lab_status": "SYSMON",
+   "car_exact": [
+    "CAR-2013-01-002",
+    "CAR-2013-03-001",
+    "CAR-2020-05-003",
+    "CAR-2021-12-002"
+   ],
+   "car_parent_only": [
+    "CAR-2021-11-002"
+   ],
+   "score": 2
+  },
+  {
+   "id": "T1112",
+   "name": "Modify Registry",
+   "tactics": [
+    "defense-impairment",
+    "persistence"
+   ],
+   "week4_lab_status": "SYSMON",
+   "car_exact": [
+    "CAR-2013-01-002",
+    "CAR-2013-03-001",
+    "CAR-2013-04-002",
+    "CAR-2014-11-005",
+    "CAR-2020-05-003",
+    "CAR-2021-11-001",
+    "CAR-2021-11-002",
+    "CAR-2021-12-002"
+   ],
+   "car_parent_only": [],
+   "score": 2
+  },
+  {
+   "id": "T1553.005",
+   "name": "Mark-of-the-Web Bypass",
+   "tactics": [
+    "defense-impairment"
+   ],
+   "week4_lab_status": "SYSMON",
+   "car_exact": [],
+   "car_parent_only": [
+    "CAR-2021-05-001"
+   ],
+   "score": 1
+  },
+  {
+   "id": "T1140",
+   "name": "Deobfuscate/Decode Files or Information",
+   "tactics": [
+    "stealth"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [
+    "CAR-2021-05-009"
+   ],
+   "car_parent_only": [],
+   "score": 2
+  },
+  {
+   "id": "T1564.001",
+   "name": "Hidden Files and Directories",
+   "tactics": [
+    "stealth"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [],
+   "car_parent_only": [
+    "CAR-2020-08-001",
+    "CAR-2020-08-002"
+   ],
+   "score": 1
+  },
+  {
+   "id": "T1071.001",
+   "name": "Web Protocols",
+   "tactics": [
+    "command-and-control"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1573.001",
+   "name": "Symmetric Cryptography",
+   "tactics": [
+    "command-and-control"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1568.001",
+   "name": "Fast Flux DNS",
+   "tactics": [
+    "command-and-control"
+   ],
+   "week4_lab_status": "SYSMON",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1082",
+   "name": "System Information Discovery",
+   "tactics": [
+    "discovery"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [
+    "CAR-2013-04-002",
+    "CAR-2016-03-001"
+   ],
+   "car_parent_only": [],
+   "score": 2
+  },
+  {
+   "id": "T1016",
+   "name": "System Network Configuration Discovery",
+   "tactics": [
+    "discovery"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [
+    "CAR-2013-04-002",
+    "CAR-2016-03-001"
+   ],
+   "car_parent_only": [],
+   "score": 2
+  },
+  {
+   "id": "T1033",
+   "name": "System Owner/User Discovery",
+   "tactics": [
+    "discovery"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [
+    "CAR-2013-04-002",
+    "CAR-2016-03-001"
+   ],
+   "car_parent_only": [],
+   "score": 2
+  },
+  {
+   "id": "T1083",
+   "name": "File and Directory Discovery",
+   "tactics": [
+    "discovery"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1518.001",
+   "name": "Security Software Discovery",
+   "tactics": [
+    "discovery"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [
+    "CAR-2013-04-002"
+   ],
+   "car_parent_only": [],
+   "score": 2
+  },
+  {
+   "id": "T1614",
+   "name": "System Location Discovery",
+   "tactics": [
+    "discovery"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1005",
+   "name": "Data from Local System",
+   "tactics": [
+    "collection"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1041",
+   "name": "Exfiltration Over C2 Channel",
+   "tactics": [
+    "exfiltration"
+   ],
+   "week4_lab_status": "SYSMON",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1218.011",
+   "name": "Rundll32",
+   "tactics": [
+    "stealth"
+   ],
+   "week4_lab_status": "RULE",
+   "car_exact": [
+    "CAR-2014-03-006"
+   ],
+   "car_parent_only": [
+    "CAR-2019-04-002",
+    "CAR-2019-04-003",
+    "CAR-2020-11-009",
+    "CAR-2020-11-010"
+   ],
+   "score": 2
+  },
+  {
+   "id": "T1115",
+   "name": "Clipboard Data",
+   "tactics": [
+    "collection"
+   ],
+   "week4_lab_status": "RULE",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1555.003",
+   "name": "Credentials from Web Browsers",
+   "tactics": [
+    "credential-access"
+   ],
+   "week4_lab_status": "RULE",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1113",
+   "name": "Screen Capture",
+   "tactics": [
+    "collection"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1090",
+   "name": "Proxy",
+   "tactics": [
+    "command-and-control"
+   ],
+   "week4_lab_status": "SYSMON",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1021.001",
+   "name": "Remote Desktop Protocol",
+   "tactics": [
+    "lateral-movement"
+   ],
+   "week4_lab_status": "SYSMON",
+   "car_exact": [
+    "CAR-2013-07-002",
+    "CAR-2013-10-001",
+    "CAR-2016-04-005"
+   ],
+   "car_parent_only": [
+    "CAR-2013-01-003",
+    "CAR-2013-04-002",
+    "CAR-2013-05-003",
+    "CAR-2013-05-005",
+    "CAR-2013-07-001",
+    "CAR-2014-05-001",
+    "CAR-2014-11-004",
+    "CAR-2014-11-006"
+   ],
+   "score": 2
+  },
+  {
+   "id": "T1136.001",
+   "name": "Local Account",
+   "tactics": [
+    "persistence"
+   ],
+   "week4_lab_status": "DATA",
+   "car_exact": [
+    "CAR-2021-05-010"
+   ],
+   "car_parent_only": [],
+   "score": 2
+  },
+  {
+   "id": "T1686",
+   "name": "Disable or Modify System Firewall",
+   "tactics": [
+    "defense-impairment"
+   ],
+   "week4_lab_status": "DATA",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  },
+  {
+   "id": "T1486",
+   "name": "Data Encrypted for Impact",
+   "tactics": [
+    "impact"
+   ],
+   "week4_lab_status": "BLIND",
+   "car_exact": [],
+   "car_parent_only": [],
+   "score": 0
+  }
+ ]
+}

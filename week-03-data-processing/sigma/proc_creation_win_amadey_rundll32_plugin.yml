@@ -1,0 +1,37 @@
+title: Rundll32 Loading Amadey Credential/Clipper Plugin
+id: 51bfa923-4276-585f-b16c-c3ff670f40d4
+status: experimental
+description: |
+    Detects rundll32.exe executing the Amadey plugins cred.dll/cred64.dll (credential theft)
+    or clip.dll/clip64.dll (clipboard hijacking), which Amadey downloads into a hex-named folder
+    under %APPDATA% and runs with the "Main" export.
+references:
+    - https://www.trellix.com/blogs/research/amadey-exploiting-self-hosted-gitlab-to-distribute-stealc/
+    - https://www.binaryanalys.is/posts/amadey
+    - https://www.splunk.com/en_us/blog/security/amadey-threat-analysis-and-detections.html
+author: Sayat Abdiraiym (AITU, Intro to Threat Hunting)
+date: 2026-10-02
+tags:
+    - attack.stealth
+    - attack.t1218.011
+    - attack.credential-access
+    - attack.t1555.003
+    - attack.collection
+    - attack.t1115
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_img:
+        - Image|endswith: '\rundll32.exe'
+        - OriginalFileName: 'RUNDLL32.EXE'
+    selection_plugin:
+        CommandLine|contains:
+            - '\cred.dll'
+            - '\cred64.dll'
+            - '\clip.dll'
+            - '\clip64.dll'
+    condition: all of selection_*
+falsepositives:
+    - Unlikely
+level: high

@@ -1,0 +1,1 @@
+any where process.executable regex~ ".*\\\\AppData\\\\Local\\\\Temp\\\\[0-9a-f]{10}\\\\[a-z]{4,10}\\.exe" or process.executable regex~ "[a-z]:\\\\Users\\\\[^\\\\]+\\\\[0-9a-f]{10}\\\\[a-z]{4,10}\\.exe"

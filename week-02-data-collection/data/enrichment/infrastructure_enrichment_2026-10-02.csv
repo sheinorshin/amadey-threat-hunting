@@ -1,0 +1,8 @@
+indicator,role,first_reported_by,netblock,netname,org_handle,reg_country,origin_asn,asn_holder,prefix_announced_2026-10-02,internetdb_2026-10-02,notes
+185.215.113.43,Amadey C2 (/Zu7JuNko/index.php),Talos 2025-07,185.215.113.0/24,SC-ELITETEAM-20201113,ORG-LA1589-RIPE,SC,AS56873,ELITETEAM-ANTIDDOS 1337TEAM LIMITED,no (last seen 2025-05-02 via AS56873; 0/324 RIS peers),404 no data,Known bulletproof range; offline since May 2025
+185.215.113.16,Amadey payload host (/test/amnew.exe),Talos 2025-07,185.215.113.0/24,SC-ELITETEAM-20201113,ORG-LA1589-RIPE,SC,AS56873,ELITETEAM-ANTIDDOS 1337TEAM LIMITED,no,not queried,Same /24 as C2
+185.215.113.209,Network IOC,Talos 2025-07,185.215.113.0/24,SC-ELITETEAM-20201113,ORG-LA1589-RIPE,SC,AS56873,ELITETEAM-ANTIDDOS 1337TEAM LIMITED,no,not queried,Same /24 as C2
+185.215.113.75,Network IOC,Talos 2025-07,185.215.113.0/24,SC-ELITETEAM-20201113,ORG-LA1589-RIPE,SC,AS56873,ELITETEAM-ANTIDDOS 1337TEAM LIMITED,no,not queried,Same /24 as C2
+185.156.73.73,Network IOC,Talos 2025-07,185.156.73.0/24,Intellekt,ORG-IL933-RIPE,RU,AS39238,OKBPROGRESS OKB PROGRESS LLC,yes,not queried,
+91.92.243.129,Amadey C2 (/0gjSy4hf3/index.php),Trellix 2025-12,91.92.243.0/24,OMEGATECH,ORG-OL329-RIPE,US,AS202412,OMEGATECH-AS Omegatech LTD,yes,404 no data,Same org/ASN as StealC C2 below
+158.94.208.130,StealC C2 (/8528aa6d5ece46dc.php),Trellix 2025-12,158.94.208.0/24,OMEGATECH,ORG-OL329-RIPE,DE,AS202412,OMEGATECH-AS Omegatech LTD,yes,"ports 22,80,135,443,9090; hostname natureofarizona.com; Apache httpd + OpenSSH 9.2p1 (Debian)",IP now serves an unrelated-looking website -> likely re-assigned; IOC decayed

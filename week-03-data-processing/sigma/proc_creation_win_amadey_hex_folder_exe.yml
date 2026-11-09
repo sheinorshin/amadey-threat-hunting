@@ -1,0 +1,30 @@
+title: Executable Started From 10-Hex-Character Folder in Temp or User Profile (Amadey Install Path)
+id: dad1e780-02c4-5164-807a-a6e72bb7d53c
+status: experimental
+description: |
+    Amadey copies itself to a folder named with 10 lowercase hex characters, e.g.
+    %TEMP%\9487d68b99\bguuwe.exe (v3.21), %TEMP%\067640a009\Yfgfwb.exe (v5.70) or
+    C:\Users\<user>\e079729711\nudwee.exe (v5.x on Windows 10/11). This hunts the folder pattern
+    instead of the (random) file name.
+references:
+    - https://asec.ahnlab.com/en/36634/
+    - https://www.trellix.com/blogs/research/amadey-exploiting-self-hosted-gitlab-to-distribute-stealc/
+    - https://www.microsoft.com/en-us/security/blog/2026/06/24/stealc-and-amadey-breaking-down-infostealers-and-the-cybercrime-services-that-deliver-them/
+author: Sayat Abdiraiym (AITU, Intro to Threat Hunting)
+date: 2026-10-02
+tags:
+    - attack.execution
+    - attack.t1204.002
+    - attack.persistence
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_temp:
+        Image|re|i: '.*\\AppData\\Local\\Temp\\[0-9a-f]{10}\\[a-z]{4,10}\.exe'
+    selection_profile:
+        Image|re|i: '[a-z]:\\Users\\[^\\]+\\[0-9a-f]{10}\\[a-z]{4,10}\.exe'
+    condition: 1 of selection_*
+falsepositives:
+    - Installers that unpack into random hex folders in %TEMP% (validate parent process and signature)
+level: medium

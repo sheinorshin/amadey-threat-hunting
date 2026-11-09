@@ -1,0 +1,26 @@
+title: Possible Amadey C2 Check-in (POST to /<random>/index.php)
+id: 669fbfa5-a3ab-5e29-820e-898270db34a3
+status: experimental
+description: |
+    Amadey bots POST to a panel at /<random 2-16 alnum>/index.php (v3/v4: id=&vs=&sd=..., v5: st=s then
+    r=<hex>). Observed paths: /Zu7JuNko/, /0gjSy4hf3/, /hg8jjfSr5hy/, /gd7djkDveE2/, /cvdfnaFJBmC0/,
+    /Lsge63sd3/, /ms/. Noisy on its own - use as a hunting query and combine with rare destination
+    and non-browser process.
+references:
+    - https://www.binaryanalys.is/posts/amadey
+    - https://blog.talosintelligence.com/maas-operation-using-emmenhtal-and-amadey-linked-to-threats-against-ukrainian-entities/
+author: Sayat Abdiraiym (AITU, Intro to Threat Hunting)
+date: 2026-10-02
+tags:
+    - attack.command-and-control
+    - attack.t1071.001
+logsource:
+    category: proxy
+detection:
+    selection:
+        cs-method: 'POST'
+        c-uri|re: '.*/[A-Za-z0-9]{2,16}/index\.php'
+    condition: selection
+falsepositives:
+    - Legitimate PHP web applications and CMS logins - baseline your environment first
+level: low

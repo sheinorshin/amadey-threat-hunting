@@ -1,0 +1,1590 @@
+{
+  "Event": {
+    "uuid": "a9f16f04-be66-508d-b1dc-07cb24bae078",
+    "info": "Amadey loader/botnet (S1025) + StealC payloads - consolidated OSINT IOCs (Talos, Trellix, Microsoft, Splunk)",
+    "date": "2026-10-02",
+    "threat_level_id": "2",
+    "analysis": "2",
+    "distribution": "0",
+    "published": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "admiralty-scale:source-reliability=\"a\""
+      },
+      {
+        "name": "admiralty-scale:information-credibility=\"2\""
+      },
+      {
+        "name": "misp-galaxy:mitre-malware=\"Amadey - S1025\""
+      },
+      {
+        "name": "misp-galaxy:malpedia=\"Amadey\""
+      },
+      {
+        "name": "misp-galaxy:malpedia=\"Stealc\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Scheduled Task - T1053.005\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Registry Run Keys / Startup Folder - T1547.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Web Protocols - T1071.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Ingress Tool Transfer - T1105\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Rundll32 - T1218.011\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Mark-of-the-Web Bypass - T1553.005\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "9a49e4fe-b141-5e21-b5fb-4efb683d4a2e",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "015d60486e75035f83ea454e87afb38d11ec39643c33b07f61a40343078ee4f5",
+        "to_ids": true,
+        "comment": "Amadey plugin | src: Splunk | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2023-07-25T00:00:00+00:00",
+        "last_seen": "2023-07-25T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"plugin\""
+          }
+        ]
+      },
+      {
+        "uuid": "0ac19893-9a8c-5771-8602-9fdf49097c9d",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "1246c5b89ab668c1137f377507bc3e266a98e93248382aa026610ae1e764a497",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "fc0da87d-62db-5b92-b43a-0e5f40addd9f",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "30cef3d3d956e83e2c50579cfbe57a49159cccbcc8b0b0422f27d55e1c401ad9",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "e5421958-4287-5547-903a-6d6fade8dfcc",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "3d5d48ea2b6f76af583e541602950d89b8d96a13654469df3bc58dcddf879e9d",
+        "to_ids": true,
+        "comment": "Amadey plugin | src: Splunk | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2023-07-25T00:00:00+00:00",
+        "last_seen": "2023-07-25T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"plugin\""
+          }
+        ]
+      },
+      {
+        "uuid": "a4536b0a-ff27-5a6d-8af4-bd58df08ea58",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "43455f1ff4a623b783da670d052eb77eaaacb0c66a9f1e8508f802bf22e8129e",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "c1018abf-c57b-5c92-8280-ea9fdb748e8a",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "5f5b25b2e35d404034d0d60975cf1ffbc6f141761ec3f4f15d6f7c6213a056f6",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "248a80b1-2822-595e-a53a-6a0184f3a546",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "617f4082c320c24f27f69d146aae6973a3cb818860ab196cf2800ff16518c2bc",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Splunk | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2023-07-25T00:00:00+00:00",
+        "last_seen": "2023-07-25T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "a83e9436-6238-599c-a54f-2eeb40856d9c",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "89d30f7ba7b2af7f519d2fe066700fae723643e25b1859f32c60618956651710",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Splunk | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2023-07-25T00:00:00+00:00",
+        "last_seen": "2023-07-25T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "af525777-76ce-54fe-8d0f-563fbabc67f4",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "8cef760d11d24fc2e9bbd9f770dca5105854f7ece3b0e6948d7c8b7fdd1765ea",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "323a0358-e853-5ccc-951d-5428a51a738e",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "9383572a30ae5b76fadd0700fbd7a1aa7b05d0b6c8f9cdaef9b30a3e1f65d57d",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "9f0629b4-b96c-5eae-8336-153e9b92c86c",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "98e504cc7125b79eda5491f40b998605a05f4cd968b961aab4cce7beb074fefe",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "c64abb9b-5765-5bd7-b2d6-8f5995be5fcf",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "99507f18c4e61fdb109805404bf6a79ea8ce2fddc590ce48d717e97516ab7e8d",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "173ee42a-c63c-5918-9e3e-35625983250d",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "b7d1f172ff3feafe65d47fd1cbe0cc249316371ae0e1cbe3a7c741c738b3353d",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "e8a5130b-ab5b-5dc1-8293-d9f4219386fc",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "bae0f38f58ad93728261f09840721ebedb9669a445f40083396fdd0da38a22a7",
+        "to_ids": true,
+        "comment": "Amadey plugin | src: Trellix | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"plugin\""
+          }
+        ]
+      },
+      {
+        "uuid": "1cb420cd-515c-5be9-9621-f6923624301f",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "ca4d4c4fc3e5d5cfa922b898f2d7411f03a446dddb139ba45dfd4f8f0018b64f",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "edf90162-4570-5135-af05-aa3fbbbb1438",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "d43c988d6f9cb355497696b580621fb1bdb7b6ed6d90f97520ecf6da5a1a41ff",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "f22f5f78-cc2b-5e2b-8623-57b986f7406a",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "d7a366fa4d31c901ce3bcb6760d7bb5aa7cab49bb54d8c6551b3df14c8cf64e7",
+        "to_ids": true,
+        "comment": "Amadey sample | src: Trellix | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "9ddcf60e-a505-534c-b054-b261284240e5",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "0334cd1b8ab17203179da1ae77c1fad97ddf794cc63a6048aca664956d10b2ca",
+        "to_ids": true,
+        "comment": "Amadey-campaign sample | src: Cisco Talos | conf: Medium (50)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "7ac7d08f-818e-56ac-bcdb-fbbf1113596a",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "21cf7da02e01b3c2317178395eff873e50ab9b8f27a23ffed37b2efff8fd6b90",
+        "to_ids": true,
+        "comment": "Amadey-campaign sample | src: Cisco Talos | conf: Medium (50)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "d468e570-3a44-5d98-9a55-dc003edebac3",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "35c1eb5ff8913c4ca4feb712e05354772146247bdb4b337868c687730f201023",
+        "to_ids": true,
+        "comment": "Amadey-campaign sample | src: Cisco Talos | conf: Medium (50)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "40bc6a61-1065-550e-adc5-230bd188a8a1",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "718be762e8bd513283cd5e21634dc65bd160e47121716fd058daf5f3be42728a",
+        "to_ids": true,
+        "comment": "Amadey-campaign sample | src: Cisco Talos | conf: Medium (50)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "90a07002-2fbc-56ae-9bcb-51b708f651c9",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "87618787e1032bbf6a6ca8b3388ea3803be20a49e4afaba1df38a6116085062f",
+        "to_ids": true,
+        "comment": "Amadey-campaign sample | src: Cisco Talos | conf: Medium (50)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "27df7652-560e-589f-bbfb-ec0ed752dd2b",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "9bcfc98998b9e42b86204e66605b65462eeb8cfd8a0661b3ceebc99d4277e83c",
+        "to_ids": true,
+        "comment": "Amadey-campaign sample | src: Cisco Talos | conf: Medium (50)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "e5b1c7ad-df32-56f4-a51f-3276065b4f0f",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "0215f734867bd71c57ff5c524d8cc670be5b4f1861b2c390cf46d18784a53624",
+        "to_ids": true,
+        "comment": "StealC sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "3a347281-9034-5121-9f38-4e903c9c581c",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "2a0f053855da59b3b56812e580d7baeba59fc9493694722aa9e3f121ee3363f1",
+        "to_ids": true,
+        "comment": "StealC sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "37cb8a76-319b-55ce-93e4-9f6976917056",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "8f32456359f209a63adfd24b94235e1727382ac7f7bb7f2bcaf754e721925b64",
+        "to_ids": true,
+        "comment": "StealC sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "dfad5ae3-ee97-5552-aa18-d73a6fd8ed88",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "977b33a9b481cf714946b7d386865cd5d284312aa5ecfa0546c197b1003e1bde",
+        "to_ids": true,
+        "comment": "StealC sample | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "52f8deef-0ba4-5729-ab83-b4ecd9793959",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "b5d4cc84845cb101f8bda324729ebedd8acd36cc8ec32f80969c4fb6d3c2b8a7",
+        "to_ids": true,
+        "comment": "StealC sample | src: Trellix | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"sample\""
+          }
+        ]
+      },
+      {
+        "uuid": "21e1d2d5-5c57-54f7-bb37-31ba5d4609fb",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://91.92.243.129/0gjSy4hf3/Login.php",
+        "to_ids": false,
+        "comment": "Amadey c2 | src: Trellix | conf: Medium (50) | not IDS: expired: 288 days old > TTL 180",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "dea7f682-84c1-52f7-bd3a-06335198392f",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://91.92.243.129/0gjSy4hf3/index.php",
+        "to_ids": false,
+        "comment": "Amadey c2 | src: Trellix | conf: Medium (50) | not IDS: expired: 288 days old > TTL 180",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "740f52e8-2a69-5d20-a331-c633e1abe945",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://goodpanelforgoodjob.com/hg8jjfSr5hy/index.php",
+        "to_ids": true,
+        "comment": "Amadey c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "8e7e4422-3558-5f31-9c00-a77a308b1cb1",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://microsoft-telemetry.at/cvdfnaFJBmC0/index.php",
+        "to_ids": true,
+        "comment": "Amadey c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "64539527-1a1a-5a68-b348-c78b9e9772b7",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://rebustan.top/gd7djkDveE2/index.php",
+        "to_ids": true,
+        "comment": "Amadey c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "cee1b83f-7fa2-526e-80cb-1a1b7dd51dc6",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://spasopro.at/Lsge63sd3/index.php",
+        "to_ids": true,
+        "comment": "Amadey c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "864d2635-a07c-5b91-83dc-efea28bba492",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://svclsc.com/ms/index.php",
+        "to_ids": true,
+        "comment": "Amadey c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "4523dcab-844a-5ae5-85be-4141233fc50a",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://185.215.113.16/test/amnew.exe",
+        "to_ids": false,
+        "comment": "Amadey-campaign payload-host | src: Cisco Talos | conf: Low (30) | not IDS: expired: 442 days old > TTL 180; infrastructure offline (BGP prefix withdrawn)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          }
+        ]
+      },
+      {
+        "uuid": "5d3c9ccc-613f-5e3f-a10f-e8371ec139d4",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://185.215.113.43/Zu7JuNko/index.php",
+        "to_ids": false,
+        "comment": "Amadey-campaign c2 | src: Cisco Talos | conf: Low (30) | not IDS: expired: 442 days old > TTL 180; infrastructure offline (BGP prefix withdrawn)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "35303b87-c9c9-5988-ab63-e593bb7f974c",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://pivqmane.com/doc/fb.mp4",
+        "to_ids": false,
+        "comment": "Amadey-campaign payload-host | src: Cisco Talos | conf: Low (30) | not IDS: expired: 442 days old > TTL 180",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          }
+        ]
+      },
+      {
+        "uuid": "2b574f3c-a5bd-5e91-9fb5-a8503e899431",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://pivqmane.com/testonload.mp4",
+        "to_ids": false,
+        "comment": "Amadey-campaign payload-host | src: Cisco Talos | conf: Low (30) | not IDS: expired: 442 days old > TTL 180",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          }
+        ]
+      },
+      {
+        "uuid": "ebbb933a-5c54-58c6-84af-bfbf2e528b4c",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://158.94.208.130/8528aa6d5ece46dc.php",
+        "to_ids": false,
+        "comment": "StealC c2 | src: Trellix | conf: Medium (50) | not IDS: expired: 288 days old > TTL 180; IP re-assigned to unrelated host (Shodan, 2026-10-02)",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "079572f1-4746-5600-a578-481f7bf10adf",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://bluescry.com/01f96fd710e905ca2326.php",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "96e66514-83e6-568b-bc6f-62da72d039f8",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://cdntestconnect.com/ed54b97a570943999715.php",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "52648537-5417-5028-ab4b-2f9d122fef3a",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://polse.us/62ea47cac2534aa18f74.php",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "b48fa5f0-5384-5dee-8d70-9ad64633528a",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://roger99699.xyz/425f1faf4b214434b8a3.php",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "c6e77b4e-3280-5c1f-94ee-b2aa978d4db9",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://secure.controlpanel.asia/330311481fe14ab99814.php",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "936a9d86-6ee7-54d1-bb2c-9f39e56ed494",
+        "type": "url",
+        "category": "Network activity",
+        "value": "https://bartsen284.online/39d9612df78e45b5a4bb.php",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "0379f60b-405d-5948-befb-2aa13c6a974d",
+        "type": "url",
+        "category": "Network activity",
+        "value": "https://gitlab.bzctoons.net/suau/fds/-/raw/main/protected.zip",
+        "to_ids": false,
+        "comment": "StealC payload-host | src: Trellix | conf: Medium (50) | not IDS: expired: 288 days old > TTL 180",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          }
+        ]
+      },
+      {
+        "uuid": "e572e700-1fac-5527-b10d-c0e78c5221f4",
+        "type": "url",
+        "category": "Network activity",
+        "value": "https://neltron-geltron.shop/e396586b99ee49d19cc3.php",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "eb057373-675b-5b84-af3d-e824d930a916",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "goodpanelforgoodjob.com",
+        "to_ids": true,
+        "comment": "Amadey c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "bbe5aa39-95d0-5c66-8e25-ebe6d53cd413",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "microsoft-telemetry.at",
+        "to_ids": true,
+        "comment": "Amadey c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "07629c8c-79aa-528a-b585-97e055fc5fd9",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "rebustan.top",
+        "to_ids": true,
+        "comment": "Amadey c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "3f94a64f-41b2-5c5e-95ef-ac45026c19bd",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "spasopro.at",
+        "to_ids": true,
+        "comment": "Amadey c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "6c38601c-d41b-57fd-831b-7ef7f472cbe4",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "svclsc.com",
+        "to_ids": true,
+        "comment": "Amadey c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "c4b147ba-2a38-5efb-9fd6-eb76a5b1dd70",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "pivqmane.com",
+        "to_ids": false,
+        "comment": "Amadey-campaign payload-host | src: Cisco Talos | conf: Low (20) | not IDS: expired: 442 days old > TTL 180",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          }
+        ]
+      },
+      {
+        "uuid": "567feced-9918-59d5-ada7-2a675b8b5030",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "bartsen284.online",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "50827a7a-21a1-5d57-b05e-ef5680ee4154",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "bluescry.com",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "d2b4991b-dcbf-5ef4-8e82-ec2f9d6e8501",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "bzctoons.net",
+        "to_ids": false,
+        "comment": "StealC payload-host | src: Trellix | conf: Medium (50) | not IDS: compromised legitimate organisation - block the URL, not the whole domain; expired: 288 days old > TTL 180",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          }
+        ]
+      },
+      {
+        "uuid": "6be2a8d2-3ba0-5850-a3cf-72cb5e5630f7",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "cdntestconnect.com",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "e94ae025-5480-5020-b606-16ea8e825551",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "gitlab.bzctoons.net",
+        "to_ids": false,
+        "comment": "StealC payload-host | src: Trellix | conf: Medium (50) | not IDS: expired: 288 days old > TTL 180",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          }
+        ]
+      },
+      {
+        "uuid": "4be1be55-afe4-54b3-a13a-772166e0b743",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "neltron-geltron.shop",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "903af268-88e5-5905-9dee-d8a0a79408b2",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "polse.us",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "21aca9c2-83c9-550f-9e8b-eba52212b4c5",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "roger99699.xyz",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "2f4129e1-53cb-51ad-849e-7a6b8bdce68b",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "secure.controlpanel.asia",
+        "to_ids": true,
+        "comment": "StealC c2 | src: Microsoft | conf: Medium (60)",
+        "distribution": "5",
+        "first_seen": "2026-06-24T00:00:00+00:00",
+        "last_seen": "2026-06-24T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "015e7957-2b41-5323-8fe4-c432941cb6ef",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "91.92.243.129",
+        "to_ids": false,
+        "comment": "Amadey c2 | src: Trellix | conf: Medium (50) | not IDS: expired: 288 days old > TTL 90",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "6be48db4-7550-5589-9722-dec8a95b1296",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "185.156.73.73",
+        "to_ids": false,
+        "comment": "Amadey-campaign network-unlabelled | src: Cisco Talos | conf: Low (30) | not IDS: expired: 442 days old > TTL 90",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"network-unlabelled\""
+          }
+        ]
+      },
+      {
+        "uuid": "743984a5-3f38-5208-b21b-2659db240aeb",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "185.215.113.16",
+        "to_ids": false,
+        "comment": "Amadey-campaign payload-host | src: Cisco Talos | conf: Low (20) | not IDS: expired: 442 days old > TTL 90; infrastructure offline (BGP prefix withdrawn)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"payload-host\""
+          }
+        ]
+      },
+      {
+        "uuid": "85d9c379-38ed-570a-862a-2803c7a1d45b",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "185.215.113.209",
+        "to_ids": false,
+        "comment": "Amadey-campaign network-unlabelled | src: Cisco Talos | conf: Low (30) | not IDS: expired: 442 days old > TTL 90; infrastructure offline (BGP prefix withdrawn)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"network-unlabelled\""
+          }
+        ]
+      },
+      {
+        "uuid": "e1f95758-a4e0-5b3f-840f-e29d42b15071",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "185.215.113.43",
+        "to_ids": false,
+        "comment": "Amadey-campaign c2 | src: Cisco Talos | conf: Low (20) | not IDS: expired: 442 days old > TTL 90; infrastructure offline (BGP prefix withdrawn)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "a57096b1-3fba-58f9-bd64-78e35a291fdf",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "185.215.113.75",
+        "to_ids": false,
+        "comment": "Amadey-campaign network-unlabelled | src: Cisco Talos | conf: Low (30) | not IDS: expired: 442 days old > TTL 90; infrastructure offline (BGP prefix withdrawn)",
+        "distribution": "5",
+        "first_seen": "2025-07-15T00:00:00+00:00",
+        "last_seen": "2025-07-17T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey-campaign\""
+          },
+          {
+            "name": "amadey-th:role=\"network-unlabelled\""
+          }
+        ]
+      },
+      {
+        "uuid": "2df24f7d-191f-5eea-96f2-9c29c72ec441",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "158.94.208.130",
+        "to_ids": false,
+        "comment": "StealC c2 | src: Trellix | conf: Medium (50) | not IDS: expired: 288 days old > TTL 90; IP re-assigned to unrelated host (Shodan, 2026-10-02)",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"c2\""
+          }
+        ]
+      },
+      {
+        "uuid": "c986063b-5906-5879-a53f-7c51abb58fb7",
+        "type": "mutex",
+        "category": "Artifacts dropped",
+        "value": "f936986d553273aef6eeaeef713ad28f",
+        "to_ids": true,
+        "comment": "Amadey host-artefact | src: Trellix | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"host-artefact\""
+          }
+        ]
+      },
+      {
+        "uuid": "a67cc75b-1e48-56d7-ab3a-754b265b1801",
+        "type": "windows-scheduled-task",
+        "category": "Artifacts dropped",
+        "value": "C:\\Windows\\Tasks\\Yfgfwb.job",
+        "to_ids": true,
+        "comment": "Amadey host-artefact | src: Trellix | conf: High (70)",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"host-artefact\""
+          }
+        ]
+      },
+      {
+        "uuid": "d53e1fbc-0bfe-5469-b399-d056fe853a12",
+        "type": "text",
+        "category": "Artifacts dropped",
+        "value": "%APPDATA%\\f936986d553273\\",
+        "to_ids": false,
+        "comment": "directory path | Amadey host-artefact | src: Trellix | conf: High (70) | not IDS: weak alone (generic/random per build) - use for hunting, not blocking",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"host-artefact\""
+          }
+        ]
+      },
+      {
+        "uuid": "a18e2030-a1e1-53cf-bcb4-a86f2b833e32",
+        "type": "text",
+        "category": "Artifacts dropped",
+        "value": "%TEMP%\\067640a009\\",
+        "to_ids": false,
+        "comment": "directory path | Amadey host-artefact | src: Trellix | conf: High (70) | not IDS: weak alone (generic/random per build) - use for hunting, not blocking",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"host-artefact\""
+          }
+        ]
+      },
+      {
+        "uuid": "cffa7be0-a1e5-5ef4-b189-73a88cff44c3",
+        "type": "text",
+        "category": "Artifacts dropped",
+        "value": "%TEMP%\\10000340261\\protected\\",
+        "to_ids": false,
+        "comment": "directory path | StealC host-artefact | src: Trellix | conf: High (70) | not IDS: weak alone (generic/random per build) - use for hunting, not blocking",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"host-artefact\""
+          }
+        ]
+      },
+      {
+        "uuid": "b5cc1450-7aef-5bc9-8cb6-35dd59d10b35",
+        "type": "filename",
+        "category": "Artifacts dropped",
+        "value": "Yfgfwb.exe",
+        "to_ids": false,
+        "comment": "Amadey host-artefact | src: Trellix | conf: High (70) | not IDS: weak alone (generic/random per build) - use for hunting, not blocking",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"host-artefact\""
+          }
+        ]
+      },
+      {
+        "uuid": "5e462f7c-8f72-55f7-a994-7defd4fc72ea",
+        "type": "filename",
+        "category": "Artifacts dropped",
+        "value": "clip64.dll",
+        "to_ids": false,
+        "comment": "Amadey host-artefact | src: Trellix | conf: High (70) | not IDS: weak alone (generic/random per build) - use for hunting, not blocking",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"host-artefact\""
+          }
+        ]
+      },
+      {
+        "uuid": "c3ba0049-c997-54e7-8f06-4ac4adbbb92d",
+        "type": "filename",
+        "category": "Artifacts dropped",
+        "value": "protected.zip",
+        "to_ids": false,
+        "comment": "StealC host-artefact | src: Trellix | conf: High (70) | not IDS: weak alone (generic/random per build) - use for hunting, not blocking",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"host-artefact\""
+          }
+        ]
+      },
+      {
+        "uuid": "3915abf7-29ca-510e-962f-ca9ae2b90ce9",
+        "type": "filename",
+        "category": "Artifacts dropped",
+        "value": "x64_protect.exe",
+        "to_ids": false,
+        "comment": "StealC host-artefact | src: Trellix | conf: High (70) | not IDS: weak alone (generic/random per build) - use for hunting, not blocking",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"stealc\""
+          },
+          {
+            "name": "amadey-th:role=\"host-artefact\""
+          }
+        ]
+      },
+      {
+        "uuid": "24b54209-b570-59fa-a88f-cd7bd2c633c9",
+        "type": "text",
+        "category": "Other",
+        "value": "0702f",
+        "to_ids": false,
+        "comment": "bot_id | Amadey context | src: Trellix | conf: High (70) | not IDS: context only (not observable in logs)",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"context\""
+          }
+        ]
+      },
+      {
+        "uuid": "a8d7e9f2-1456-55e0-8f88-e4dae19b880f",
+        "type": "text",
+        "category": "Other",
+        "value": "828065b4fbbccc7d69743a0648c2f656",
+        "to_ids": false,
+        "comment": "crypto_key | Amadey context | src: Trellix | conf: High (70) | not IDS: context only (not observable in logs)",
+        "distribution": "5",
+        "first_seen": "2025-12-18T00:00:00+00:00",
+        "last_seen": "2025-12-18T00:00:00+00:00",
+        "Tag": [
+          {
+            "name": "amadey-th:family=\"amadey\""
+          },
+          {
+            "name": "amadey-th:role=\"context\""
+          }
+        ]
+      }
+    ]
+  }
+}

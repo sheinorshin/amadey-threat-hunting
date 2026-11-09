@@ -1,0 +1,19 @@
+// Week 9 - export the Kibana Security alerts raised during the Atomic Red Team run (optional third input).
+// Shows whether the rules DEPLOYED in Kibana fired - the scorer re-implements my rules on the raw events anyway,
+// so a difference between the two points at a deployment problem (rule disabled, index pattern, field mapping,
+// schedule/look-back), not at the detection logic.
+// 1. Same time picker as queries/w9_run_events.esql, but extend the end by 10 minutes: rules run every 5 minutes
+//    with a 6-minute look-back, so an alert is created up to ~5 minutes after its event.
+// 2. Replace "lab-win" with the lab VM's host.name; "default" is the Kibana space.
+// 3. Download -> CSV, then pass it to score_atomic_run.py with --alerts.
+//
+// @timestamp = when the ALERT was created; kibana.alert.original_time = when the EVENT happened.
+// The scorer joins alerts to tests by original_time and reports @timestamp - test start as time to alert.
+// If Discover refuses the hidden alerts index in ES|QL, create a data view on ".alerts-security.alerts-default",
+// open it in Discover (classic mode), add the same columns and use Share -> CSV.
+FROM .alerts-security.alerts-default
+| WHERE TO_LOWER(host.name) == "lab-win"
+| KEEP @timestamp, kibana.alert.original_time, kibana.alert.rule.name, kibana.alert.severity,
+       host.name, process.pid, process.name, process.command_line, event.code
+| SORT @timestamp ASC
+| LIMIT 1000
