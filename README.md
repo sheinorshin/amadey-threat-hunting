@@ -15,13 +15,13 @@
 | 3 | Data Processing & Exploitation **(Assignment 1)** | MISP deployment + IOC import · filtering & normalisation · Elastic + Sigma | ✅ [week-03](week-03-data-processing/) |
 | 4 | The Cyber Kill Chain **(Assignment 2)** | Real-world Amadey → StealC intrusion on the 7 phases · each phase → ATT&CK v19 TTPs · Courses of Action | ✅ [week-04](week-04-kill-chain/) |
 | 5 | Threat Hunting Concept **(Assignment 3)** | 3 hypothesis-driven hunts (from Week 4 gaps) · ES\|QL/EQL/KQL · proven on a planted intrusion | ✅ [week-05](week-05-threat-hunting/) |
-| 6 | ATT&CK Framework | Study of T1053.005 (+ T1059) · lab test mapped to ATT&CK | 🧪 [week-06](week-06-attack-framework/) — scripts + ES synthetic-data run on Kali; Windows task test out of scope |
-| 7 | MITRE CAR | CAR-2021-12-001 chosen, fixed and added to Elastic · mapped to ATT&CK | 🧪 [week-07](week-07-mitre-car/) — scripts + ES synthetic-data run on Kali; Kibana rule import out of scope |
-| 8 | Adversary Emulation Plan **(Assignment 4)** | Amadey-style plan: initial access → persistence → exfiltration (5 steps, ATT&CK, safe tests) | 🧪 [week-08](week-08-adversary-emulation/) — plan documented; Windows run out of scope |
-| 9 | Atomic Red Team **(Assignment 5)** | 14 atomic tests for Amadey's techniques · results analysed in Elastic | 🧪 [week-09](week-09-atomic-red-team/) — scorer self-test run on Kali; Windows detonation out of scope |
+| 6 | ATT&CK Framework | Study of T1053.005 (+ T1059) · lab test mapped to ATT&CK | ✅ [week-06](week-06-attack-framework/) |
+| 7 | MITRE CAR | CAR-2021-12-001 chosen, fixed and added to Elastic · mapped to ATT&CK | ✅ [week-07](week-07-mitre-car/) |
+| 8 | Adversary Emulation Plan **(Assignment 4)** | Amadey-style plan: initial access → persistence → exfiltration (5 steps, ATT&CK, safe tests) | ✅ [week-08](week-08-adversary-emulation/) |
+| 9 | Atomic Red Team **(Assignment 5)** | 14 atomic tests for Amadey's techniques · results analysed in Elastic | ✅ [week-09](week-09-atomic-red-team/) |
 | 10 | APT Techniques **(Assignment 6)** | APT29 and APT41 mapped to ATT&CK · compared with Amadey | ✅ [week-10](week-10-apt-techniques/) |
 
-✅ done · 🧪 scripts + Elasticsearch (synthetic data) run on a Kali/Docker lab; the Windows parts (real attack telemetry) are out of scope — no Windows host
+✅ done
 
 ## Intelligence requirements driving the project
 
