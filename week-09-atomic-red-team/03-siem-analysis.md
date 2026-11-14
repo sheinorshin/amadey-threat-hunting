@@ -1,5 +1,7 @@
 # 3. Analysing the results in the SIEM
 
+This is the process for the Windows tests. The real Kali run and its analysis are in [`04-results.md`](04-results.md).
+
 ## Before the run
 
 - Process creation with command line (4688) and PowerShell logging (4104) — on since Week 2.

@@ -4,14 +4,16 @@ Syllabus tasks:
 1. Run selected atomic tests (example: T1059, T1003).
 2. Record and analyse the results in a SIEM.
 
-I planned 14 atomic tests for Amadey's techniques plus the syllabus examples. I run them on my lab VM; this folder has the plan, the export queries and a script that scores the results.
+I installed Red Canary's Invoke-AtomicRedTeam on my Kali VM, looked up the real atomic tests for my techniques and ran the Linux ones (T1105, T1082, T1136.001). I also planned 14 Windows tests for Amadey's techniques plus the syllabus examples.
 
 ## Files
 
-- [`01-atomic-red-team.md`](01-atomic-red-team.md) — what Atomic Red Team is, safety rules
-- [`02-test-plan.md`](02-test-plan.md) — task 1: the 14 tests and predictions
-- [`03-siem-analysis.md`](03-siem-analysis.md) — task 2: how I export and score the results
-- [`04-results.md`](04-results.md) — results (after the lab run)
+- [`01-atomic-red-team.md`](01-atomic-red-team.md) — what Atomic Red Team is, how I installed it, safety rules
+- [`02-test-plan.md`](02-test-plan.md) — the 14 Windows tests and predictions
+- [`03-siem-analysis.md`](03-siem-analysis.md) — how I export and score Windows results
+- [`04-results.md`](04-results.md) — task 1 + 2: the real Kali run and its analysis
+- [`data/w9-exec-log.csv`](data/w9-exec-log.csv) — Invoke-AtomicTest execution log
+- [`evidence/`](evidence/) — screenshots of the install, `-ShowDetails` and the runs
 - [`queries/`](queries/) — `w9_run_events.esql`, `w9_alerts.esql`
 - [`scripts/`](scripts/) — `build_test_plan.py`, `score_atomic_run.py`
 - [`templates/w9_run_sheet.csv`](templates/w9_run_sheet.csv) — fill by hand if needed
@@ -19,10 +21,10 @@ I planned 14 atomic tests for Amadey's techniques plus the syllabus examples. I 
 
 ## Short summary
 
-- 14 tests, all on techniques also used by APT29 or APT41 (Week 10).
-- Prediction: 5 detected at technique level, 9 only seen in logs, 0 missed.
+- Real run on Kali: T1105-27, T1082-3, T1082-8, T1136.001-1 all worked (exit 0) and were cleaned up. T1105-1 failed (needs a remote host).
+- SIEM result: None. My Elastic lab only gets Windows logs, so the Kali runs never reached it. Linux log collection is the fix.
+- Windows plan: 14 tests, predicted 5 detected at technique level, 9 only seen in logs. Not run (no Windows host).
 - Scorer self-test: 12/12 pass.
-- Ran on Kali: the scorer self-test (12/12 PASS) and the test plan. Detonating the atomic tests needs a Windows host, so the real run is out of scope.
 
 ## How to run
 

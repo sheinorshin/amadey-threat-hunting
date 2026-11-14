@@ -18,7 +18,7 @@
 | 6 | ATT&CK Framework | Study of T1053.005 (+ T1059) · lab test mapped to ATT&CK | ✅ [week-06](week-06-attack-framework/) |
 | 7 | MITRE CAR | CAR-2021-12-001 chosen, fixed and added to Elastic · mapped to ATT&CK | ✅ [week-07](week-07-mitre-car/) |
 | 8 | Adversary Emulation Plan **(Assignment 4)** | Amadey-style plan: initial access → persistence → exfiltration (5 steps, ATT&CK, safe tests) | ✅ [week-08](week-08-adversary-emulation/) |
-| 9 | Atomic Red Team **(Assignment 5)** | 14 atomic tests for Amadey's techniques · results analysed in Elastic | ✅ [week-09](week-09-atomic-red-team/) |
+| 9 | Atomic Red Team **(Assignment 5)** | Red Canary Invoke-AtomicRedTeam on Kali · real atomics run (T1105, T1082, T1136.001) · 14-test Windows plan | ✅ [week-09](week-09-atomic-red-team/) |
 | 10 | APT Techniques **(Assignment 6)** | APT29 and APT41 mapped to ATT&CK · compared with Amadey | ✅ [week-10](week-10-apt-techniques/) |
 
 ✅ done
@@ -61,7 +61,7 @@ week-07-mitre-car/             MITRE CAR: coverage of Amadey, CAR-2021-12-001 im
   sigma/ queries/ rules/       tuned Sigma rules, EQL + ES|QL, importable Kibana rules
   scripts/ data/ navigator/    car_coverage.py, build_rules.py, evaluate_car.py, CAR catalogue, layer
 week-08-adversary-emulation/   Amadey-style emulation plan (5 steps, ATT&CK, safe tests)
-week-09-atomic-red-team/       Atomic Red Team: test plan + predictions, SIEM-side analysis of the run
+week-09-atomic-red-team/       Atomic Red Team: real Kali run (execution log + evidence), Windows test plan + predictions
   queries/ templates/          ES|QL exports (events, alerts), manual run sheet
   scripts/ data/ navigator/    build_test_plan.py, score_atomic_run.py (--selftest), plan, predicted layer
 week-10-apt-techniques/        APT29 + APT41 mapped to ATT&CK v19.2, compared with Amadey / TA505 / Kimsuky / APT1
