@@ -1,0 +1,6 @@
+"Execution Time (UTC)","Execution Time (Local)","Technique","Test Number","Test Name","Hostname","IP Address","Username","GUID","ProcessId","ExitCode"
+"2026-11-14T01:56:55Z","2026-11-14T01:56:55Z","T1105","1","rsync remote file copy (push)","Kali","System.Object[]","kali","0fc6e977-cb12-44f6-b263-2824ba917409","15840","255"
+"2026-11-14T02:14:37Z","2026-11-14T02:14:37Z","T1105","27","Linux Download File and Run","Kali","System.Object[]","kali","bdc373c5-e9cf-4563-8a7b-a9ba720a90f3","9761","0"
+"2026-11-14T02:14:48Z","2026-11-14T02:14:48Z","T1082","3","List OS Information","Kali","System.Object[]","kali","cccb070c-df86-4216-a5bc-9fb60c74e27c","9976","0"
+"2026-11-14T02:14:49Z","2026-11-14T02:14:49Z","T1082","8","Hostname Discovery","Kali","System.Object[]","kali","486e88ea-4f56-470f-9b57-3f4d73f39133","9993","0"
+"2026-11-14T02:15:59Z","2026-11-14T02:15:59Z","T1136.001","1","Create a user account on a Linux system","Kali","System.Object[]","root","40d8eabd-e394-46f6-8785-b9bfa1d011d2","10828","0"
